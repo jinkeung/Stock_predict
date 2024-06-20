@@ -1,0 +1,31 @@
+Index: test.py
+===================================================================
+diff --git a/test.py b/test.py
+deleted file mode 100644
+--- a/test.py	(revision c0b05abd1a4beb78cebbd8ef1583cc6d60e95f99)
++++ /dev/null	(revision c0b05abd1a4beb78cebbd8ef1583cc6d60e95f99)
+@@ -1,3 +0,0 @@
+-import numpy as np
+-
+-print("hello")
+\ No newline at end of file
+Index: .idea/Stock_predict.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<module type=\"PYTHON_MODULE\" version=\"4\">\r\n  <component name=\"NewModuleRootManager\">\r\n    <content url=\"file://$MODULE_DIR$\">\r\n      <excludeFolder url=\"file://$MODULE_DIR$/.venv\" />\r\n    </content>\r\n    <orderEntry type=\"inheritedJdk\" />\r\n    <orderEntry type=\"sourceFolder\" forTests=\"false\" />\r\n  </component>\r\n</module>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/Stock_predict.iml b/.idea/Stock_predict.iml
+--- a/.idea/Stock_predict.iml	(revision c0b05abd1a4beb78cebbd8ef1583cc6d60e95f99)
++++ b/.idea/Stock_predict.iml	(date 1718854586938)
+@@ -4,7 +4,7 @@
+     <content url="file://$MODULE_DIR$">
+       <excludeFolder url="file://$MODULE_DIR$/.venv" />
+     </content>
+-    <orderEntry type="inheritedJdk" />
++    <orderEntry type="jdk" jdkName="Python 3.11" jdkType="Python SDK" />
+     <orderEntry type="sourceFolder" forTests="false" />
+   </component>
+ </module>
+\ No newline at end of file
