@@ -1,12 +1,16 @@
 import requests as res
 from bs4 import BeautifulSoup as bs
-
+from selenium import webdriver as web
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+import time
 class stock_craw:
     def __init__(self):
         self.stock_name = []  # 종목 이름
         self.stock_url = []   # 종목 URL
         self.stock_code = []  # 종목 코드
-
+    # 10개 종목 리스트 가져오기
     def name_craw(self):
         stock_list_res = res.get("https://finance.naver.com/sise/lastsearch2.naver")
         if stock_list_res.status_code == 200:
@@ -19,6 +23,7 @@ class stock_craw:
                     self.stock_url.append(data['href'])      # 종목 URL 추가
                 else:
                     break
+    # 10개 종목 코드 가져오기
     def url_craw(self):
         base_url = "http://finance.naver.com"
         for code in self.stock_url:
@@ -32,6 +37,20 @@ class stock_craw:
                 elif temp_url_html.find(attrs={"alt": "코스닥"}):
                     stock_code_source = temp_url_html.find(attrs={"class": "code"}).text
                     self.stock_code.append(stock_code_source + ".KQ")
-
-
-
+    # 검색 종목 코드 가져오기
+    def search_craw(search):
+        op = Options()
+        op.add_argument("headless")
+        driver = web.Chrome()
+        driver.get("https://finance.naver.com/")
+        driver.implicitly_wait(3)
+        driver.find_element(By.XPATH,'//*[@id="stock_items"]').send_keys(search)
+        time.sleep(1)
+        driver.find_element(By.XPATH,'//*[@id="atcmp"]/div[1]/div/ul/li/a').click()
+        time.sleep(1)
+        if driver.find_element(By.XPATH,'//*[@id="middle"]/div[1]/div[1]/div/img').get_attribute('alt') == '코스피':
+            search_stock_code = ((driver.find_element(By.XPATH,'//*[@id="middle"]/div[1]/div[1]/div/span[1]').text) + ".KS")
+            return search_stock_code
+        elif driver.find_element(By.XPATH,'//*[@id="middle"]/div[1]/div[1]/div/img').get_attribute('alt') == '코스닥':
+            search_stock_code = ((driver.find_element(By.XPATH,'//*[@id="middle"]/div[1]/div[1]/div/span[1]').text) + ".KQ")
+            return search_stock_code

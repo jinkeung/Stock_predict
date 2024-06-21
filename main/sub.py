@@ -1,6 +1,6 @@
 import tkinter as tk
 import database_class as db
-
+from crawling_class import stock_craw as crawl
 #리스트 클릭시
 def list_click(event,list):
     index=list.curselection()
@@ -13,12 +13,15 @@ def list_click(event,list):
 
 #검색 클릭시
 def search_click(stock_name):
-    print(stock_name)
+    stock_name=stock_name
+    stock_code=crawl.search_craw(stock_name)
+    db.get_all_data(stock_code,stock_name)
+    open_detail(stock_name,stock_code)
 
 def open_detail(stock_name,stock_code):
     detail_page=tk.Toplevel()
 
 
 
-
-
+print(db.return_show_data("네이버"))
+print(db.return_train_data("네이버"))

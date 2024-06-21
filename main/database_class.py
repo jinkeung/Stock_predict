@@ -53,11 +53,11 @@ def get_all_data(stock_code, stock_name):
             create_table_query = f"""
             CREATE TABLE IF NOT EXISTS {stock_name} (
                 Date DATE PRIMARY KEY,
-                Open FLOAT,
-                High FLOAT,
-                Low FLOAT,
-                Close FLOAT,
-                Adj_Close FLOAT,
+                Open int,
+                High int,
+                Low int,
+                Close int,
+                Adj_Close int,
                 Volume INT
             );
             """
@@ -114,10 +114,37 @@ def return_stock_name():
         print(e)
         pass
 
+def return_show_data(stock_name):
+    try:
+        con=connect_db()
+        cursor=con.cursor()
+        day=date.today()-timedelta(days=40)
+        query=f'''select * from {stock_name} where date>={day}'''
+        cursor.execute(query)
 
+        data=cursor.fetchall()
+        field=["날짜", "시가", "고가","저가","종가","수정 종가","거래량"]
+        show_data=pd.DataFrame(data=data,columns=field)
+        return show_data
+    except Exception as e:
+        print(e)
+        pass
 
-
-
+def return_train_data(stock_name):
+    try:
+        con=connect_db()
+        cursor=con.cursor()
+        day=date.today()-timedelta(days=40)
+        query=f'''select Adj_Close from {stock_name}'''
+        cursor.execute(query)
+        train_data=[]
+        for i in cursor.fetchall():
+            train_data.append(i[0])
+        con.close()
+        return train_data
+    except Exception as e:
+        print(e)
+        pass
 
 
 if __name__=="__main__":
