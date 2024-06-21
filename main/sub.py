@@ -22,6 +22,3 @@ def open_detail(stock_name,stock_code):
     detail_page=tk.Toplevel()
 
 
-
-print(db.return_show_data("네이버"))
-print(db.return_train_data("네이버"))
