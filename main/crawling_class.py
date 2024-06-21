@@ -6,6 +6,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 import tkinter.messagebox as ms
 import time
+import pandas as pd
 class stock_craw:
     def __init__(self):
         self.stock_name = []  # 종목 이름
@@ -57,4 +58,26 @@ class stock_craw:
             print(search_stock_code)
         else:
             ms.showinfo("확인불가","다시 검색해주세요")
-    def news_craw():
+    # 뉴스 url, 네임 가져오기
+    def news_craw():      
+        op = Options()
+        op.add_argument("headless")
+        driver = web.Chrome(op)
+        driver.get("https://finance.naver.com/")
+        driver.implicitly_wait(3)
+        driver.find_element(By.XPATH,'//*[@id="stock_items"]').send_keys('한국가스공사')
+        time.sleep(1)
+        driver.find_element(By.XPATH,'//*[@id="atcmp"]/div[1]/div/ul/li/a').click()
+        time.sleep(1)
+
+        titles = []
+        urls = [] 
+
+        for data in driver.find_elements(By.CLASS_NAME,'news_section'):
+            for ud in range(1,3):
+                for ld in range(1,6):
+                    f_data = data.find_element(By.XPATH,f'//*[@id="content"]/div[3]/div[1]/ul[{ud}]/li[{ld}]/span/a')
+                    titles.append(f_data.text)
+                    urls.append(f_data.get_attribute('href'))
+        news_df = pd.DataFrame({'제목': titles, '주소': urls})
+        return news_df
