@@ -4,7 +4,18 @@ from datetime import date, timedelta
 import yfinance as yf
 from crawling_class import stock_craw
 
-#주식 리스트 가져오기
+#db 연결
+def connect_db():
+    host = '127.0.0.1'
+    port = 3306
+    username = 'root'
+    password = '1234'
+    database = 'stock_predict'
+    # MySQL 연결
+    connection = pymysql.connect(host=host,port=port,user=username,password=password,database=database)
+    return connection
+
+#주식 리스트 db적재
 def get_stock_list():
     # StockCrawler 클래스의 인스턴스 생성
     crawler = stock_craw()
@@ -13,10 +24,7 @@ def get_stock_list():
     # 종목 코드 추출 메서드 호출
     crawler.url_craw()
     try: # MySQL 데이터베이스 연결
-        con = pymysql.connect(host='localhost',
-                              user='root',
-                              password='1234',
-                              db='Stock_predict')
+        con = connect_db()
         cursor = con.cursor()
         for name, code in zip(crawler.stock_name,crawler.stock_code):
             sql = "INSERT INTO stock_list (stock_name, stock_code) VALUES (%s, %s)"
@@ -27,30 +35,20 @@ def get_stock_list():
         print(e)
 
 
-# 전체(2년치) 데이터 가져오는 함수
+# 전체(2년치) 데이터 db 적재
 def get_all_data(stock_code, stock_name):
     # MySQL 연결 설정
-    host = '127.0.0.1'
-    port = 3306
-    username = 'root'
-    password = '1234'
-    database = 'stock_predict'
-
-    # MySQL 연결
-    connection = pymysql.connect(host=host,port=port,user=username,password=password,database=database)
-
+    con=connect_db()
     # 날짜 설정
     end_date = date.today()
     start_date = end_date - timedelta(days=730)
 
     try:
         # 각 종목별로 데이터 다운로드 및 MySQL에 저장
-
         stock_data = yf.download(stock_code, start=start_date, end=end_date)
 
-
         # 테이블 생성 (이미 존재할 경우 무시)
-        with connection.cursor() as cursor:
+        with con.cursor() as cursor:
 
             create_table_query = f"""
             CREATE TABLE IF NOT EXISTS {stock_name} (
@@ -67,7 +65,7 @@ def get_all_data(stock_code, stock_name):
             cursor.execute(create_table_query)
 
         # 데이터프레임을 MySQL 테이블에 삽입
-        with connection.cursor() as cursor:
+        with con.cursor() as cursor:
             truncate_table_query = f"TRUNCATE TABLE {stock_name};"
             cursor.execute(truncate_table_query)
             for index, row in stock_data.iterrows():
@@ -77,14 +75,47 @@ def get_all_data(stock_code, stock_name):
                 """
                 cursor.execute(sql, (index.strftime('%Y-%m-%d'), row['Open'], row['High'], row['Low'], row['Close'], row['Adj Close'], row['Volume']))
         # 변경 사항 커밋
-        connection.commit()
+        con.commit()
         print("주식 데이터가 MySQL 데이터베이스에 저장되었습니다.")
     except Exception as e:
         print(e)
         pass
     finally:
         # 연결 종료
-        connection.close()
+        con.close()
+
+#
+def return_stock_code(stock_name):
+
+    try:
+        con=connect_db()
+        cursor=con.cursor()
+        query = "SELECT stock_code FROM stock_list WHERE stock_name = %s"
+        cursor.execute(query, (stock_name,))
+        stock_code=cursor.fetchone()[0]
+        con.close()
+        return stock_code
+    except Exception as e:
+        print(e)
+        pass
+
+def return_stock_name():
+    try:
+        con=connect_db()
+        cursor=con.cursor()
+        query='select stock_name from stock_list'
+        cursor.execute(query)
+        stock_name=[]
+        for i in cursor.fetchall():
+            stock_name.append(i[0])
+        con.close()
+        return stock_name
+    except Exception as e:
+        print(e)
+        pass
+
+
+
 
 
 
