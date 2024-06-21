@@ -41,7 +41,7 @@ def get_all_data(stock_code, stock_name):
     con=connect_db()
     # 날짜 설정
     end_date = date.today()
-    start_date = end_date - timedelta(days=730)
+    start_date = end_date - timedelta(days=1825)
 
     try:
         # 각 종목별로 데이터 다운로드 및 MySQL에 저장
@@ -118,8 +118,13 @@ def return_show_data(stock_name):
     try:
         con=connect_db()
         cursor=con.cursor()
-        day=date.today()-timedelta(days=40)
-        query=f'''select * from {stock_name} where date>={day}'''
+        today=date.today()
+        day=today-timedelta(40)
+        today_str = today.strftime('%Y-%m-%d')
+        day_str = day.strftime('%Y-%m-%d')
+
+        # SQL 쿼리 생성
+        query = f"""SELECT * FROM {stock_name} WHERE date BETWEEN '{day_str}' AND '{today_str}'ORDER BY date DESC"""
         cursor.execute(query)
 
         data=cursor.fetchall()
@@ -135,11 +140,11 @@ def return_train_data(stock_name):
         con=connect_db()
         cursor=con.cursor()
         day=date.today()-timedelta(days=40)
-        query=f'''select Adj_Close from {stock_name}'''
+        query=f'''select date,Adj_Close from {stock_name}'''
         cursor.execute(query)
-        train_data=[]
-        for i in cursor.fetchall():
-            train_data.append(i[0])
+        data=cursor.fetchall()
+        field=["Date","Close"]
+        train_data=pd.DataFrame(data=data,columns=field)
         con.close()
         return train_data
     except Exception as e:
