@@ -8,7 +8,7 @@ content_font=("나눔고딕",13)
 def open_detail(stock_name, stock_code):
     detail_page = tk.Tk()
     detail_page.title("주식 예측 상세 내용")
-    detail_page.geometry("1000x600+150+100")
+    detail_page.geometry("1200x600+150+100")
     # 삼성은 변수명으로 대체
     detail_title = tk.Label(f"{stock_name} 주가 예측 상세 내용")
     fig = Figure(figsize=(6, 3), dpi=100)
@@ -35,7 +35,7 @@ def open_detail(stock_name, stock_code):
     detail_list.column("저가", width=150,anchor="center")
     detail_list.column("종가", width=150,anchor="center")
     detail_list.column("거래량", width=150,anchor="center")
-
+''''''
     # 데이터 추가 (임의의 데이터 예시)
     # 데이터 db 추가
     data = [
@@ -46,6 +46,6 @@ def open_detail(stock_name, stock_code):
 
     for i, (date, open_price, high_price, low_price, close_price, volume) in enumerate(data, start=1):
         detail_list.insert("", tk.END, text=date, values=(open_price, high_price, low_price, close_price, volume))
-    detail_list.grid(row=2, column=0, columnspan=2)
+    detail_list.grid(row=2, column=0, columnspan=2,padx=20)
     detail_page.mainloop()
 open_detail()

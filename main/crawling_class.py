@@ -57,3 +57,4 @@ class stock_craw:
             print(search_stock_code)
         else:
             ms.showinfo("확인불가","다시 검색해주세요")
+    def news_craw():
