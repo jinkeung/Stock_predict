@@ -4,6 +4,7 @@ from selenium import webdriver as web
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+import tkinter.messagebox as ms
 import time
 class stock_craw:
     def __init__(self):
@@ -54,3 +55,5 @@ class stock_craw:
         elif driver.find_element(By.XPATH,'//*[@id="middle"]/div[1]/div[1]/div/img').get_attribute('alt') == '코스닥':
             search_stock_code = ((driver.find_element(By.XPATH,'//*[@id="middle"]/div[1]/div[1]/div/span[1]').text) + ".KQ")
             print(search_stock_code)
+        else:
+            ms.showinfo("확인불가","다시 검색해주세요")

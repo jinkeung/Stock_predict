@@ -11,7 +11,6 @@ def open_detail(stock_name, stock_code):
     detail_page.geometry("1000x600+150+100")
     # 삼성은 변수명으로 대체
     detail_title = tk.Label(f"{stock_name} 주가 예측 상세 내용")
-    detail_title.
     fig = Figure(figsize=(6, 3), dpi=100)
     plot = fig.add_subplot(111)
     plot.plot(['A', 'B', 'C', 'D'], [7, 13, 5, 17])
