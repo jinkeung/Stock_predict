@@ -16,7 +16,7 @@ def connect_db():
     return connection
 
 #주식 리스트 db적재
-def get_stock_list():
+def set_stock_list():
     # StockCrawler 클래스의 인스턴스 생성
     crawler = stock_craw()
     # 종목 이름과 URL 추출 메서드 호출
@@ -36,7 +36,7 @@ def get_stock_list():
 
 
 # 전체(2년치) 데이터 db 적재
-def get_all_data(stock_code, stock_name):
+def set_all_data(stock_code, stock_name):
     # MySQL 연결 설정
     con=connect_db()
     # 날짜 설정
@@ -153,6 +153,6 @@ def return_train_data(stock_name):
 
 
 if __name__=="__main__":
-    get_stock_list()
+    set_stock_list()
 
 
