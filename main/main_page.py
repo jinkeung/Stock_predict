@@ -14,8 +14,8 @@ def show_detail(selected_stock):
 
 
     df_data, df_future_data = learn.machine_learning(selected_stock)
-    print(df_data)
-    print(df_future_data)
+    df_future_data['Date'] = pd.to_datetime(df_future_data['Date']).dt.date
+    df_future_data['Predicted Price'] = df_future_data['Predicted Price'].round(-1).astype(int)
 
     # 첫 번째 블록 (차트 1과 리스트 1)
     col1, col2 = st.columns([2, 1])
@@ -44,10 +44,10 @@ def show_detail(selected_stock):
         st.line_chart(df_future_data.set_index('Date')['Predicted Price'])
 
     with col4:
+
         # 리스트 2
-        st.subheader('리스트 2')
-        list_items2 = ['항목 A', '항목 B', '항목 C']
-        selected_item2 = st.selectbox('리스트에서 선택하세요', list_items2)
+        st.subheader('표 2')
+        st.dataframe(df_future_data)
 
 
 
