@@ -1,33 +1,62 @@
+import streamlit as st
+import pandas as pd
+import numpy as np
 import database_class as db
-import tkinter as tk
 import sub
 
+# 전체 페이지 설정
+st.set_page_config(page_title='Stock Analysis App', layout='wide')
 
-#메인 화면 구현
-main=tk.Tk()
-main.geometry('500x500')
-main.title('Stock_predict main')
+# 왼쪽 사이드바
+st.sidebar.title('주식 종목 목록')
+stock_name = db.return_stock_name()
+selected_stock = st.sidebar.selectbox('주식 종목을 선택하세요', stock_name)
+st.sidebar.markdown('---')
+search_query = st.sidebar.text_input('더 많은 종목 정보를 검색하세요 !')
+if st.sidebar.button('검색'):
+    sub.search_click(search_query)
 
-stock_name=db.return_stock_name()
+# 메인 컨텐츠 영역
+st.title('Stock Analysis App')
+
+# 첫 번째 블록 (차트 1과 리스트 1)
+col1, col2 = st.columns([2, 1])
+
+with col1:
+    # 차트 1
+    st.subheader('차트 1')
+    df_chart1 = pd.DataFrame(
+        np.random.randn(20, 3),
+        columns=['A', 'B', 'C']
+    )
+    st.line_chart(df_chart1)
+
+with col2:
+    # 리스트 1
+    st.subheader('리스트 1')
+    list_items1 = ['항목 1', '항목 2', '항목 3']
+    selected_item1 = st.selectbox('리스트에서 선택하세요', list_items1)
+
+# 표 1
+st.subheader('표 1')
 
 
-title_font=("나눔고딕",16,"bold")
-content_font=("나눔고딕",13)
+st.dataframe(db.return_show_data(selected_stock))
 
-f_main=tk.Frame()
-la_title=tk.Label(f_main,text='Stock Vision: 주식동향 예측 프로그램',font=title_font)
-la_title.grid(row=0,column=0)
-li_stock_name=tk.Listbox(f_main,width=30,font=content_font)
-for i in stock_name:
-    li_stock_name.insert("end",i)
-li_stock_name.grid(row=1,column=0,pady=20)
-li_stock_name.bind("<<ListboxSelect>>",lambda event:sub.list_click(event, li_stock_name))
-la_search=tk.Label(f_main,text='더 많은 종목 정보를 검색하세요 !',font=content_font)
-la_search.grid(row=2,column=0,pady=10)
-e_search=tk.Entry(f_main,font=content_font)
-e_search.grid(row=3,column=0,pady=10)
-b_search=tk.Button(f_main,text='검색',command=lambda:sub.search_click(e_search.get()))
-b_search.grid(row=3,column=1)
-f_main.pack(pady=10)
-main.mainloop()
+# 두 번째 블록 (차트 2와 리스트 2)
+col3, col4 = st.columns([2, 1])
 
+with col3:
+    # 차트 2
+    st.subheader('차트 2')
+    df_chart2 = pd.DataFrame(
+        np.random.randn(30, 2),
+        columns=['X', 'Y']
+    )
+    st.line_chart(df_chart2)
+
+with col4:
+    # 리스트 2
+    st.subheader('리스트 2')
+    list_items2 = ['항목 A', '항목 B', '항목 C']
+    selected_item2 = st.selectbox('리스트에서 선택하세요', list_items2)

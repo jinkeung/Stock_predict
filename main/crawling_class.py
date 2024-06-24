@@ -58,7 +58,7 @@ class stock_craw:
             print(search_stock_code)
         else:
             ms.showinfo("확인불가","다시 검색해주세요")
-    # 뉴스 url, 네임 가져오기
+    # 뉴스 title, url
     def news_craw(stock_name):
         op = Options()
         op.add_argument("headless")

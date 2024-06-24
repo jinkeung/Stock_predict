@@ -35,7 +35,7 @@ def set_stock_list():
         print(e)
 
 
-# 전체(2년치) 데이터 db 적재
+# 전체(5년치) 데이터 db 적재
 def set_all_data(stock_code, stock_name):
     # MySQL 연결 설정
     con=connect_db()
@@ -99,6 +99,7 @@ def return_stock_code(stock_name):
         print(e)
         pass
 
+#10개 종목 name 반환
 def return_stock_name():
     try:
         con=connect_db()
@@ -139,8 +140,7 @@ def return_train_data(stock_name):
     try:
         con=connect_db()
         cursor=con.cursor()
-        day=date.today()-timedelta(days=40)
-        query=f'''select date,Adj_Close from {stock_name}'''
+        query=f'''select date,Close from {stock_name}'''
         cursor.execute(query)
         data=cursor.fetchall()
         field=["Date","Close"]
