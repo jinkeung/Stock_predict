@@ -2,7 +2,6 @@ import database_class as db
 import tkinter as tk
 import sub
 
-print("test")
 
 #메인 화면 구현
 main=tk.Tk()
