@@ -52,10 +52,10 @@ class stock_craw:
         time.sleep(1)
         if driver.find_element(By.XPATH,'//*[@id="middle"]/div[1]/div[1]/div/img').get_attribute('alt') == '코스피':
             search_stock_code = ((driver.find_element(By.XPATH,'//*[@id="middle"]/div[1]/div[1]/div/span[1]').text) + ".KS")
-            print(search_stock_code)
+            return search_stock_code
         elif driver.find_element(By.XPATH,'//*[@id="middle"]/div[1]/div[1]/div/img').get_attribute('alt') == '코스닥':
             search_stock_code = ((driver.find_element(By.XPATH,'//*[@id="middle"]/div[1]/div[1]/div/span[1]').text) + ".KQ")
-            print(search_stock_code)
+            return search_stock_code
         else:
             ms.showinfo("확인불가","다시 검색해주세요")
     # 뉴스 title, url

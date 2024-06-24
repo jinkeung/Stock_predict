@@ -41,7 +41,7 @@ def machine_learning(stock_name):
     last_date = pd.to_datetime(data_df['Date'].iloc[-1])  # 가장 최근 날짜
     future_dates = pd.date_range(start=last_date + pd.Timedelta(days=1), periods=30, freq='B')
     future_data_df = pd.DataFrame({'Date': future_dates, 'Predicted Price': future_data})
-    future_data_df.set_index('Date', inplace=True)
+
 
 
 
