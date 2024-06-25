@@ -78,6 +78,7 @@ def return_graph_data(stock_name):
     except Exception as e:
         print(e)
         pass
+
 #40일치 데이터 반환
 def return_show_data(stock_name):
     try:

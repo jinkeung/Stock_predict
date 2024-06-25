@@ -27,23 +27,23 @@ class stock_craw:
             driver.find_element(By.XPATH,'//*[@id="atcmp"]/div[1]/div/ul/li/a').click()
             type=driver.find_element(By.XPATH,'//*[@id="middle"]/div[1]/div[1]/div/img').get_attribute('alt')
             if type=="코스피":
-                search_stock_code = ((driver.find_element(By.XPATH,'//*[@id="middle"]/div[1]/div[1]/div/span[1]').text) + ".KS")
-                search_stock_name = driver.find_element(By.XPATH,'//*[@id="middle"]/div[1]/div[1]/h2/a').text
+                stock_code = ((driver.find_element(By.XPATH,'//*[@id="middle"]/div[1]/div[1]/div/span[1]').text) + ".KS")
+                stock_name = driver.find_element(By.XPATH,'//*[@id="middle"]/div[1]/div[1]/h2/a').text
                 driver.close()
-                return search_stock_code, search_stock_name
+                return stock_code, stock_name
             elif type=="코스닥":
-                search_stock_code = ((driver.find_element(By.XPATH,'//*[@id="middle"]/div[1]/div[1]/div/span[1]').text) + ".KQ")
-                search_stock_name = driver.find_element(By.XPATH,'//*[@id="middle"]/div[1]/div[1]/h2/a').text
+                stock_code = ((driver.find_element(By.XPATH,'//*[@id="middle"]/div[1]/div[1]/div/span[1]').text) + ".KQ")
+                stock_name = driver.find_element(By.XPATH,'//*[@id="middle"]/div[1]/div[1]/h2/a').text
                 driver.close()
-                return search_stock_code, search_stock_name
+                return stock_code, stock_name
         except Exception :
             pass
         finally:
             driver.quit()
 
-        search_stock_code=None
-        search_stock_name=None
-        return search_stock_code, search_stock_name
+        stock_code=None
+        stock_name=None
+        return stock_code, stock_name
     # 뉴스 title, url 가져오기
     def news_craw(stock_name):
         op = Options()
