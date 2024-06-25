@@ -6,9 +6,7 @@ import matplotlib.pyplot as plt
 import database_class as db
 def machine_learning(stock_name):
 
-
     data_df=db.return_train_data(stock_name)
-
     train_data = data_df['Close'].values
 
     X=list()

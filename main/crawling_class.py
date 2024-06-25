@@ -3,11 +3,10 @@ from bs4 import BeautifulSoup as bs
 from selenium import webdriver as web
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
 
 import time
 import pandas as pd
-from selenium.common.exceptions import NoSuchElementException
+
 
 
 class stock_craw:

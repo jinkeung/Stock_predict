@@ -1,14 +1,4 @@
-import webbrowser
-
-import streamlit as st
-
-import numpy as np
-import database_class as db
-import sub
-
 from crawling_class import stock_craw as craw
-
-
 
 import streamlit as st
 import database_class as db

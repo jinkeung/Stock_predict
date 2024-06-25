@@ -3,7 +3,7 @@ from crawling_class import stock_craw as craw
 import streamlit as st
 import ai_class as learn
 import pandas as pd
-
+import plotly.graph_objects as go
 
 
 def show_detail(final_stock):
@@ -12,6 +12,8 @@ def show_detail(final_stock):
     df_data, df_future_data = learn.machine_learning(final_stock)
     df_future_data['Date'] = pd.to_datetime(df_future_data['Date']).dt.date
     df_future_data['Predicted Price'] = df_future_data['Predicted Price'].round(-1).astype(int)
+    graph_data_df=db.return_graph_data(final_stock)
+
 
     # 첫 번째 블록 (차트 1과 리스트 1)
     col1, col2 = st.columns([2, 1])
@@ -19,8 +21,11 @@ def show_detail(final_stock):
     with col1:
         # 차트 1
         st.subheader(f'{final_stock} 실제 주가')
-        st.line_chart(df_data.set_index('Date')['Close'])
-
+        #st.line_chart(df_data.set_index('Date')['Close'])
+        candlestick=go.Candlestick(x=graph_data_df['날짜'],open=graph_data_df['시가'],
+                                   high=graph_data_df['고가'],low=graph_data_df['저가'],close=graph_data_df['종가'])
+        fig = go.Figure(candlestick)
+        st.plotly_chart(fig)
     with col2:
         # 리스트 1
         st.subheader('최신 뉴스')
@@ -80,3 +85,6 @@ def show_detail(final_stock):
         # 리스트 2
         st.subheader('표 2')
         st.dataframe(df_future_data)
+
+
+
