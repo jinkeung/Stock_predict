@@ -15,26 +15,6 @@ def connect_db():
     connection = pymysql.connect(host=host,port=port,user=username,password=password,database=database)
     return connection
 
-#주식 리스트 db적재
-def set_stock_list():
-    # StockCrawler 클래스의 인스턴스 생성
-    crawler = stock_craw()
-    # 종목 이름과 URL 추출 메서드 호출
-    crawler.name_craw()
-    # 종목 코드 추출 메서드 호출
-    crawler.url_craw()
-    try: # MySQL 데이터베이스 연결
-        con = connect_db()
-        cursor = con.cursor()
-        for name, code in zip(crawler.stock_name,crawler.stock_code):
-            sql = "INSERT INTO stock_list (stock_name, stock_code) VALUES (%s, %s)"
-            cursor.execute(sql, (name, code))
-        con.commit()
-        con.close()
-    except Exception as e:
-        print(e)
-
-
 # 전체(5년치) 데이터 db 적재
 def set_all_data(stock_code, stock_name):
     # MySQL 연결 설정
@@ -84,37 +64,6 @@ def set_all_data(stock_code, stock_name):
         # 연결 종료
         con.close()
 
-#
-def return_stock_code(stock_name):
-
-    try:
-        con=connect_db()
-        cursor=con.cursor()
-        query = "SELECT stock_code FROM stock_list WHERE stock_name = %s"
-        cursor.execute(query, (stock_name,))
-        stock_code=cursor.fetchone()[0]
-        con.close()
-        return stock_code
-    except Exception as e:
-        print(e)
-        pass
-
-#10개 종목 name 반환
-def return_stock_name():
-    try:
-        con=connect_db()
-        cursor=con.cursor()
-        query='select stock_name from stock_list'
-        cursor.execute(query)
-        stock_name_list=[]
-        for i in cursor.fetchall():
-            stock_name_list.append(i[0])
-        con.close()
-        return stock_name_list
-    except Exception as e:
-        print(e)
-        pass
-
 def return_graph_data(stock_name):
     try:
         con=connect_db()
@@ -129,8 +78,6 @@ def return_graph_data(stock_name):
     except Exception as e:
         print(e)
         pass
-
-
 #40일치 데이터 반환
 def return_show_data(stock_name):
     try:
@@ -167,9 +114,3 @@ def return_train_data(stock_name):
     except Exception as e:
         print(e)
         pass
-
-
-if __name__=="__main__":
-    set_stock_list()
-
-
