@@ -56,8 +56,3 @@ if selected_stock:
 
 
 
-
-
-
-
-

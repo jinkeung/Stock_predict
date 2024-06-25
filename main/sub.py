@@ -19,13 +19,23 @@ def show_detail(final_stock):
     col1, col2 = st.columns([2, 1])
 
     with col1:
-        # 차트 1
-        st.subheader(f'{final_stock} 실제 주가')
-        #st.line_chart(df_data.set_index('Date')['Close'])
+
+        graph_type=st.sidebar.radio("차트 종류를 선택하세요",("Candle_stick","Line"))
         candlestick=go.Candlestick(x=graph_data_df['날짜'],open=graph_data_df['시가'],
                                    high=graph_data_df['고가'],low=graph_data_df['저가'],close=graph_data_df['종가'])
-        fig = go.Figure(candlestick)
+        line=go.Scatter(x=graph_data_df["날짜"],y=graph_data_df["종가"], mode="lines",name="종가")
+        # 차트 1
+        st.subheader(f'{final_stock} 실제 주가')
+        if graph_type=="Candle_stick":
+            fig=go.Figure(candlestick)
+        elif graph_type=="Line":
+            fig=go.Figure(line)
+        else:
+            st.error("ERROR")
+
         st.plotly_chart(fig)
+
+
     with col2:
         # 리스트 1
         st.subheader('최신 뉴스')
