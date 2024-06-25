@@ -1,10 +1,10 @@
+# 외부 라이브러리 함수
 import pymysql
 import pandas as pd
-from datetime import date, timedelta
 import yfinance as yf
-from crawling_class import stock_craw
+from datetime import date, timedelta
 
-#db 연결
+# 데이터베이스 연결
 def connect_db():
     host = '127.0.0.1'
     port = 3306
@@ -15,7 +15,11 @@ def connect_db():
     connection = pymysql.connect(host=host,port=port,user=username,password=password,database=database)
     return connection
 
-# 전체(5년치) 데이터 db 적재
+# 회원정보 데이터베이스 적재
+def set_user_data():
+    pass
+
+# 전체(5년치) 데이터베이스 적재
 def set_all_data(stock_code, stock_name):
     # MySQL 연결 설정
     con=connect_db()
@@ -64,6 +68,11 @@ def set_all_data(stock_code, stock_name):
         # 연결 종료
         con.close()
 
+# 로그인 데이터베이스 비교
+def return_user_data():
+    pass
+
+# 그래프 데이터베이스 가져오기
 def return_graph_data(stock_name):
     try:
         con=connect_db()
@@ -79,7 +88,7 @@ def return_graph_data(stock_name):
         print(e)
         pass
 
-#40일치 데이터 반환
+# 40일치 데이터 반환
 def return_show_data(stock_name):
     try:
         con=connect_db()
@@ -101,6 +110,7 @@ def return_show_data(stock_name):
         print(e)
         pass
 
+# 머신러닝 데이터 반환
 def return_train_data(stock_name):
     try:
         con=connect_db()

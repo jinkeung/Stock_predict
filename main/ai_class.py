@@ -1,8 +1,15 @@
-import numpy as np
+# 머신러닝 라이브러리
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
+
+# 외부 라이브러리
+import numpy as np
 import pandas as pd
+
+# 외부 클래스
 import database_class as db
+
+# 머신러닝 트리거
 def machine_learning(stock_name):
 
     data_df=db.return_train_data(stock_name)
@@ -38,8 +45,5 @@ def machine_learning(stock_name):
     last_date = pd.to_datetime(data_df['Date'].iloc[-1])  # 가장 최근 날짜
     future_dates = pd.date_range(start=last_date + pd.Timedelta(days=1), periods=30, freq='B')
     future_data_df = pd.DataFrame({'Date': future_dates, 'Predicted Price': future_data})
-
-
-
 
     return data_df, future_data_df
