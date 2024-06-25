@@ -1,0 +1,24 @@
+Index: main/main_page.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import webbrowser\r\n\r\nimport streamlit as st\r\nimport pandas as pd\r\nimport numpy as np\r\nimport database_class as db\r\nimport sub\r\nimport ai_class as learn\r\n# 전체 페이지 설정\r\nst.set_page_config(page_title='Stock Analysis App', layout='wide')\r\n\r\n# 왼쪽 사이드바\r\nst.sidebar.title('주식 종목 목록')\r\nstock_name = db.return_stock_name()\r\nselected_stock = st.sidebar.selectbox('주식 종목을 선택하세요', stock_name)\r\nst.sidebar.markdown('---')\r\nsearch_query = st.sidebar.text_input('더 많은 종목 정보를 검색하세요 !')\r\nif st.sidebar.button('검색'):\r\n    sub.search_click(search_query)\r\n\r\n# 메인 컨텐츠 영역\r\nst.title('Stock Analysis App')\r\n\r\ndf_data,df_future_data=learn.machine_learning(selected_stock)\r\n\r\n# 첫 번째 블록 (차트 1과 리스트 1)\r\ncol1, col2 = st.columns([2, 1])\r\n\r\nwith col1:\r\n    # 차트 1\r\n    st.subheader('차트 1')\r\n    st.line_chart(df_data.set_index('Date')['Close'])\r\n\r\n\r\nwith col2:\r\n    # 리스트 1\r\n    st.subheader('리스트 1')\r\n    list_items1 = ['항목 1', '항목 2', '항목 3']\r\n    selected_item1 = st.selectbox('리스트에서 선택하세요', list_items1)\r\n\r\n# 표 1\r\nst.subheader('표 1')\r\nst.dataframe(db.return_show_data(selected_stock))\r\n\r\n# 두 번째 블록 (차트 2와 리스트 2)\r\ncol3, col4 = st.columns([2, 1])\r\n\r\nwith col3:\r\n    # 차트 2\r\n    st.subheader('차트 2')\r\n    df_chart2 = pd.DataFrame(\r\n        np.random.randn(30, 2),\r\n        columns=['X', 'Y']\r\n    )\r\n    st.line_chart(df_chart2)\r\n\r\nwith col4:\r\n    # 리스트 2\r\n    st.subheader('리스트 2')\r\n    list_items2 = ['항목 A', '항목 B', '항목 C']\r\n    selected_item2 = st.selectbox('리스트에서 선택하세요', list_items2)\r\n\r\n\r\nimport webbrowser\r\n\r\n\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/main/main_page.py b/main/main_page.py
+--- a/main/main_page.py	
++++ b/main/main_page.py	
+@@ -1,4 +1,3 @@
+-import webbrowser
+ 
+ import streamlit as st
+ import pandas as pd
+@@ -6,6 +5,8 @@
+ import database_class as db
+ import sub
+ import ai_class as learn
++
++
+ # 전체 페이지 설정
+ st.set_page_config(page_title='Stock Analysis App', layout='wide')
+ 

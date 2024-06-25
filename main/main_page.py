@@ -21,9 +21,8 @@ st.title('Stock Analysis App')
 
 # 사이드바1 - 리스트에서 종목 선택하기
 st.sidebar.title('주식 종목 선택')
-stock_name = db.return_stock_name()
-selected_stock_list = [''] + stock_name
-selected_stock = st.sidebar.selectbox('1. 주식 종목을 선택하세요', selected_stock_list)
+stock_name_list =[''] + db.return_stock_name()
+selected_stock = st.sidebar.selectbox('1. 주식 종목을 선택하세요', stock_name_list)
 
 # 선택된 항목이 공백인 경우 None으로 설정
 if selected_stock == '':

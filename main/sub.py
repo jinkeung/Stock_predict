@@ -6,10 +6,10 @@ import pandas as pd
 
 
 
-def show_detail(selected_stock):
+def show_detail(final_stock):
 
 
-    df_data, df_future_data = learn.machine_learning(selected_stock)
+    df_data, df_future_data = learn.machine_learning(final_stock)
     df_future_data['Date'] = pd.to_datetime(df_future_data['Date']).dt.date
     df_future_data['Predicted Price'] = df_future_data['Predicted Price'].round(-1).astype(int)
 
@@ -18,7 +18,7 @@ def show_detail(selected_stock):
 
     with col1:
         # 차트 1
-        st.subheader(f'{selected_stock} 실제 주가')
+        st.subheader(f'{final_stock} 실제 주가')
         st.line_chart(df_data.set_index('Date')['Close'])
 
     with col2:
@@ -26,7 +26,7 @@ def show_detail(selected_stock):
         st.subheader('최신 뉴스')
         # (stock_craw.news_craw(stock_name))
 
-        df_news = craw.news_craw(selected_stock)
+        df_news = craw.news_craw(final_stock)
 
         table_data = []
         for index, row in df_news.iterrows():
@@ -52,7 +52,7 @@ def show_detail(selected_stock):
         st.write(link_df.to_html(escape=False, index=False), unsafe_allow_html=True)
 
     st.subheader('주식 상세 데이터')
-    stock_table = pd.DataFrame(db.return_show_data(selected_stock))
+    stock_table = pd.DataFrame(db.return_show_data(final_stock))
     st.markdown(
         """
         <style>
@@ -72,7 +72,7 @@ def show_detail(selected_stock):
 
     with col3:
         # 차트 2
-        st.subheader(f'{selected_stock} 향후 30일간 예측 주가')
+        st.subheader(f'{final_stock} 향후 30일간 예측 주가')
         st.line_chart(df_future_data.set_index('Date')['Predicted Price'])
 
     with col4:
