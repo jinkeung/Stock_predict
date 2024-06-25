@@ -1,98 +1,45 @@
-import streamlit as st
-import pandas as pd
-import numpy as np
-import database_class as db
-from crawling_class import stock_craw 
-import sub
+import streamlit as st # GUI 라이브러리
+# 다른 클래스를 접근하기 위함
+import sub 
+import database_class as db 
+from crawling_class import stock_craw as craw
 
-# 전체 페이지 설정
+# 전체 페이지 설정 [ url 제목 ]
 st.set_page_config(page_title='Stock Analysis App', layout='wide')
-
-# 왼쪽 사이드바
-st.sidebar.title('주식 종목 목록')
-stock_name = db.return_stock_name()
-selected_stock = st.sidebar.selectbox('주식 종목을 선택하세요', stock_name)
-st.sidebar.markdown('---')
-search_query = st.sidebar.text_input('더 많은 종목 정보를 검색하세요 !')
-if st.sidebar.button('검색'):
-    sub.search_click(search_query)
-
 # 메인 컨텐츠 영역
 st.title('Stock Analysis App')
-
-# 첫 번째 블록 (차트 1과 리스트 1)
-col1, col2 = st.columns([2, 1])
-
-with col1:
-    # 차트 1
-    st.subheader('차트 1')
-    df_chart1 = pd.DataFrame(
-        np.random.randn(20, 3),
-        columns=['A', 'B', 'C']
-    )
-    st.line_chart(df_chart1)
-
-with col2:
-    # 리스트 1
-    st.subheader('최신 뉴스')
-    # (stock_craw.news_craw(stock_name))
-    data = {
-    '이름': ['뉴스1', '뉴스2', '뉴스3','뉴스4', '뉴스5', '뉴스6'],
-    '링크': ['https://www.naver.com', 'https://www.daum.net', 'https://www.google.com','https://www.naver.com', 'https://www.daum.net', 'https://www.google.com']
-    }
-    df = pd.DataFrame(data)
-    
-    table_data = []
-    for index, row in df.iterrows():
-        link = f"<a href='{row['링크']}' target='_blank'>{row['이름']}</a>"
-        table_data.append([link])
-    st.markdown(
-    """
-    <style>
-    .dataframe {
-        width: 100%;
-        margin-left: 5px;
-        position:relative;
-        top:-15px;
-    }
-    .dataframe td, .dataframe th {
-        text-align:center;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-    )
-    link_df = pd.DataFrame(table_data, columns=['뉴스 데이터'])
-    st.write(link_df.to_html(escape=False, index=False), unsafe_allow_html=True)
-
-st.subheader('주식 상세 데이터')
-stock_table = pd.DataFrame(db.return_show_data(selected_stock))
-st.markdown(
-    """
-    <style>
-    #9dec169d {
-        position:relative;
-        top:-10px;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-    )
-st.write(stock_table.to_html(escape=False, index=False), unsafe_allow_html=True)
-
-# 두 번째 블록 (차트 2와 리스트 2)
-col3, col4 = st.columns([2, 1])
-
-with col3:
-    st.subheader('주식 예측 그래프')
-    df_chart2 = pd.DataFrame(
-        np.random.randn(30, 2),
-        columns=['X', 'Y']
-    )
-    st.line_chart(df_chart2)
-
-with col4:
-    # 리스트 2
-    st.subheader('주식 예측 데이터')
-    list_items2 = ['항목 A', '항목 B', '항목 C']
-    selected_item2 = st.selectbox('리스트에서 선택하세요', list_items2)
+# 사이드 - 리스트에서 종목 선택하기
+st.sidebar.title('주식 종목 선택')
+stock_name_list =[''] + db.return_stock_name() # db 10개의 기본 리스트 가져오기
+selected_stock = st.sidebar.selectbox('1. 주식 종목을 선택하세요', stock_name_list) # 하나 선택하는 변수
+# selected_stock 공백 시 None값 주입
+if selected_stock == '':
+    selected_stock = None
+# 사이드 에 구분선 추가
+st.sidebar.markdown('---')
+#사이드 - 검색하여 종목 선택하기
+search_stock = st.sidebar.text_input('2. 더 많은 종목 정보를 검색하세요 !')
+if st.sidebar.button('검색하기'): # 검색 트리거 버튼
+    if (search_stock == None) and (selected_stock == None):
+        st.write('주식 종목을 선택하거나 검색하세요.') # 값이 없을 시 기본 출력
+    elif search_stock:
+        st.write(f'검색한 주식 종목: {search_stock}')
+        selected_stock=''
+        search_stock_code, search_stock_name =craw.search_craw(search_stock) # 입력받은 값 트리거
+        if search_stock_code: # 검색된 주식 코드 값이 존재 시
+            # 입력받은 값으로 주식 코드와, 주식 이름을 넣어 db에 적재
+            db.set_all_data(search_stock_code,search_stock_name)
+            # db에 적재 후 그 값을 가져와 프론트에 출력
+            sub.show_detail(search_stock_name)
+        # 값이 없을 경우
+        else: st.write("정확한 종목명을 검색해주세요")
+# 주식 종목을 선택했거
+if (selected_stock == None) and ((search_stock == None) or (search_stock == '')):
+    st.write('주식 종목을 선택하거나 검색하세요.')
+if selected_stock:
+    st.write(f'선택한 주식 종목: {selected_stock}')
+    selected_stock_code = db.return_stock_code(selected_stock)
+    if selected_stock_code:
+        db.set_all_data(selected_stock_code,selected_stock)
+        sub.show_detail(selected_stock)
+    else: st.write("정확한 종목명을 검색해주세요")

@@ -3,11 +3,12 @@ from bs4 import BeautifulSoup as bs
 from selenium import webdriver as web
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
-import tkinter.messagebox as ms
+
 import time
 import pandas as pd
+from selenium.common.exceptions import NoSuchElementException
 class stock_craw:
+    # 가져올 변수들 명칭
     def __init__(self):
         self.stock_name = []  # 종목 이름
         self.stock_url = []   # 종목 URL
@@ -41,34 +42,45 @@ class stock_craw:
                     self.stock_code.append(stock_code_source + ".KQ")
     # 검색 종목 코드 가져오기
     def search_craw(search):
-        op = Options()
-        op.add_argument("headless")
-        driver = web.Chrome()
-        driver.get("https://finance.naver.com/")
-        driver.implicitly_wait(3)
-        driver.find_element(By.XPATH,'//*[@id="stock_items"]').send_keys(search)
-        time.sleep(1)
-        driver.find_element(By.XPATH,'//*[@id="atcmp"]/div[1]/div/ul/li/a').click()
-        time.sleep(1)
-        if driver.find_element(By.XPATH,'//*[@id="middle"]/div[1]/div[1]/div/img').get_attribute('alt') == '코스피':
-            search_stock_code = ((driver.find_element(By.XPATH,'//*[@id="middle"]/div[1]/div[1]/div/span[1]').text) + ".KS")
-            print(search_stock_code)
-        elif driver.find_element(By.XPATH,'//*[@id="middle"]/div[1]/div[1]/div/img').get_attribute('alt') == '코스닥':
-            search_stock_code = ((driver.find_element(By.XPATH,'//*[@id="middle"]/div[1]/div[1]/div/span[1]').text) + ".KQ")
-            print(search_stock_code)
-        else:
-            ms.showinfo("확인불가","다시 검색해주세요")
-    # 뉴스 title, url
+        try:
+            op = Options()
+            op.add_argument("headless")
+            driver = web.Chrome(op)
+            driver.get("https://finance.naver.com/")
+            driver.implicitly_wait(1)
+            driver.find_element(By.XPATH,'//*[@id="stock_items"]').send_keys(search)
+            time.sleep(0.5)
+            driver.find_element(By.XPATH,'//*[@id="atcmp"]/div[1]/div/ul/li/a').click()
+
+            type=driver.find_element(By.XPATH,'//*[@id="middle"]/div[1]/div[1]/div/img').get_attribute('alt')
+            if type=="코스피":
+                search_stock_code = ((driver.find_element(By.XPATH,'//*[@id="middle"]/div[1]/div[1]/div/span[1]').text) + ".KS")
+                search_stock_name = driver.find_element(By.XPATH,'//*[@id="middle"]/div[1]/div[1]/h2/a').text
+                driver.close()
+                return search_stock_code, search_stock_name
+            elif type=="코스닥":
+                search_stock_code = ((driver.find_element(By.XPATH,'//*[@id="middle"]/div[1]/div[1]/div/span[1]').text) + ".KQ")
+                search_stock_name = driver.find_element(By.XPATH,'//*[@id="middle"]/div[1]/div[1]/h2/a').text
+                driver.close()
+                return search_stock_code, search_stock_name
+        except Exception :
+            pass
+        finally:
+            driver.quit()
+
+        search_stock_code=None
+        search_stock_name=None
+        return search_stock_code, search_stock_name
+    # 뉴스 title, url 가져오기
     def news_craw(stock_name):
         op = Options()
         op.add_argument("headless")
         driver = web.Chrome(op)
         driver.get("https://finance.naver.com/")
-        driver.implicitly_wait(3)
+        driver.implicitly_wait(1)
         driver.find_element(By.XPATH,'//*[@id="stock_items"]').send_keys(stock_name)
-        time.sleep(1)
+        time.sleep(0.5)
         driver.find_element(By.XPATH,'//*[@id="atcmp"]/div[1]/div/ul/li/a').click()
-        time.sleep(1)
 
         titles = []
         urls = []

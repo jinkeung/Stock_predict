@@ -9,8 +9,8 @@ def connect_db():
     host = '127.0.0.1'
     port = 3306
     username = 'root'
-    password = 'root'
-    database = 'stock_db'
+    password = '1234'
+    database = 'stock_predict'
     # MySQL 연결
     connection = pymysql.connect(host=host,port=port,user=username,password=password,database=database)
     return connection
@@ -106,15 +106,32 @@ def return_stock_name():
         cursor=con.cursor()
         query='select stock_name from stock_list'
         cursor.execute(query)
-        stock_name=[]
+        stock_name_list=[]
         for i in cursor.fetchall():
-            stock_name.append(i[0])
+            stock_name_list.append(i[0])
         con.close()
-        return stock_name
+        return stock_name_list
     except Exception as e:
         print(e)
         pass
 
+def return_graph_data(stock_name):
+    try:
+        con=connect_db()
+        cursor=con.cursor()
+        query=f'''select date,open,high,low,close from {stock_name}'''
+        cursor.execute(query)
+        data=cursor.fetchall()
+        field=["날짜","시가","고가","저가","종가"]
+        graph_data=pd.DataFrame(data=data, columns=field)
+        print(graph_data)
+        return graph_data
+    except Exception as e:
+        print(e)
+        pass
+
+
+#40일치 데이터 반환
 def return_show_data(stock_name):
     try:
         con=connect_db()
@@ -154,5 +171,3 @@ def return_train_data(stock_name):
 
 if __name__=="__main__":
     set_stock_list()
-
-
