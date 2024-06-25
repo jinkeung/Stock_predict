@@ -19,6 +19,8 @@ def show_detail(final_stock):
     col1, col2 = st.columns([2, 1])
 
     with col1:
+        # 사이드 에 구분선 추가
+        st.sidebar.markdown('---')
         graph_type=st.sidebar.radio("차트 종류를 선택하세요",("Candle_stick","Line"))
         candlestick=go.Candlestick(x=graph_data_df['날짜'],open=graph_data_df['시가'],
                                    high=graph_data_df['고가'],low=graph_data_df['저가'],close=graph_data_df['종가'])
@@ -53,7 +55,7 @@ def show_detail(final_stock):
                 position:relative;
                 top:-15px;
             }
-            a[href] {
+            [role="grid"] th, [role="grid"] td{
                 color:black;
                 text-decoration:none;
             }

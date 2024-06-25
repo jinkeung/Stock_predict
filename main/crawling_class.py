@@ -13,33 +13,7 @@ class stock_craw:
         self.stock_name = []  # 종목 이름
         self.stock_url = []   # 종목 URL
         self.stock_code = []  # 종목 코드
-    # 10개 종목 리스트 가져오기
-    def name_craw(self):
-        stock_list_res = res.get("https://finance.naver.com/sise/lastsearch2.naver")
-        if stock_list_res.status_code == 200:
-            stock_list_html = bs(stock_list_res.text, "lxml")
-            count = 0
-            for data in stock_list_html.find_all(attrs={"class": "tltle"}):
-                if count < 10:
-                    count += 1
-                    self.stock_name.append(data.get_text())  # 종목 이름 추가
-                    self.stock_url.append(data['href'])      # 종목 URL 추가
-                else:
-                    break
-    # 10개 종목 코드 가져오기
-    def url_craw(self):
-        base_url = "http://finance.naver.com"
-        for code in self.stock_url:
-            full_url = base_url + code
-            temp_url = res.get(full_url)
-            if temp_url.status_code == 200:
-                temp_url_html = bs(temp_url.text, "lxml")
-                if temp_url_html.find(attrs={"alt": "코스피"}):
-                    stock_code_source = temp_url_html.find(attrs={"class": "code"}).text
-                    self.stock_code.append(stock_code_source + ".KS")
-                elif temp_url_html.find(attrs={"alt": "코스닥"}):
-                    stock_code_source = temp_url_html.find(attrs={"class": "code"}).text
-                    self.stock_code.append(stock_code_source + ".KQ")
+
     # 검색 종목 코드 가져오기
     def search_craw(search):
         try:
@@ -51,7 +25,6 @@ class stock_craw:
             driver.find_element(By.XPATH,'//*[@id="stock_items"]').send_keys(search)
             time.sleep(0.5)
             driver.find_element(By.XPATH,'//*[@id="atcmp"]/div[1]/div/ul/li/a').click()
-
             type=driver.find_element(By.XPATH,'//*[@id="middle"]/div[1]/div[1]/div/img').get_attribute('alt')
             if type=="코스피":
                 search_stock_code = ((driver.find_element(By.XPATH,'//*[@id="middle"]/div[1]/div[1]/div/span[1]').text) + ".KS")
