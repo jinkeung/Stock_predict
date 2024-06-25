@@ -9,8 +9,8 @@ def connect_db():
     host = '127.0.0.1'
     port = 3306
     username = 'root'
-    password = '1234'
-    database = 'stock_predict'
+    password = 'root'
+    database = 'stock_db'
     # MySQL 연결
     connection = pymysql.connect(host=host,port=port,user=username,password=password,database=database)
     return connection
