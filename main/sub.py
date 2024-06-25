@@ -90,31 +90,91 @@ def show_detail(stock_name):
         st.dataframe(df_future_data)
 
 
-def main_page():
-    # 전체 페이지 설정 [ url 제목 ]
-    st.set_page_config(page_title='Stock Analysis App', layout='wide')
-    # 메인 컨텐츠 영역
-    st.title('Stock Analysis App')
+# def main_page():
+#     # 전체 페이지 설정 [ url 제목 ]
+#     st.set_page_config(page_title='Stock Analysis App', layout='wide')
+#     # 메인 컨텐츠 영역
+#     st.title('Stock Analysis App')
+#
+#     # 사이드 - 리스트에서 종목 선택하기
+#     st.sidebar.title('주식 종목 선택')
+#     #사이드 - 검색하여 종목 선택하기
+#     input_stock_name = st.sidebar.text_input('1. 종목을 검색하세요!')
+#
+#     if input_stock_name == None or input_stock_name == "":
+#         st.write('주식 종목을 선택하거나 검색하세요.') # 값이 없을 시 기본 출력
+#
+#
+#
+#     if st.sidebar.button('검색하기'): # 검색 트리거 버튼
+#         if input_stock_name == None or input_stock_name == "":
+#             pass
+#         elif input_stock_name:
+#             stock_code, stock_name =craw.search_craw(input_stock_name) # 입력받은 값 트리거
+#             if stock_code: # 검색된 주식 코드 값이 존재 시
+#                 # 입력받은 값으로 주식 코드와, 주식 이름을 넣어 db에 적재
+#                 db.set_all_data(stock_code,stock_name)
+#                 # db에 적재 후 그 값을 가져와 프론트에 출력
+#                 show_detail(stock_name)
+#             # 값이 없을 경우
+#             else: st.write("정확한 종목명을 검색해주세요")
+
+# sub.py
+import streamlit as st
+from session_state import get_session
+
+def login_page(session_state):
+    st.title("Login")
+    username = st.text_input("Username")
+    password = st.text_input("Password", type="password")
+
+    if st.button("Login"):
+        # 간단한 로그인 로직
+        if username == "admin" and password == "password":
+            session_state.login = True
+            session_state.username = username
+            st.success(f"Welcome, {username}!")
+            # 로그인 성공 후 메인 페이지로 이동
+            main_page(session_state)
+
+def sign_up_page(session_state):
+    st.title("Sign Up")
+    new_username = st.text_input("New Username")
+    new_password = st.text_input("New Password", type="password")
+
+    if st.button("Register"):
+        # 간단한 회원가입 로직
+        st.success(f"Registered new user: {new_username}")
+
+def main_page(session_state):
+    st.title("Main Page")
+    st.write(f"Hello, {session_state.username}!")
+    st.write("This is the main page content.")
+
+    if st.button("Logout"):
+        session_state.login = False
+        session_state.username = ""
+        st.success("You have been logged out.")
+
 
     # 사이드 - 리스트에서 종목 선택하기
     st.sidebar.title('주식 종목 선택')
-    #사이드 - 검색하여 종목 선택하기
+    # 사이드 - 검색하여 종목 선택하기
     input_stock_name = st.sidebar.text_input('1. 종목을 검색하세요!')
 
     if input_stock_name == None or input_stock_name == "":
-        st.write('주식 종목을 선택하거나 검색하세요.') # 값이 없을 시 기본 출력
+        st.write('주식 종목을 선택하거나 검색하세요.')  # 값이 없을 시 기본 출력
 
-
-
-    if st.sidebar.button('검색하기'): # 검색 트리거 버튼
+    if st.sidebar.button('검색하기'):  # 검색 트리거 버튼
         if input_stock_name == None or input_stock_name == "":
             pass
         elif input_stock_name:
-            stock_code, stock_name =craw.search_craw(input_stock_name) # 입력받은 값 트리거
-            if stock_code: # 검색된 주식 코드 값이 존재 시
+            stock_code, stock_name = craw.search_craw(input_stock_name)  # 입력받은 값 트리거
+            if stock_code:  # 검색된 주식 코드 값이 존재 시
                 # 입력받은 값으로 주식 코드와, 주식 이름을 넣어 db에 적재
-                db.set_all_data(stock_code,stock_name)
+                db.set_all_data(stock_code, stock_name)
                 # db에 적재 후 그 값을 가져와 프론트에 출력
                 show_detail(stock_name)
             # 값이 없을 경우
-            else: st.write("정확한 종목명을 검색해주세요")
+            else:
+                st.write("정확한 종목명을 검색해주세요")
