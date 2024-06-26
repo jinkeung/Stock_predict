@@ -5,12 +5,6 @@ from selenium.webdriver.common.by import By
 import time
 import pandas as pd
 
-# 가져올 변수들 명칭
-def __init__(self):
-    self.stock_name = []  # 종목 이름
-    self.stock_url = []   # 종목 URL
-    self.stock_code = []  # 종목 코드
-
 # 검색 종목 코드 크롤링
 def search_craw(search):
     try:

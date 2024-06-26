@@ -3,6 +3,7 @@ import pymysql
 import pandas as pd
 import yfinance as yf
 from datetime import date, timedelta
+import bcrypt
 
 # 데이터베이스 연결
 def connect_db():
@@ -16,8 +17,29 @@ def connect_db():
     return connection
 
 # 회원정보 데이터베이스 적재
-def set_user_data():
-    pass
+def set_user_data(join_id, join_pwd, join_name):
+
+    #회원가입시 필요한 salt 만들기
+    u_salt=bcrypt.gensalt()
+    pepper="HELLO"
+    hash_pwd=bcrypt.hashpw(join_pwd+pepper,salt=u_salt)
+    
+
+    try:
+        con = connect_db()
+        cursor = con.cursor()
+        query = '''INSERT INTO USER_DATA (U_ID, U_PWD, U_NAME, U_SALT) VALUES (%s, %s, %s, %s)'''
+        cursor.execute(query, (join_id,hash_pwd , join_name, u_salt))  # 튜플 형태로 파라미터 전달
+        con.commit()
+        join_success = True
+        return join_success
+    except Exception as e:
+        print(f"회원가입 에러: {e}")
+        join_success = False
+        return(join_success)
+    finally:
+        cursor.close()
+        con.close()
 
 # 전체(5년치) 데이터베이스 적재
 def set_all_data(stock_code, stock_name):

@@ -1,37 +1,33 @@
 # GUI 라이브러리
 import streamlit as st
-
-# 외부 클래스
-import sub 
-import database_class as db 
-import crawling_class as craw
-
-# 전체 페이지 설정 [ url 제목 ]
+# 페이지 설정
 st.set_page_config(page_title='Stock Analysis App', layout='wide')
-# 메인 컨텐츠 영역
-st.title('Stock Analysis App')
-# 사이드 - 주식 컨텐츠 타이틀
-st.sidebar.title('주식 종목 찾아보기')
 
-# 사이드 종목 검색 / 데이터 가져오기
-input_stock_name = st.sidebar.text_input('1. 종목을 검색하세요!')
 
-# 초기 값 설정
-if input_stock_name == None or input_stock_name == "":
-    st.write('주식 종목을 선택하거나 검색하세요.') 
-
-# 검색 버튼
-if st.sidebar.button('검색하기'): 
-    if input_stock_name == None or input_stock_name == "":
-        pass
-    elif input_stock_name:
-        # 입력받은 값 트리거
-        stock_code, stock_name =craw.search_craw(input_stock_name)
-        # 검색된 주식 코드 값이 존재 시
-        if stock_code:
-            # 입력받은 값으로 주식 코드와, 주식 이름을 넣어 db에 적재
-            db.set_all_data(stock_code,stock_name)
-            # db에 적재 후 그 값을 가져와 프론트에 출력
-            sub.show_stock_func(stock_name)
-        # 값이 없을 경우
-        else: st.write("정확한 종목명을 검색해주세요")
+# 메인 애플리케이션 함수
+def main():
+    st.title("주식 예측 플랫폼에 오신걸 환영합니다!")
+    st.write("로그인을 진행해주세요!")
+    login_container = st.container()
+    with login_container:
+        gap1, gap2 = st.columns([1,1])
+        gap1.empty()
+        gap2.empty()
+        ext1, ext2, ext3 = st.columns([2,1,1])
+        login = ext1
+        ext2.empty()
+        ext3.empty()
+        with login:
+            username = st.text_input("아이디")
+            password = st.text_input("비밀번호", type='password')
+            gap3, gap4 = st.columns([1,1])
+            gap3.empty()
+            gap4.empty()
+            button = st.link_button("로그인하기", url="http://localhost:8501/sub1_page")
+            if username and password:
+                st.success("로그인 성공!")
+                      
+            else:
+                st.error("로그인 실패. 아이디와 비밀번호를 확인하세요. 또는 회원가입을 진행해주세요")
+if __name__ == "__main__":
+    main()
