@@ -31,7 +31,6 @@ def main():
                 login_success=db.return_user_data(login_id,login_pwd)
                 if login_success:
                     session=get_session()
-                    print(session.login)
                     st.write(f"""{session.u_name}님 환영합니다""")
                     st.success("로그인 성공!")
                 else:

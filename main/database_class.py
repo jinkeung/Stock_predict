@@ -119,8 +119,6 @@ def return_user_data(login_id, login_pwd):
             session.login=True
             session.u_name=u_name
 
-            print(session.login)
-            print(session.u_name)
             return True
         else:
             pass

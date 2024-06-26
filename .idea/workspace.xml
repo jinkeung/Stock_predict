@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="121ec974-d65d-4ae0-9a5b-da2dc760066d" name="Changes" comment="Merge remote-tracking branch 'origin/Jinkyeong-Kim' into Jinkyeong-Kim&#10;&#10;# Conflicts:&#10;#&#9;main/session_state.py">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/database_class.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/database_class.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -294,7 +295,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719381747695</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Merge remote-tracking branch 'origin/Jinkyeong-Kim' into Jinkyeong-Kim&#10;&#10;# Conflicts:&#10;#&#9;main/session_state.py">
+      <option name="closed" value="true" />
+      <created>1719387522751</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1719387522751</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
