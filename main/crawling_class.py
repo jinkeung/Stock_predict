@@ -4,6 +4,8 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 import time
 import pandas as pd
+import requests as res
+from bs4 import BeautifulSoup as bs
 
 # 검색 종목 코드 크롤링
 def search_craw(search):
@@ -13,19 +15,22 @@ def search_craw(search):
         driver = web.Chrome(op)
         driver.get("https://finance.naver.com/")
         driver.implicitly_wait(1)
-        driver.find_element(By.XPATH,'//*[@id="stock_items"]').send_keys(search)
+        driver.find_element(By.XPATH,'//*[@id="stock_items"]').send_keys(se)
         time.sleep(0.5)
         driver.find_element(By.XPATH,'//*[@id="atcmp"]/div[1]/div/ul/li/a').click()
-        type=driver.find_element(By.XPATH,'//*[@id="middle"]/div[1]/div[1]/div/img').get_attribute('alt')
-        
-        if type=="코스피":
-            stock_code = ((driver.find_element(By.XPATH,'//*[@id="middle"]/div[1]/div[1]/div/span[1]').text) + ".KS")
-            stock_name = driver.find_element(By.XPATH,'//*[@id="middle"]/div[1]/div[1]/h2/a').text
-
-        elif type=="코스닥":
-            stock_code = ((driver.find_element(By.XPATH,'//*[@id="middle"]/div[1]/div[1]/div/span[1]').text) + ".KQ")
-            stock_name = driver.find_element(By.XPATH,'//*[@id="middle"]/div[1]/div[1]/h2/a').text
-        news_df=news_craw(driver)
+        res_url = res.get(driver.current_url)
+        if res_url.status_code == 200:
+            res_data = bs(res_url.content,"lxml")
+            type = res_data.find("img", {"alt":"코스피"}).attrs['alt']
+            if type=="코스피":
+                stock_code = ((res_data.find(attrs={"class","code"}).text) + ".KS")
+                stock_name = res_data.find('div', class_='wrap_company').find('h2').find('a').text
+                print(stock_code, stock_name)
+            elif type=="코스닥":
+                stock_code = ((res_data.find(attrs={"class","code"}).text) + ".KS")
+                stock_name = res_data.find('div', class_='wrap_company').find('h2').find('a').text
+                print(stock_code, stock_name)
+        news_df = news_craw(driver)
         return stock_code, stock_name, news_df
     except Exception :
         pass
@@ -36,7 +41,6 @@ def search_craw(search):
     stock_name=None
     news_df=None
     return stock_code, stock_name, news_df
-
 # 뉴스 title, url 크롤링
 def news_craw(driver):
     try:

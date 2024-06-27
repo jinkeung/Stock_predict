@@ -1,4 +1,5 @@
-# 외부 클래스
+# GUI 라이브러리
+import streamlit as st
 import database_class as db
 import crawling_class as craw
 import ai_class as learn
@@ -6,16 +7,16 @@ import pandas as pd
 from session_state import get_session
 
 # 외부 라이브러리
+import multiprocessing
 import re
 import streamlit as st 
 import pandas as pd 
 import plotly.graph_objects as go 
-import re
 
+import re
 # 페이지 설정
 st.set_page_config(page_title='Stock Analysis App', layout='wide')
 session = get_session()
-
 # 메인 애플리케이션 함수
 def login():
     st.title("주식 예측 플랫폼에 오신걸 환영합니다!")
@@ -123,6 +124,8 @@ def stock():
             .dataframe {
                 width: 100%;
                 margin-left: 5px;
+                position:relative;
+                top:-20px;
             }
             a[href]{
                 color:black;
@@ -147,12 +150,13 @@ def stock():
             """,
             unsafe_allow_html=True
         )
-
+        # 예측 데이터 출력
         df_data, df_future_data = learn.machine_learning(stock_name)
         df_future_data['Date'] = pd.to_datetime(df_future_data['Date']).dt.date
         df_future_data['Predicted Price'] = df_future_data['Predicted Price'].round(-1).astype(int)
         graph_data_df=db.return_graph_data(stock_name)
         
+        # 본문 레이아웃
         stock_graph, news_list = st.columns([2, 1])
         stock_real_list_container = st.container()
         stock_predict_graph, stock_predict_list = st.columns([2, 1])
@@ -175,7 +179,7 @@ def stock():
         with news_list:
             if news_df.empty == False:
                 table_data = []
-                for _, row in news_df.iterrows():
+                for index, row in news_df.iterrows():
                     link = f"<a href='{row['주소']}' target='_blank'>{row['제목']}</a>"
                     table_data.append([link])
                 link_df = pd.DataFrame(table_data, columns=['뉴스 데이터'])
@@ -185,6 +189,9 @@ def stock():
         # 주식 상세 데이터
         with stock_real_list_container:
             st.subheader('주식 상세 데이터')
+            col1,col2 = st.columns([1,1])
+            stock_real_list1 = col1
+            col2.empty()
             stock_table = db.return_show_data(stock_name)
             st.dataframe(stock_table,height=400, width=2000)
         # 예측 그래프
@@ -195,19 +202,17 @@ def stock():
         with stock_predict_list:
             st.subheader(f'{stock_name} 예측 데이터')
             st.dataframe(df_future_data,height=310, width=400)
-        # 검색 버튼
-    search_button = st.sidebar.button('검색하기')
-    if search_button:
-        get_session().search_button=True
-    if get_session().search_button==True:
-        if not input_stock_name:
-            pass
-        elif input_stock_name:
-            stock_code, stock_name, news_df =craw.search_craw(input_stock_name)
+
+    # 검색 버튼
+    if st.sidebar.button('검색하기'): 
+        if input_stock_name and input_stock_name.strip():  # 입력값이 존재하고 공백이 아닌 경우
+            # 입력받은 값으로 주식 코드와 주식 이름을 크롤링
+            stock_code, stock_name, news_df = craw.search_craw(input_stock_name)
             if stock_code:
-                db.set_all_data(stock_code,stock_name)
+                db.set_all_data(stock_code, stock_name)
                 show_stock_func(stock_name,news_df)
-            else: st.write("정확한 종목명을 검색해주세요")
+            else:
+                st.write("정확한 종목명을 검색해주세요")
 # 페이지 전환 및 메인 트리거
 if __name__ == "__main__":
     if get_session().login == False:

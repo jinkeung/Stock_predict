@@ -141,6 +141,7 @@ def return_show_data(stock_name):
         con.close()
 
 # 머신러닝 데이터 반환
+def return_train_data(stock_name):
     try:
         con=connect_db()
         cursor=con.cursor()
