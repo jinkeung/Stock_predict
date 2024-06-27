@@ -38,23 +38,27 @@ def search_craw(search):
 
 # 뉴스 title, url 크롤링
 def news_craw(stock_name):
-    op = Options()
-    op.add_argument("headless")
-    driver = web.Chrome(op)
-    driver.get("https://finance.naver.com/")
-    driver.implicitly_wait(1)
-    driver.find_element(By.XPATH,'//*[@id="stock_items"]').send_keys(stock_name)
-    time.sleep(0.5)
-    driver.find_element(By.XPATH,'//*[@id="atcmp"]/div[1]/div/ul/li/a').click()
+    try:
+        op = Options()
+        op.add_argument("headless")
+        driver = web.Chrome(op)
+        driver.get("https://finance.naver.com/")
+        driver.implicitly_wait(1)
+        driver.find_element(By.XPATH,'//*[@id="stock_items"]').send_keys(stock_name)
+        time.sleep(0.5)
+        driver.find_element(By.XPATH,'//*[@id="atcmp"]/div[1]/div/ul/li/a').click()
 
-    titles = []
-    urls = []
-
-    for data in driver.find_elements(By.CLASS_NAME,'news_section'):
-        for ud in range(1,3):
-            for ld in range(1,6):
-                f_data = data.find_element(By.XPATH,f'//*[@id="content"]/div[3]/div[1]/ul[{ud}]/li[{ld}]/span/a')
-                titles.append(f_data.text)
-                urls.append(f_data.get_attribute('href'))
-    news_df = pd.DataFrame({'제목': titles, '주소': urls})
-    return news_df
+        titles = []
+        urls = []
+        for data in driver.find_elements(By.CLASS_NAME,'news_section'):
+            for ud in range(1,3):
+                for ld in range(1,6):
+                    f_data = data.find_element(By.XPATH,f'//*[@id="content"]/div[3]/div[1]/ul[{ud}]/li[{ld}]/span/a')
+                    titles.append(f_data.text)
+                    urls.append(f_data.get_attribute('href'))
+        news_df = pd.DataFrame({'제목': titles, '주소': urls})
+        return news_df
+    except Exception as e:
+        print("뉴스 크롤링 예외처리" + str(e))
+        news_df = pd.DataFrame(None)
+        return news_df

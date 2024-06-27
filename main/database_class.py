@@ -1,3 +1,5 @@
+from session_state import get_session
+
 # 외부 라이브러리 함수
 import pymysql
 import pandas as pd
@@ -18,13 +20,10 @@ def connect_db():
 
 # 회원정보 데이터베이스 적재
 def set_user_data(join_id, join_pwd, join_name):
-
     #회원가입시 필요한 salt 만들기
     u_salt=bcrypt.gensalt()
     pepper="HELLO"
-    hash_pwd=bcrypt.hashpw(join_pwd+pepper,salt=u_salt)
-    
-
+    hash_pwd=bcrypt.hashpw((join_pwd+pepper).encode(),salt=u_salt)
     try:
         con = connect_db()
         cursor = con.cursor()
@@ -43,13 +42,16 @@ def set_user_data(join_id, join_pwd, join_name):
 
 # 전체(5년치) 데이터베이스 적재
 def set_all_data(stock_code, stock_name):
-    # MySQL 연결 설정
-    con=connect_db()
-    # 날짜 설정
-    end_date = date.today()
-    start_date = end_date - timedelta(days=1825)
+
 
     try:
+
+        # MySQL 연결 설정
+        con=connect_db()
+        # 날짜 설정
+        end_date = date.today()
+        start_date = end_date - timedelta(days=1825)
+
         # 각 종목별로 데이터 다운로드 및 MySQL에 저장
         stock_data = yf.download(stock_code, start=start_date, end=end_date)
 
@@ -88,11 +90,38 @@ def set_all_data(stock_code, stock_name):
         pass
     finally:
         # 연결 종료
+        cursor.close()
         con.close()
 
 # 로그인 데이터베이스 비교
-def return_user_data():
-    pass
+def return_user_data(login_id, login_pwd):
+    try:
+        con=connect_db()
+        cursor=con.cursor()
+        query='''select * from user_data where u_id= %s'''
+        cursor.execute(query,login_id)
+        user_data=cursor.fetchall()
+        u_pwd=user_data[0][1]
+        u_name=user_data[0][2]
+
+
+        #로그인시 입력한 pwd를 암호화 해서 db에서 추출해온 pwd와 비교
+        pepper="HELLO"
+        login_success = bcrypt.checkpw((login_pwd + pepper).encode(), u_pwd.encode())
+        if login_success:
+            session=get_session()
+            session.login=True
+            session.u_name=u_name
+            return True
+        else:
+            pass
+    except Exception as e:
+        pass
+    finally:
+        cursor.close()
+        con.close()
+
+    return False
 
 # 그래프 데이터베이스 가져오기
 def return_graph_data(stock_name):
@@ -109,6 +138,9 @@ def return_graph_data(stock_name):
     except Exception as e:
         print(e)
         pass
+    finally:
+        cursor.close()
+        con.close()
 
 # 40일치 데이터 반환
 def return_show_data(stock_name):
@@ -131,9 +163,27 @@ def return_show_data(stock_name):
     except Exception as e:
         print(e)
         pass
+    finally:
+        cursor.close()
+        con.close()
 
 # 머신러닝 데이터 반환
 def return_train_data(stock_name):
+    try:
+        con=connect_db()
+        cursor=con.cursor()
+        query=f'''select date,Close from {stock_name}'''
+        cursor.execute(query)
+        data=cursor.fetchall()
+        field=["Date","Close"]
+        train_data=pd.DataFrame(data=data,columns=field)
+        return train_data
+    except Exception as e:
+        print(e)
+        pass
+    finally:
+        cursor.close()
+        con.close()
     try:
         con=connect_db()
         cursor=con.cursor()
