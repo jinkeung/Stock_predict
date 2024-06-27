@@ -17,37 +17,29 @@ def search_craw(search):
         time.sleep(0.5)
         driver.find_element(By.XPATH,'//*[@id="atcmp"]/div[1]/div/ul/li/a').click()
         type=driver.find_element(By.XPATH,'//*[@id="middle"]/div[1]/div[1]/div/img').get_attribute('alt')
+        
         if type=="코스피":
             stock_code = ((driver.find_element(By.XPATH,'//*[@id="middle"]/div[1]/div[1]/div/span[1]').text) + ".KS")
             stock_name = driver.find_element(By.XPATH,'//*[@id="middle"]/div[1]/div[1]/h2/a').text
-            driver.close()
-            return stock_code, stock_name
+
         elif type=="코스닥":
             stock_code = ((driver.find_element(By.XPATH,'//*[@id="middle"]/div[1]/div[1]/div/span[1]').text) + ".KQ")
             stock_name = driver.find_element(By.XPATH,'//*[@id="middle"]/div[1]/div[1]/h2/a').text
-            driver.close()
-            return stock_code, stock_name
+        news_df=news_craw(driver)
+        return stock_code, stock_name, news_df
     except Exception :
         pass
     finally:
+        driver.close()
         driver.quit()
-
     stock_code=None
     stock_name=None
-    return stock_code, stock_name
+    news_df=None
+    return stock_code, stock_name, news_df
 
 # 뉴스 title, url 크롤링
-def news_craw(stock_name):
+def news_craw(driver):
     try:
-        op = Options()
-        op.add_argument("headless")
-        driver = web.Chrome(op)
-        driver.get("https://finance.naver.com/")
-        driver.implicitly_wait(1)
-        driver.find_element(By.XPATH,'//*[@id="stock_items"]').send_keys(stock_name)
-        time.sleep(0.5)
-        driver.find_element(By.XPATH,'//*[@id="atcmp"]/div[1]/div/ul/li/a').click()
-
         titles = []
         urls = []
         for data in driver.find_elements(By.CLASS_NAME,'news_section'):
