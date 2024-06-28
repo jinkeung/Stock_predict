@@ -41,7 +41,7 @@ def set_user_data(join_id, join_pwd, join_name):
         cursor.close()
         con.close()
 
-# 전체(5년치) 데이터베이스 적재
+# 전체 데이터베이스 적재
 def set_all_data(stock_code, stock_name):
     try:
         con=connect_db()
@@ -53,9 +53,8 @@ def set_all_data(stock_code, stock_name):
             if stock_data.empty:
                 raise ValueError("5년치 데이터가 존재하지 않습니다.")
         except Exception as e:
-            print("5년치 데이터를 가져오는 데 실패했습니다. 전체 데이터를 가져옵니다.")
+            print("전체 데이터를 가져옵니다.")
             stock_data = yf.download(stock_code)
-        print(stock_data)
 
         # 테이블 생성 (이미 존재할 경우 무시)
         with con.cursor() as cursor:
