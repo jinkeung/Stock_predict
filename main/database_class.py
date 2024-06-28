@@ -1,12 +1,14 @@
-# 외부 클래스
-from session_state import get_session
+# 주 기능 데이터베이스 라이브러리
+import pymysql
 
 # 외부 라이브러리
-import pymysql
 import pandas as pd
 import yfinance as yf
 from datetime import date, timedelta
 import bcrypt
+
+# 외부 클래스
+from session_state import get_session
 
 # 데이터베이스 연결
 def connect_db():
@@ -45,8 +47,16 @@ def set_all_data(stock_code, stock_name):
         con=connect_db()
         end_date = date.today()
         start_date = end_date - timedelta(days=1825)
-        stock_data = yf.download(stock_code, start=start_date, end=end_date)
-        
+
+        try:
+            stock_data = yf.download(stock_code, start=start_date, end=end_date)
+            if stock_data.empty:
+                raise ValueError("5년치 데이터가 존재하지 않습니다.")
+        except Exception as e:
+            print("5년치 데이터를 가져오는 데 실패했습니다. 전체 데이터를 가져옵니다.")
+            stock_data = yf.download(stock_code)
+        print(stock_data)
+
         # 테이블 생성 (이미 존재할 경우 무시)
         with con.cursor() as cursor:
             create_table_query = f"""
@@ -54,7 +64,7 @@ def set_all_data(stock_code, stock_name):
                 Date DATE PRIMARY KEY, Open int, High int, Low int,
                 Close int, Adj_Close int, Volume INT); """
             cursor.execute(create_table_query)
-        
+
         # 데이터프레임을 MySQL 테이블에 삽입
         with con.cursor() as cursor:
             truncate_table_query = f"TRUNCATE TABLE {stock_name};"
@@ -69,7 +79,7 @@ def set_all_data(stock_code, stock_name):
         print(e)
         pass
     finally:
-        cursor.close()
+        con.cursor().close()
         con.close()
 
 # 로그인 데이터베이스 비교
@@ -112,8 +122,9 @@ def return_graph_data(stock_name):
         graph_data=pd.DataFrame(data=data, columns=field)
         return graph_data
     except Exception as e:
-        print(e)
-        pass
+        print(f'''그래프 데이터 반환 예외: {e}''')
+        graph_data=pd.DataFrame(None)
+        return graph_data
     finally:
         cursor.close()
         con.close()
@@ -150,9 +161,16 @@ def return_train_data(stock_name):
         data=cursor.fetchall()
         field=["Date","Close"]
         train_data=pd.DataFrame(data=data,columns=field)
+
+        if len(train_data)<250:
+            train_data=pd.DataFrame(None)
+            print(train_data.empty)
+            return train_data
         return train_data
     except Exception as e:
-        print(e)
+        print(f"머신러닝 데이터 반환 예외: {e}")
+        train_data=pd.DataFrame(None)
+        return train_data
         pass
     finally:
         cursor.close()

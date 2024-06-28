@@ -1,21 +1,24 @@
-# GUI 라이브러리
+# 주 기능 streamlit 라이브러리
 import streamlit as st
-import database_class as db
-import crawling_class as craw
-import ai_class as learn
-import pandas as pd 
-from session_state import get_session
 
 # 외부 라이브러리
 import re
-import streamlit as st 
 import pandas as pd 
 import plotly.graph_objects as go 
 
+# 외부 클래스
+import database_class as db
+import crawling_class as craw
+import ai_class as learn
+from session_state import get_session
+
 # 페이지 설정
 st.set_page_config(page_title='Stock Analysis App', layout='wide')
+
+# 세션 설정
 session = get_session()
-# 메인 애플리케이션 함수
+
+# 로그인 페이지
 def login():
     st.title("주식 예측 플랫폼에 오신걸 환영합니다!")
     st.write("로그인을 진행해주세요!")
@@ -98,6 +101,8 @@ def login():
             st.text_input("이름", key="join_name")
             
             st.form_submit_button(label="가입하기", on_click=join_process)
+
+# 상세 페이지
 def stock():
     st.title('Stock Analysis App')
     id, button = st.sidebar.columns([1,1])    
@@ -148,69 +153,84 @@ def stock():
             """,
             unsafe_allow_html=True
         )
-        # 예측 데이터 출력
-        df_data, df_future_data = learn.machine_learning(stock_name)
-        df_future_data['Date'] = pd.to_datetime(df_future_data['Date']).dt.date
-        df_future_data['Predicted Price'] = df_future_data['Predicted Price'].round(-1).astype(int)
-        graph_data_df=db.return_graph_data(stock_name)
+        
         
         # 본문 레이아웃
         stock_graph, news_list = st.columns([2, 1])
         stock_real_list_container = st.container()
         stock_predict_graph, stock_predict_list = st.columns([2, 1])
 
-        # 주식 실질적 그래프
-        with stock_graph:
-            st.subheader(f'{stock_name} 실제 주가')
-            st.sidebar.markdown('---')
-            
-            candlestick=go.Candlestick(x=graph_data_df['날짜'],open=graph_data_df['시가'],
-                                    high=graph_data_df['고가'], low=graph_data_df['저가'], close=graph_data_df['종가'])
-            line=go.Scatter(x=graph_data_df["날짜"], y=graph_data_df["종가"],
-                            mode="lines", name="종가")    
-            graph_type=st.sidebar.radio("차트 종류를 선택하세요",("Candle_stick","Line"))
-            
-            if graph_type=="Candle_stick": fig=go.Figure(candlestick)
-            elif graph_type=="Line": fig=go.Figure(line)
-            st.plotly_chart(fig)
-        # 주식 뉴스 리스트
-        with news_list:
-            if news_df.empty == False:
-                table_data = []
-                for index, row in news_df.iterrows():
-                    link = f"<a href='{row['주소']}' target='_blank'>{row['제목']}</a>"
-                    table_data.append([link])
-                link_df = pd.DataFrame(table_data, columns=['뉴스 데이터'])
-                st.write(link_df.to_html(escape=False, index=False), unsafe_allow_html=True)
-            else:
-                st.write("최근 1년 내 검색된 관련뉴스가 없습니다")
-        # 주식 상세 데이터
-        with stock_real_list_container:
-            st.subheader('주식 상세 데이터')
-            col1,col2 = st.columns([1,1])
-            stock_real_list1 = col1
-            col2.empty()
-            stock_table = db.return_show_data(stock_name)
-            st.dataframe(stock_table,height=400, width=2000)
-        # 예측 그래프
-        with stock_predict_graph:
-            st.subheader(f'{stock_name} 예측 주가 [ 30day ]')
-            st.line_chart(df_future_data.set_index('Date')['Predicted Price'])
-        # 예측 데이터
-        with stock_predict_list:
-            st.subheader(f'{stock_name} 예측 데이터')
-            st.dataframe(df_future_data,height=310, width=400)
+        graph_data_df=db.return_graph_data(stock_name)
+        if not(graph_data_df.empty):
+            # 주식 실질적 그래프
+            with stock_graph:
 
+                st.subheader(f'{stock_name} 실제 주가')
+                st.sidebar.markdown('---')
+
+                candlestick=go.Candlestick(x=graph_data_df['날짜'],open=graph_data_df['시가'],
+                                           high=graph_data_df['고가'], low=graph_data_df['저가'], close=graph_data_df['종가'])
+                line=go.Scatter(x=graph_data_df["날짜"], y=graph_data_df["종가"],
+                                mode="lines", name="종가")
+                graph_type=st.sidebar.radio("차트 종류를 선택하세요",("Candle_stick","Line"))
+
+                if graph_type=="Candle_stick": fig=go.Figure(candlestick)
+                elif graph_type=="Line": fig=go.Figure(line)
+                st.plotly_chart(fig)
+            # 주식 뉴스 리스트
+            with news_list:
+                if news_df.empty == False:
+                    table_data = []
+                    for index, row in news_df.iterrows():
+                        link = f"<a href='{row['주소']}' target='_blank'>{row['제목']}</a>"
+                        table_data.append([link])
+                    link_df = pd.DataFrame(table_data, columns=['뉴스 데이터'])
+                    st.write(link_df.to_html(escape=False, index=False), unsafe_allow_html=True)
+                else:
+                    st.write("최근 1년 내 검색된 관련뉴스가 없습니다")
+            # 주식 상세 데이터
+            with stock_real_list_container:
+                st.subheader('주식 상세 데이터')
+                col1,col2 = st.columns([1,1])
+                stock_real_list1 = col1
+                col2.empty()
+                stock_table = db.return_show_data(stock_name)
+                st.dataframe(stock_table,height=400, width=2000)
+        else:
+            st.write("기본 정보 제공을 위한 데이터가 너무 적습니다.")
+
+
+        # 예측 데이터 출력
+        df_data, df_future_data = learn.machine_learning(stock_name)
+        if not(df_data.empty):
+            df_future_data['Date'] = pd.to_datetime(df_future_data['Date']).dt.date
+            df_future_data['Predicted Price'] = df_future_data['Predicted Price'].round(-1).astype(int)
+
+            # 예측 그래프
+            with stock_predict_graph:
+                st.subheader(f'{stock_name} 예측 주가 [ 30day ]')
+                st.line_chart(df_future_data.set_index('Date')['Predicted Price'])
+            # 예측 데이터
+            with stock_predict_list:
+                st.subheader(f'{stock_name} 예측 데이터')
+                st.dataframe(df_future_data,height=310, width=400)
+        else:
+            st.write("예측 정보 제공을 위한 데이터가 너무 적습니다.")
     # 검색 버튼
-    if st.sidebar.button('검색하기'): 
-        if input_stock_name and input_stock_name.strip():  # 입력값이 존재하고 공백이 아닌 경우
-            # 입력받은 값으로 주식 코드와 주식 이름을 크롤링
-            stock_code, stock_name, news_df = craw.search_craw(input_stock_name)
+    search_button=st.sidebar.button('검색하기')
+    if search_button:
+        get_session().search_button=True
+    if get_session().search_button==True:
+        if input_stock_name == None or input_stock_name == "":
+            pass
+        elif input_stock_name:
+            stock_code, stock_name , news_df =craw.search_craw(input_stock_name)
+            # 검색된 주식 코드 값이 존재 시
             if stock_code:
                 db.set_all_data(stock_code, stock_name)
                 show_stock_func(stock_name,news_df)
-            else:
-                st.write("정확한 종목명을 검색해주세요")
+            else: st.write("정확한 종목명을 검색해주세요")
+
 # 페이지 전환 및 메인 트리거
 if __name__ == "__main__":
     if get_session().login == False:

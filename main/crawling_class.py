@@ -6,9 +6,8 @@ import time
 import pandas as pd
 import requests as res
 from bs4 import BeautifulSoup as bs
-import requests as res
 
-
+# 주식명, 주식코드, 뉴스 크롤링
 def search_craw(search):
     try:
         op = Options()
@@ -24,12 +23,11 @@ def search_craw(search):
             res_data = bs(res_url.content,"lxml")
             news_df = news_craw(driver,res_data)
             type = res_data.find("img").attrs['alt']
-            print(type)
             if type == "코스피":
                 stock_code = ((res_data.find(attrs={"class","code"}).text) + ".KS")
                 stock_name = res_data.find('div', class_='wrap_company').find('h2').find('a').text
             elif type == "코스닥":
-                stock_code = ((res_data.find(attrs={"class","code"}).text) + ".KS")
+                stock_code = ((res_data.find(attrs={"class","code"}).text) + ".KQ")
                 stock_name = res_data.find('div', class_='wrap_company').find('h2').find('a').text
         return stock_code, stock_name, news_df
     except Exception :
@@ -39,9 +37,9 @@ def search_craw(search):
         driver.quit()
     stock_code=None
     stock_name=None
-    news_df=None
+    news_df=pd.DataFrame(None)
     return stock_code, stock_name, news_df
-# 뉴스 title, url 크롤링
+# 뉴스 크롤링 서브 기능
 def news_craw(driver, res_data):
     try:
         titles = []
@@ -49,7 +47,7 @@ def news_craw(driver, res_data):
         test = res_data.select('.sub_section.news_section a:not([class])')
         for data in test:
             titles.append(data.text)
-            urls.append(data['href'])
+            urls.append("https://finance.naver.com/"+data['href'])
         news_df = pd.DataFrame({'제목': titles, '주소': urls})
         return news_df
     except Exception as e:
