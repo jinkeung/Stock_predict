@@ -12,7 +12,6 @@ import streamlit as st
 import pandas as pd 
 import plotly.graph_objects as go 
 
-import re
 # 페이지 설정
 st.set_page_config(page_title='Stock Analysis App', layout='wide')
 session = get_session()

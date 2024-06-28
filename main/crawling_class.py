@@ -6,15 +6,8 @@ import time
 import pandas as pd
 import requests as res
 from bs4 import BeautifulSoup as bs
-
-# 검색 종목 코드 크롤링
 import requests as res
-from bs4 import BeautifulSoup as bs
-from selenium import webdriver as web
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.by import By
-import time
-import pandas as pd
+
 
 def search_craw(search):
     try:
