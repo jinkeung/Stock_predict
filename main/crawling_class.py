@@ -1,12 +1,3 @@
-# 외부 라이브러리
-from selenium import webdriver as web
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.by import By
-import time
-import pandas as pd
-import requests as res
-from bs4 import BeautifulSoup as bs
-
 # 검색 종목 코드 크롤링
 import requests as res
 from bs4 import BeautifulSoup as bs
@@ -20,7 +11,7 @@ def search_craw(search):
     try:
         op = Options()
         op.add_argument("headless")
-        driver = web.Chrome(op)
+        driver = web.Chrome()
         driver.get("https://finance.naver.com/")
         driver.implicitly_wait(1)
         driver.find_element(By.XPATH,'//*[@id="stock_items"]').send_keys(search)
@@ -28,14 +19,17 @@ def search_craw(search):
         driver.find_element(By.XPATH,'//*[@id="atcmp"]/div[1]/div/ul/li/a').click()
         res_url = res.get(driver.current_url)
         if res_url.status_code == 200:
+            time.sleep(5)
             res_data = bs(res_url.content,"lxml")
             news_df = news_craw(driver,res_data)
             type = res_data.find("img").attrs['alt']
-            if type=="코스피":
+
+            print(type)
+            if type == "코스피":
                 stock_code = ((res_data.find(attrs={"class","code"}).text) + ".KS")
                 stock_name = res_data.find('div', class_='wrap_company').find('h2').find('a').text
-            elif type=="코스닥":
-                stock_code = ((res_data.find(attrs={"class","code"}).text) + ".KS")
+            elif type == "코스닥":
+                stock_code = ((res_data.find(attrs={"class","code"}).text) + ".KQ")
                 stock_name = res_data.find('div', class_='wrap_company').find('h2').find('a').text
         return stock_code, stock_name, news_df
     except Exception :
