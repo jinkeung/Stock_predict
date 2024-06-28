@@ -1,21 +1,24 @@
-# GUI 라이브러리
+# 주 기능 streamlit 라이브러리
 import streamlit as st
-import database_class as db
-import crawling_class as craw
-import ai_class as learn
-import pandas as pd
-from session_state import get_session
 
 # 외부 라이브러리
 import re
-import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
 
+# 외부 클래스
+import database_class as db
+import crawling_class as craw
+import ai_class as learn
+from session_state import get_session
+
 # 페이지 설정
 st.set_page_config(page_title='Stock Analysis App', layout='wide')
+
+# 세션 설정
 session = get_session()
-# 메인 애플리케이션 함수
+
+# 로그인 페이지
 def login():
     st.title("주식 예측 플랫폼에 오신걸 환영합니다!")
     st.write("로그인을 진행해주세요!")
@@ -98,6 +101,8 @@ def login():
             st.text_input("이름", key="join_name")
 
             st.form_submit_button(label="가입하기", on_click=join_process)
+
+# 상세 페이지
 def stock():
     st.title('Stock Analysis App')
     id, button = st.sidebar.columns([1,1])
@@ -112,8 +117,6 @@ def stock():
     input_stock_name = st.sidebar.text_input('1. 종목을 검색하세요!')
     if not input_stock_name:
         st.write('주식 종목을 선택하거나 검색하세요.')
-
-    #수정 ------ 기본데이터, 예측데이터 없을경우 추가#
     def show_stock_func(stock_name, news_df):
         st.markdown(
             """
@@ -152,12 +155,10 @@ def stock():
         )
 
 
-
         # 본문 레이아웃
         stock_graph, news_list = st.columns([2, 1])
         stock_real_list_container = st.container()
         stock_predict_graph, stock_predict_list = st.columns([2, 1])
-
 
         graph_data_df=db.return_graph_data(stock_name)
         if not(graph_data_df.empty):
@@ -215,7 +216,6 @@ def stock():
                 st.dataframe(df_future_data,height=310, width=400)
         else:
             st.write("예측 정보 제공을 위한 데이터가 너무 적습니다.")
-
     # 검색 버튼
     search_button=st.sidebar.button('검색하기')
     if search_button:
@@ -227,9 +227,10 @@ def stock():
             stock_code, stock_name , news_df =craw.search_craw(input_stock_name)
             # 검색된 주식 코드 값이 존재 시
             if stock_code:
-                db.set_all_data(stock_code,stock_name)
+                db.set_all_data(stock_code, stock_name)
                 show_stock_func(stock_name,news_df)
             else: st.write("정확한 종목명을 검색해주세요")
+
 # 페이지 전환 및 메인 트리거
 if __name__ == "__main__":
     if get_session().login == False:
