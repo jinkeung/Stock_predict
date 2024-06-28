@@ -7,7 +7,6 @@ import pandas as pd
 from session_state import get_session
 
 # 외부 라이브러리
-import multiprocessing
 import re
 import streamlit as st 
 import pandas as pd 

@@ -30,11 +30,12 @@ def search_craw(search):
         if res_url.status_code == 200:
             res_data = bs(res_url.content,"lxml")
             news_df = news_craw(driver,res_data)
-            type = res_data.find("img", {"alt":"코스피"}).attrs['alt']
-            if type=="코스피":
+            type = res_data.find("img").attrs['alt']
+            print(type)
+            if type == "코스피":
                 stock_code = ((res_data.find(attrs={"class","code"}).text) + ".KS")
                 stock_name = res_data.find('div', class_='wrap_company').find('h2').find('a').text
-            elif type=="코스닥":
+            elif type == "코스닥":
                 stock_code = ((res_data.find(attrs={"class","code"}).text) + ".KS")
                 stock_name = res_data.find('div', class_='wrap_company').find('h2').find('a').text
         return stock_code, stock_name, news_df
