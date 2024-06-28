@@ -24,22 +24,22 @@ def search_craw(search):
             news_df = news_craw(driver,res_data)
             type = res_data.find("img").attrs['alt']
 
-            print(type)
             if type == "코스피":
                 stock_code = ((res_data.find(attrs={"class","code"}).text) + ".KS")
                 stock_name = res_data.find('div', class_='wrap_company').find('h2').find('a').text
             elif type == "코스닥":
                 stock_code = ((res_data.find(attrs={"class","code"}).text) + ".KQ")
                 stock_name = res_data.find('div', class_='wrap_company').find('h2').find('a').text
+
         return stock_code, stock_name, news_df
     except Exception :
         pass
     finally:
         driver.close()
         driver.quit()
-    stock_code=None
-    stock_name=None
-    news_df=None
+    stock_code=pd.DataFrame(None)
+    stock_name=pd.DataFrame(None)
+    news_df=pd.DataFrame(None)
     return stock_code, stock_name, news_df
 # 뉴스 title, url 크롤링
 def news_craw(driver, res_data):
@@ -49,7 +49,7 @@ def news_craw(driver, res_data):
         test = res_data.select('.sub_section.news_section a:not([class])')
         for data in test:
             titles.append(data.text)
-            urls.append(data['href'])
+            urls.append('https://finance.naver.com/'+data['href'])
         news_df = pd.DataFrame({'제목': titles, '주소': urls})
         return news_df
     except Exception as e:

@@ -217,15 +217,19 @@ def stock():
             st.write("예측 정보 제공을 위한 데이터가 너무 적습니다.")
 
     # 검색 버튼
-    if st.sidebar.button('검색하기'):
-        if input_stock_name and input_stock_name.strip():  # 입력값이 존재하고 공백이 아닌 경우
-            # 입력받은 값으로 주식 코드와 주식 이름을 크롤링
-            stock_code, stock_name, news_df = craw.search_craw(input_stock_name)
+    search_button=st.sidebar.button('검색하기')
+    if search_button:
+        get_session().search_button=True
+    if get_session().search_button==True:
+        if input_stock_name == None or input_stock_name == "":
+            pass
+        elif input_stock_name:
+            stock_code, stock_name , news_df =craw.search_craw(input_stock_name)
+            # 검색된 주식 코드 값이 존재 시
             if stock_code:
-                db.set_all_data(stock_code, stock_name)
+                db.set_all_data(stock_code,stock_name)
                 show_stock_func(stock_name,news_df)
-            else:
-                st.write("정확한 종목명을 검색해주세요")
+            else: st.write("정확한 종목명을 검색해주세요")
 # 페이지 전환 및 메인 트리거
 if __name__ == "__main__":
     if get_session().login == False:
