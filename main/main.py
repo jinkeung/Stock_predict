@@ -104,7 +104,7 @@ def login():
 
 # 상세 페이지
 def stock():
-    st.title('Stock Analysis App')
+    st.title('Stock Analysis App [ 주식 예측 플랫폼 ]')
     id, button = st.sidebar.columns([1,1])    
     with id:
         st.write(f'{get_session().u_name}님 환영합니다')
@@ -153,8 +153,7 @@ def stock():
             """,
             unsafe_allow_html=True
         )
-        
-        
+         
         # 본문 레이아웃
         stock_graph, news_list = st.columns([2, 1])
         stock_real_list_container = st.container()
@@ -187,6 +186,12 @@ def stock():
                     link_df = pd.DataFrame(table_data, columns=['뉴스 데이터'])
                     st.write(link_df.to_html(escape=False, index=False), unsafe_allow_html=True)
                 else:
+                    table_data = []
+                    for index, row in news_df.iterrows():
+                        link = f"<a href='{row['주소']}' target='_blank'>{row['제목']}</a>"
+                        table_data.append([link])
+                    link_df = pd.DataFrame(table_data, columns=['뉴스 데이터'])
+                    st.write(link_df.to_html(escape=False, index=False), unsafe_allow_html=True)
                     st.write("최근 1년 내 검색된 관련뉴스가 없습니다")
             # 주식 상세 데이터
             with stock_real_list_container:
@@ -197,6 +202,7 @@ def stock():
                 stock_table = db.return_show_data(stock_name)
                 st.dataframe(stock_table,height=400, width=2000)
         else:
+            st.subheader("상세 주식 데이터")
             st.write("기본 정보 제공을 위한 데이터가 너무 적습니다.")
 
 
@@ -215,6 +221,7 @@ def stock():
                 st.subheader(f'{stock_name} 예측 데이터')
                 st.dataframe(df_future_data,height=310, width=400)
         else:
+            st.subheader("예측 주식 데이터")
             st.write("예측 정보 제공을 위한 데이터가 너무 적습니다.")
     # 검색 버튼
     search_button=st.sidebar.button('검색하기')
@@ -229,7 +236,8 @@ def stock():
             if stock_code:
                 db.set_all_data(stock_code, stock_name)
                 show_stock_func(stock_name,news_df)
-            else: st.write("정확한 종목명을 검색해주세요")
+            else:
+                st.write("정확한 종목명을 검색해주세요")
 
 # 페이지 전환 및 메인 트리거
 if __name__ == "__main__":
