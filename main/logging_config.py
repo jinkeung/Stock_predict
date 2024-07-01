@@ -1,9 +1,8 @@
-import streamlit as st
-import logging
+import logging 
 
 logging.basicConfig(
     # 로그 파일 이름 설정
-    filename='app.log', 
+    filename='Stock_Analysis_Log.log', 
     # 기록될 메세지 최소 수준 설정
     level=logging.DEBUG,
     # time 발생시간, name 로거 이름, level 로그 수준, message 오류 메세지

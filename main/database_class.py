@@ -2,28 +2,36 @@
 import pymysql
 
 # 외부 라이브러리
+import logging
 import pandas as pd
 import yfinance as yf
 from datetime import date, timedelta
 import bcrypt
 
 # 외부 클래스
+import logging_config
+import logging_time_config
 from session_state import get_session
+
+Log = logging.getLogger()
 
 # 데이터베이스 연결
 def connect_db():
-    host = '127.0.0.1'
-    port = 3306
-    username = 'root'
-    password = '1234'
-    database = 'stock_predict'
-    connection = pymysql.connect(host=host,port=port,user=username,password=password,database=database)
-    return connection
+    try:
+        host = '127.0.0.1'
+        port = 3306
+        username = 'root'
+        password = '1234'
+        database = 'stock_predict'
+        connection = pymysql.connect(host=host,port=port,user=username,password=password,database=database)
+        return connection
+    except Exception as e:
+        Log.error(f"데이터베이스 연결 중 예외가 발생했습니다 : {e}")
 
 # 회원정보 데이터베이스 적재
 def set_user_data(join_id, join_pwd, join_name):
     u_salt=bcrypt.gensalt()
-    pepper="HELLO"
+    pepper="HELLOS"
     hash_pwd=bcrypt.hashpw((join_pwd+pepper).encode(),salt=u_salt)
     try:
         con = connect_db()
@@ -34,7 +42,7 @@ def set_user_data(join_id, join_pwd, join_name):
         join_success = True
         return join_success
     except Exception as e:
-        print(f"회원가입 에러: {e}")
+        Log.error(f"회원가입중 예외가 발생했습니다 : {e}")
         join_success = False
         return(join_success)
     finally:
@@ -53,7 +61,7 @@ def set_all_data(stock_code, stock_name):
             if stock_data.empty:
                 raise ValueError("5년치 데이터가 존재하지 않습니다.")
         except Exception as e:
-            print("전체 데이터를 가져옵니다.")
+            Log.error(f"5년치 데이터가 없어 전체 데이터를 불러옵니다 : {e}")
             stock_data = yf.download(stock_code)
 
         # 테이블 생성 (이미 존재할 경우 무시)
@@ -75,7 +83,7 @@ def set_all_data(stock_code, stock_name):
                 cursor.execute(sql, (index.strftime('%Y-%m-%d'), row['Open'], row['High'], row['Low'], row['Close'], row['Adj Close'], row['Volume']))
         con.commit()
     except Exception as e:
-        print(e)
+        Log.error(f"데이터베이스에 데이터 적재중 예외가 발생했습니다 : {e}")
         pass
     finally:
         con.cursor().close()
@@ -103,6 +111,7 @@ def return_user_data(login_id, login_pwd):
         else:
             pass
     except Exception as e:
+        Log.error(f"로그인 도중 예외가 발생했습니다 : {e}")
         pass
     finally:
         cursor.close()
@@ -121,7 +130,7 @@ def return_graph_data(stock_name):
         graph_data=pd.DataFrame(data=data, columns=field)
         return graph_data
     except Exception as e:
-        print(f'''그래프 데이터 반환 예외: {e}''')
+        Log.error(f'그래프 데이터 반환도중 예외가 발생했습니다 : {e}')
         graph_data=pd.DataFrame(None)
         return graph_data
     finally:
@@ -144,7 +153,7 @@ def return_show_data(stock_name):
         show_data=pd.DataFrame(data=data,columns=field)
         return show_data
     except Exception as e:
-        print(e)
+        Log.error(f"주식 데이터 반환도중 예외가 발생했습니다 : {e}")
         pass
     finally:
         cursor.close()
@@ -167,10 +176,10 @@ def return_train_data(stock_name):
             return train_data
         return train_data
     except Exception as e:
-        print(f"머신러닝 데이터 반환 예외: {e}")
+        Log.error(f"머신러닝 데이터 반환도중 예외가 발생했습니다 : {e}")
         train_data=pd.DataFrame(None)
-        return train_data
         pass
+        return train_data
     finally:
         cursor.close()
         con.close()

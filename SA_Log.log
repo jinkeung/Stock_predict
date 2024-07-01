@@ -1,0 +1,562 @@
+2024-07-01 12:37:21,186 - root - INFO - 주식 예측 플랫폼이 시작되었습니다.
+2024-07-01 12:37:21,187 - root - INFO - 주식 예측 플랫폼이 시작되었습니다.
+2024-07-01 12:37:26,077 - root - INFO - 주식 예측 플랫폼이 시작되었습니다.
+2024-07-01 12:37:26,727 - root - INFO - 주식 예측 플랫폼이 시작되었습니다.
+2024-07-01 12:37:26,804 - root - INFO - 주식 예측 플랫폼이 시작되었습니다.
+2024-07-01 12:37:27,176 - root - INFO - 주식 예측 플랫폼이 시작되었습니다.
+2024-07-01 12:37:29,689 - root - INFO - 주식 예측 플랫폼이 시작되었습니다.
+2024-07-01 12:37:29,949 - root - INFO - 주식 예측 플랫폼이 시작되었습니다.
+2024-07-01 12:37:29,955 - selenium.webdriver.common.selenium_manager - DEBUG - Selenium Manager binary found at: C:\Users\ChoiBear\anaconda3\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe
+2024-07-01 12:37:29,956 - selenium.webdriver.common.selenium_manager - DEBUG - Executing process: C:\Users\ChoiBear\anaconda3\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe --browser chrome --debug --language-binding python --output json
+2024-07-01 12:37:30,507 - selenium.webdriver.common.selenium_manager - DEBUG - chromedriver not found in PATH
+2024-07-01 12:37:30,507 - selenium.webdriver.common.selenium_manager - DEBUG - chrome detected at C:\Program Files\Google\Chrome\Application\chrome.exe
+2024-07-01 12:37:30,507 - selenium.webdriver.common.selenium_manager - DEBUG - Running command: wmic datafile where name='C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe' get Version /value
+2024-07-01 12:37:30,507 - selenium.webdriver.common.selenium_manager - DEBUG - Output: "\r\r\n\r\r\nVersion=126.0.6478.127\r\r\n\r\r\n\r\r\n\r"
+2024-07-01 12:37:30,507 - selenium.webdriver.common.selenium_manager - DEBUG - Detected browser: chrome 126.0.6478.127
+2024-07-01 12:37:30,507 - selenium.webdriver.common.selenium_manager - DEBUG - Required driver: chromedriver 126.0.6478.126
+2024-07-01 12:37:30,507 - selenium.webdriver.common.selenium_manager - DEBUG - chromedriver 126.0.6478.126 already in the cache
+2024-07-01 12:37:30,507 - selenium.webdriver.common.selenium_manager - DEBUG - Driver path: C:\Users\ChoiBear\.cache\selenium\chromedriver\win64\126.0.6478.126\chromedriver.exe
+2024-07-01 12:37:30,507 - selenium.webdriver.common.selenium_manager - DEBUG - Browser path: C:\Program Files\Google\Chrome\Application\chrome.exe
+2024-07-01 12:37:30,594 - selenium.webdriver.common.service - DEBUG - Started executable: `C:\Users\ChoiBear\.cache\selenium\chromedriver\win64\126.0.6478.126\chromedriver.exe` in a child process with pid: 18296 using 0 to output -3
+2024-07-01 12:37:31,132 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:52334/session {'capabilities': {'firstMatch': [{}], 'alwaysMatch': {'browserName': 'chrome', 'pageLoadStrategy': <PageLoadStrategy.normal: 'normal'>, 'browserVersion': None, 'goog:chromeOptions': {'extensions': [], 'binary': 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe', 'args': ['headless']}}}}
+2024-07-01 12:37:31,133 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:52334
+2024-07-01 12:37:32,743 - urllib3.connectionpool - DEBUG - http://localhost:52334 "POST /session HTTP/1.1" 200 0
+2024-07-01 12:37:32,743 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":{"capabilities":{"acceptInsecureCerts":false,"browserName":"chrome-headless-shell","browserVersion":"126.0.6478.127","chrome":{"chromedriverVersion":"126.0.6478.126 (d36ace6122e0a59570e258d82441395206d60e1c-refs/branch-heads/6478@{#1591})","userDataDir":"C:\\Users\\ChoiBear\\AppData\\Local\\Temp\\scoped_dir18296_1535750301"},"fedcm:accounts":true,"goog:chromeOptions":{"debuggerAddress":"localhost:52337"},"networkConnectionEnabled":false,"pageLoadStrategy":"normal","platformName":"windows","proxy":{},"setWindowRect":true,"strictFileInteractability":false,"timeouts":{"implicit":0,"pageLoad":300000,"script":30000},"unhandledPromptBehavior":"dismiss and notify","webauthn:extension:credBlob":true,"webauthn:extension:largeBlob":true,"webauthn:extension:minPinLength":true,"webauthn:extension:prf":true,"webauthn:virtualAuthenticators":true},"sessionId":"32b8dc310c41881e22252c65a06ff2d3"}} | headers=HTTPHeaderDict({'Content-Length': '902', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:37:32,743 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:37:32,743 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:52334/session/32b8dc310c41881e22252c65a06ff2d3/url {'url': 'https://finance.naver.com/'}
+2024-07-01 12:37:33,503 - urllib3.connectionpool - DEBUG - http://localhost:52334 "POST /session/32b8dc310c41881e22252c65a06ff2d3/url HTTP/1.1" 200 0
+2024-07-01 12:37:33,503 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:37:33,503 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:37:33,503 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:52334/session/32b8dc310c41881e22252c65a06ff2d3/timeouts {'implicit': 1000}
+2024-07-01 12:37:33,504 - urllib3.connectionpool - DEBUG - http://localhost:52334 "POST /session/32b8dc310c41881e22252c65a06ff2d3/timeouts HTTP/1.1" 200 0
+2024-07-01 12:37:33,504 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:37:33,505 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:37:33,505 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:52334/session/32b8dc310c41881e22252c65a06ff2d3/element {'using': 'xpath', 'value': '//*[@id="stock_items"]'}
+2024-07-01 12:37:33,525 - urllib3.connectionpool - DEBUG - http://localhost:52334 "POST /session/32b8dc310c41881e22252c65a06ff2d3/element HTTP/1.1" 200 0
+2024-07-01 12:37:33,525 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.2DFE82B8CE42CCFCF9928EAF1282A4F1.d.60292196EB719A24E8690ABEB7D70F2A.e.39"}} | headers=HTTPHeaderDict({'Content-Length': '126', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:37:33,526 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:37:33,526 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:52334/session/32b8dc310c41881e22252c65a06ff2d3/element/f.2DFE82B8CE42CCFCF9928EAF1282A4F1.d.60292196EB719A24E8690ABEB7D70F2A.e.39/value {'text': 'dawda', 'value': ['d', 'a', 'w', 'd', 'a']}
+2024-07-01 12:37:33,602 - urllib3.connectionpool - DEBUG - http://localhost:52334 "POST /session/32b8dc310c41881e22252c65a06ff2d3/element/f.2DFE82B8CE42CCFCF9928EAF1282A4F1.d.60292196EB719A24E8690ABEB7D70F2A.e.39/value HTTP/1.1" 200 0
+2024-07-01 12:37:33,602 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:37:33,602 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:37:34,103 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:52334/session/32b8dc310c41881e22252c65a06ff2d3/element {'using': 'xpath', 'value': '//*[@id="atcmp"]/div[1]/div/ul/li/a'}
+2024-07-01 12:37:35,159 - urllib3.connectionpool - DEBUG - http://localhost:52334 "POST /session/32b8dc310c41881e22252c65a06ff2d3/element HTTP/1.1" 404 0
+2024-07-01 12:37:35,159 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=404 | data={"value":{"error":"no such element","message":"no such element: Unable to locate element: {\"method\":\"xpath\",\"selector\":\"//*[@id=\"atcmp\"]/div[1]/div/ul/li/a\"}\n  (Session info: chrome-headless-shell=126.0.6478.127)","stacktrace":"\tGetHandleVerifier [0x00007FF79C0CEEA2+31554]\n\t(No symbol) [0x00007FF79C047ED9]\n\t(No symbol) [0x00007FF79BF0872A]\n\t(No symbol) [0x00007FF79BF58434]\n\t(No symbol) [0x00007FF79BF5853C]\n\t(No symbol) [0x00007FF79BF9F6A7]\n\t(No symbol) [0x00007FF79BF7D06F]\n\t(No symbol) [0x00007FF79BF9C977]\n\t(No symbol) [0x00007FF79BF7CDD3]\n\t(No symbol) [0x00007FF79BF4A33B]\n\t(No symbol) [0x00007FF79BF4AED1]\n\tGetHandleVerifier [0x00007FF79C3D8B1D+3217341]\n\tGetHandleVerifier [0x00007FF79C425AE3+3532675]\n\tGetHandleVerifier [0x00007FF79C41B0E0+3489152]\n\tGetHandleVerifier [0x00007FF79C17E776+750614]\n\t(No symbol) [0x00007FF79C05375F]\n\t(No symbol) [0x00007FF79C04EB14]\n\t(No symbol) [0x00007FF79C04ECA2]\n\t(No symbol) [0x00007FF79C03E16F]\n\tBaseThreadInitThunk [0x00007FFC5C05257D+29]\n\tRtlUserThreadStart [0x00007FFC5DBAAF28+40]\n"}} | headers=HTTPHeaderDict({'Content-Length': '1086', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:37:35,160 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:37:35,160 - root - ERROR - 데이터 추출중 예외가 발생했습니다 : Message: no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id="atcmp"]/div[1]/div/ul/li/a"}
+  (Session info: chrome-headless-shell=126.0.6478.127); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+	GetHandleVerifier [0x00007FF79C0CEEA2+31554]
+	(No symbol) [0x00007FF79C047ED9]
+	(No symbol) [0x00007FF79BF0872A]
+	(No symbol) [0x00007FF79BF58434]
+	(No symbol) [0x00007FF79BF5853C]
+	(No symbol) [0x00007FF79BF9F6A7]
+	(No symbol) [0x00007FF79BF7D06F]
+	(No symbol) [0x00007FF79BF9C977]
+	(No symbol) [0x00007FF79BF7CDD3]
+	(No symbol) [0x00007FF79BF4A33B]
+	(No symbol) [0x00007FF79BF4AED1]
+	GetHandleVerifier [0x00007FF79C3D8B1D+3217341]
+	GetHandleVerifier [0x00007FF79C425AE3+3532675]
+	GetHandleVerifier [0x00007FF79C41B0E0+3489152]
+	GetHandleVerifier [0x00007FF79C17E776+750614]
+	(No symbol) [0x00007FF79C05375F]
+	(No symbol) [0x00007FF79C04EB14]
+	(No symbol) [0x00007FF79C04ECA2]
+	(No symbol) [0x00007FF79C03E16F]
+	BaseThreadInitThunk [0x00007FFC5C05257D+29]
+	RtlUserThreadStart [0x00007FFC5DBAAF28+40]
+
+2024-07-01 12:37:35,160 - selenium.webdriver.remote.remote_connection - DEBUG - DELETE http://localhost:52334/session/32b8dc310c41881e22252c65a06ff2d3/window {}
+2024-07-01 12:37:35,196 - urllib3.connectionpool - DEBUG - http://localhost:52334 "DELETE /session/32b8dc310c41881e22252c65a06ff2d3/window HTTP/1.1" 200 0
+2024-07-01 12:37:35,196 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":[]} | headers=HTTPHeaderDict({'Content-Length': '12', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:37:35,197 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:37:35,197 - selenium.webdriver.remote.remote_connection - DEBUG - DELETE http://localhost:52334/session/32b8dc310c41881e22252c65a06ff2d3 {}
+2024-07-01 12:37:35,223 - urllib3.connectionpool - DEBUG - http://localhost:52334 "DELETE /session/32b8dc310c41881e22252c65a06ff2d3 HTTP/1.1" 200 0
+2024-07-01 12:37:35,223 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:37:35,223 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:37:50,250 - root - INFO - 주식 예측 플랫폼이 시작되었습니다.
+2024-07-01 12:37:50,261 - selenium.webdriver.common.selenium_manager - DEBUG - Selenium Manager binary found at: C:\Users\ChoiBear\anaconda3\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe
+2024-07-01 12:37:50,261 - selenium.webdriver.common.selenium_manager - DEBUG - Executing process: C:\Users\ChoiBear\anaconda3\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe --browser chrome --debug --language-binding python --output json
+2024-07-01 12:37:50,433 - root - INFO - 주식 예측 플랫폼이 시작되었습니다.
+2024-07-01 12:37:50,446 - selenium.webdriver.common.selenium_manager - DEBUG - Selenium Manager binary found at: C:\Users\ChoiBear\anaconda3\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe
+2024-07-01 12:37:50,446 - selenium.webdriver.common.selenium_manager - DEBUG - Executing process: C:\Users\ChoiBear\anaconda3\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe --browser chrome --debug --language-binding python --output json
+2024-07-01 12:37:50,651 - selenium.webdriver.common.selenium_manager - DEBUG - chromedriver not found in PATH
+2024-07-01 12:37:50,651 - selenium.webdriver.common.selenium_manager - DEBUG - chrome detected at C:\Program Files\Google\Chrome\Application\chrome.exe
+2024-07-01 12:37:50,651 - selenium.webdriver.common.selenium_manager - DEBUG - Running command: wmic datafile where name='C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe' get Version /value
+2024-07-01 12:37:50,651 - selenium.webdriver.common.selenium_manager - DEBUG - Output: "\r\r\n\r\r\nVersion=126.0.6478.127\r\r\n\r\r\n\r\r\n\r"
+2024-07-01 12:37:50,651 - selenium.webdriver.common.selenium_manager - DEBUG - Detected browser: chrome 126.0.6478.127
+2024-07-01 12:37:50,651 - selenium.webdriver.common.selenium_manager - DEBUG - Required driver: chromedriver 126.0.6478.126
+2024-07-01 12:37:50,651 - selenium.webdriver.common.selenium_manager - DEBUG - chromedriver 126.0.6478.126 already in the cache
+2024-07-01 12:37:50,651 - selenium.webdriver.common.selenium_manager - DEBUG - Driver path: C:\Users\ChoiBear\.cache\selenium\chromedriver\win64\126.0.6478.126\chromedriver.exe
+2024-07-01 12:37:50,651 - selenium.webdriver.common.selenium_manager - DEBUG - Browser path: C:\Program Files\Google\Chrome\Application\chrome.exe
+2024-07-01 12:37:50,656 - selenium.webdriver.common.service - DEBUG - Started executable: `C:\Users\ChoiBear\.cache\selenium\chromedriver\win64\126.0.6478.126\chromedriver.exe` in a child process with pid: 29752 using 0 to output -3
+2024-07-01 12:37:50,825 - selenium.webdriver.common.selenium_manager - DEBUG - chromedriver not found in PATH
+2024-07-01 12:37:50,825 - selenium.webdriver.common.selenium_manager - DEBUG - chrome detected at C:\Program Files\Google\Chrome\Application\chrome.exe
+2024-07-01 12:37:50,825 - selenium.webdriver.common.selenium_manager - DEBUG - Running command: wmic datafile where name='C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe' get Version /value
+2024-07-01 12:37:50,825 - selenium.webdriver.common.selenium_manager - DEBUG - Output: "\r\r\n\r\r\nVersion=126.0.6478.127\r\r\n\r\r\n\r\r\n\r"
+2024-07-01 12:37:50,825 - selenium.webdriver.common.selenium_manager - DEBUG - Detected browser: chrome 126.0.6478.127
+2024-07-01 12:37:50,825 - selenium.webdriver.common.selenium_manager - DEBUG - Required driver: chromedriver 126.0.6478.126
+2024-07-01 12:37:50,825 - selenium.webdriver.common.selenium_manager - DEBUG - chromedriver 126.0.6478.126 already in the cache
+2024-07-01 12:37:50,825 - selenium.webdriver.common.selenium_manager - DEBUG - Driver path: C:\Users\ChoiBear\.cache\selenium\chromedriver\win64\126.0.6478.126\chromedriver.exe
+2024-07-01 12:37:50,826 - selenium.webdriver.common.selenium_manager - DEBUG - Browser path: C:\Program Files\Google\Chrome\Application\chrome.exe
+2024-07-01 12:37:50,832 - selenium.webdriver.common.service - DEBUG - Started executable: `C:\Users\ChoiBear\.cache\selenium\chromedriver\win64\126.0.6478.126\chromedriver.exe` in a child process with pid: 21676 using 0 to output -3
+2024-07-01 12:37:51,188 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:52440/session {'capabilities': {'firstMatch': [{}], 'alwaysMatch': {'browserName': 'chrome', 'pageLoadStrategy': <PageLoadStrategy.normal: 'normal'>, 'browserVersion': None, 'goog:chromeOptions': {'extensions': [], 'binary': 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe', 'args': ['headless']}}}}
+2024-07-01 12:37:51,189 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:52440
+2024-07-01 12:37:51,340 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:52441/session {'capabilities': {'firstMatch': [{}], 'alwaysMatch': {'browserName': 'chrome', 'pageLoadStrategy': <PageLoadStrategy.normal: 'normal'>, 'browserVersion': None, 'goog:chromeOptions': {'extensions': [], 'binary': 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe', 'args': ['headless']}}}}
+2024-07-01 12:37:51,341 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:52441
+2024-07-01 12:37:52,762 - urllib3.connectionpool - DEBUG - http://localhost:52440 "POST /session HTTP/1.1" 200 0
+2024-07-01 12:37:52,762 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":{"capabilities":{"acceptInsecureCerts":false,"browserName":"chrome-headless-shell","browserVersion":"126.0.6478.127","chrome":{"chromedriverVersion":"126.0.6478.126 (d36ace6122e0a59570e258d82441395206d60e1c-refs/branch-heads/6478@{#1591})","userDataDir":"C:\\Users\\ChoiBear\\AppData\\Local\\Temp\\scoped_dir29752_73787475"},"fedcm:accounts":true,"goog:chromeOptions":{"debuggerAddress":"localhost:52453"},"networkConnectionEnabled":false,"pageLoadStrategy":"normal","platformName":"windows","proxy":{},"setWindowRect":true,"strictFileInteractability":false,"timeouts":{"implicit":0,"pageLoad":300000,"script":30000},"unhandledPromptBehavior":"dismiss and notify","webauthn:extension:credBlob":true,"webauthn:extension:largeBlob":true,"webauthn:extension:minPinLength":true,"webauthn:extension:prf":true,"webauthn:virtualAuthenticators":true},"sessionId":"51eb1bbd12d113c1930b9722d62caff0"}} | headers=HTTPHeaderDict({'Content-Length': '900', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:37:52,762 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:37:52,762 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:52440/session/51eb1bbd12d113c1930b9722d62caff0/url {'url': 'https://finance.naver.com/'}
+2024-07-01 12:37:52,838 - urllib3.connectionpool - DEBUG - http://localhost:52441 "POST /session HTTP/1.1" 200 0
+2024-07-01 12:37:52,838 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":{"capabilities":{"acceptInsecureCerts":false,"browserName":"chrome-headless-shell","browserVersion":"126.0.6478.127","chrome":{"chromedriverVersion":"126.0.6478.126 (d36ace6122e0a59570e258d82441395206d60e1c-refs/branch-heads/6478@{#1591})","userDataDir":"C:\\Users\\ChoiBear\\AppData\\Local\\Temp\\scoped_dir21676_1763241305"},"fedcm:accounts":true,"goog:chromeOptions":{"debuggerAddress":"localhost:52455"},"networkConnectionEnabled":false,"pageLoadStrategy":"normal","platformName":"windows","proxy":{},"setWindowRect":true,"strictFileInteractability":false,"timeouts":{"implicit":0,"pageLoad":300000,"script":30000},"unhandledPromptBehavior":"dismiss and notify","webauthn:extension:credBlob":true,"webauthn:extension:largeBlob":true,"webauthn:extension:minPinLength":true,"webauthn:extension:prf":true,"webauthn:virtualAuthenticators":true},"sessionId":"85d6991c5d6e6d3e93014f7eb31b88e8"}} | headers=HTTPHeaderDict({'Content-Length': '902', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:37:52,839 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:37:52,839 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:52441/session/85d6991c5d6e6d3e93014f7eb31b88e8/url {'url': 'https://finance.naver.com/'}
+2024-07-01 12:37:53,403 - urllib3.connectionpool - DEBUG - http://localhost:52440 "POST /session/51eb1bbd12d113c1930b9722d62caff0/url HTTP/1.1" 200 0
+2024-07-01 12:37:53,404 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:37:53,404 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:37:53,404 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:52440/session/51eb1bbd12d113c1930b9722d62caff0/timeouts {'implicit': 1000}
+2024-07-01 12:37:53,405 - urllib3.connectionpool - DEBUG - http://localhost:52440 "POST /session/51eb1bbd12d113c1930b9722d62caff0/timeouts HTTP/1.1" 200 0
+2024-07-01 12:37:53,405 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:37:53,405 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:37:53,405 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:52440/session/51eb1bbd12d113c1930b9722d62caff0/element {'using': 'xpath', 'value': '//*[@id="stock_items"]'}
+2024-07-01 12:37:53,418 - urllib3.connectionpool - DEBUG - http://localhost:52440 "POST /session/51eb1bbd12d113c1930b9722d62caff0/element HTTP/1.1" 200 0
+2024-07-01 12:37:53,418 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.95A9E06F882F19DEB47D1A838F2D0537.d.4C0D7E8C140693C944D9B46C7BE6172E.e.39"}} | headers=HTTPHeaderDict({'Content-Length': '126', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:37:53,418 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:37:53,418 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:52440/session/51eb1bbd12d113c1930b9722d62caff0/element/f.95A9E06F882F19DEB47D1A838F2D0537.d.4C0D7E8C140693C944D9B46C7BE6172E.e.39/value {'text': '삼성', 'value': ['삼', '성']}
+2024-07-01 12:37:53,425 - urllib3.connectionpool - DEBUG - http://localhost:52441 "POST /session/85d6991c5d6e6d3e93014f7eb31b88e8/url HTTP/1.1" 200 0
+2024-07-01 12:37:53,426 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:37:53,426 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:37:53,426 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:52441/session/85d6991c5d6e6d3e93014f7eb31b88e8/timeouts {'implicit': 1000}
+2024-07-01 12:37:53,427 - urllib3.connectionpool - DEBUG - http://localhost:52441 "POST /session/85d6991c5d6e6d3e93014f7eb31b88e8/timeouts HTTP/1.1" 200 0
+2024-07-01 12:37:53,427 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:37:53,427 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:37:53,427 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:52441/session/85d6991c5d6e6d3e93014f7eb31b88e8/element {'using': 'xpath', 'value': '//*[@id="stock_items"]'}
+2024-07-01 12:37:53,437 - urllib3.connectionpool - DEBUG - http://localhost:52441 "POST /session/85d6991c5d6e6d3e93014f7eb31b88e8/element HTTP/1.1" 200 0
+2024-07-01 12:37:53,437 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.EE1933F5A07A39793598CF86EC2FDBE9.d.16582593048B00A25F9B7D986BA0BC21.e.39"}} | headers=HTTPHeaderDict({'Content-Length': '126', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:37:53,437 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:37:53,438 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:52441/session/85d6991c5d6e6d3e93014f7eb31b88e8/element/f.EE1933F5A07A39793598CF86EC2FDBE9.d.16582593048B00A25F9B7D986BA0BC21.e.39/value {'text': '삼성', 'value': ['삼', '성']}
+2024-07-01 12:37:53,470 - urllib3.connectionpool - DEBUG - http://localhost:52440 "POST /session/51eb1bbd12d113c1930b9722d62caff0/element/f.95A9E06F882F19DEB47D1A838F2D0537.d.4C0D7E8C140693C944D9B46C7BE6172E.e.39/value HTTP/1.1" 200 0
+2024-07-01 12:37:53,470 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:37:53,470 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:37:53,502 - urllib3.connectionpool - DEBUG - http://localhost:52441 "POST /session/85d6991c5d6e6d3e93014f7eb31b88e8/element/f.EE1933F5A07A39793598CF86EC2FDBE9.d.16582593048B00A25F9B7D986BA0BC21.e.39/value HTTP/1.1" 200 0
+2024-07-01 12:37:53,502 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:37:53,502 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:37:53,971 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:52440/session/51eb1bbd12d113c1930b9722d62caff0/element {'using': 'xpath', 'value': '//*[@id="atcmp"]/div[1]/div/ul/li/a'}
+2024-07-01 12:37:53,989 - urllib3.connectionpool - DEBUG - http://localhost:52440 "POST /session/51eb1bbd12d113c1930b9722d62caff0/element HTTP/1.1" 200 0
+2024-07-01 12:37:53,989 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.95A9E06F882F19DEB47D1A838F2D0537.d.4C0D7E8C140693C944D9B46C7BE6172E.e.44"}} | headers=HTTPHeaderDict({'Content-Length': '126', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:37:53,989 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:37:53,990 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:52440/session/51eb1bbd12d113c1930b9722d62caff0/element/f.95A9E06F882F19DEB47D1A838F2D0537.d.4C0D7E8C140693C944D9B46C7BE6172E.e.44/click {}
+2024-07-01 12:37:54,003 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:52441/session/85d6991c5d6e6d3e93014f7eb31b88e8/element {'using': 'xpath', 'value': '//*[@id="atcmp"]/div[1]/div/ul/li/a'}
+2024-07-01 12:37:54,013 - urllib3.connectionpool - DEBUG - http://localhost:52441 "POST /session/85d6991c5d6e6d3e93014f7eb31b88e8/element HTTP/1.1" 200 0
+2024-07-01 12:37:54,014 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.EE1933F5A07A39793598CF86EC2FDBE9.d.16582593048B00A25F9B7D986BA0BC21.e.44"}} | headers=HTTPHeaderDict({'Content-Length': '126', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:37:54,014 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:37:54,014 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:52441/session/85d6991c5d6e6d3e93014f7eb31b88e8/element/f.EE1933F5A07A39793598CF86EC2FDBE9.d.16582593048B00A25F9B7D986BA0BC21.e.44/click {}
+2024-07-01 12:37:54,340 - urllib3.connectionpool - DEBUG - http://localhost:52440 "POST /session/51eb1bbd12d113c1930b9722d62caff0/element/f.95A9E06F882F19DEB47D1A838F2D0537.d.4C0D7E8C140693C944D9B46C7BE6172E.e.44/click HTTP/1.1" 200 0
+2024-07-01 12:37:54,340 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:37:54,340 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:37:54,340 - selenium.webdriver.remote.remote_connection - DEBUG - GET http://localhost:52440/session/51eb1bbd12d113c1930b9722d62caff0/url {}
+2024-07-01 12:37:54,347 - urllib3.connectionpool - DEBUG - http://localhost:52440 "GET /session/51eb1bbd12d113c1930b9722d62caff0/url HTTP/1.1" 200 0
+2024-07-01 12:37:54,347 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":"https://finance.naver.com/item/main.naver?code=425290"} | headers=HTTPHeaderDict({'Content-Length': '65', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:37:54,348 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:37:54,350 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): finance.naver.com:443
+2024-07-01 12:37:54,355 - urllib3.connectionpool - DEBUG - http://localhost:52441 "POST /session/85d6991c5d6e6d3e93014f7eb31b88e8/element/f.EE1933F5A07A39793598CF86EC2FDBE9.d.16582593048B00A25F9B7D986BA0BC21.e.44/click HTTP/1.1" 200 0
+2024-07-01 12:37:54,355 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:37:54,355 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:37:54,355 - selenium.webdriver.remote.remote_connection - DEBUG - GET http://localhost:52441/session/85d6991c5d6e6d3e93014f7eb31b88e8/url {}
+2024-07-01 12:37:54,363 - urllib3.connectionpool - DEBUG - http://localhost:52441 "GET /session/85d6991c5d6e6d3e93014f7eb31b88e8/url HTTP/1.1" 200 0
+2024-07-01 12:37:54,363 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":"https://finance.naver.com/item/main.naver?code=425290"} | headers=HTTPHeaderDict({'Content-Length': '65', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:37:54,363 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:37:54,364 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): finance.naver.com:443
+2024-07-01 12:37:54,954 - urllib3.connectionpool - DEBUG - https://finance.naver.com:443 "GET /item/main.naver?code=425290 HTTP/1.1" 200 None
+2024-07-01 12:37:54,955 - urllib3.connectionpool - DEBUG - https://finance.naver.com:443 "GET /item/main.naver?code=425290 HTTP/1.1" 200 None
+2024-07-01 12:37:54,983 - chardet.charsetprober - DEBUG - SHIFT_JIS Japanese prober hit error at byte 48
+2024-07-01 12:37:55,120 - chardet.charsetprober - DEBUG - SHIFT_JIS Japanese prober hit error at byte 48
+2024-07-01 12:37:55,906 - selenium.webdriver.remote.remote_connection - DEBUG - DELETE http://localhost:52440/session/51eb1bbd12d113c1930b9722d62caff0/window {}
+2024-07-01 12:37:55,926 - selenium.webdriver.remote.remote_connection - DEBUG - DELETE http://localhost:52441/session/85d6991c5d6e6d3e93014f7eb31b88e8/window {}
+2024-07-01 12:37:55,929 - urllib3.connectionpool - DEBUG - http://localhost:52440 "DELETE /session/51eb1bbd12d113c1930b9722d62caff0/window HTTP/1.1" 200 0
+2024-07-01 12:37:55,929 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":[]} | headers=HTTPHeaderDict({'Content-Length': '12', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:37:55,930 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:37:55,930 - selenium.webdriver.remote.remote_connection - DEBUG - DELETE http://localhost:52440/session/51eb1bbd12d113c1930b9722d62caff0 {}
+2024-07-01 12:37:55,960 - urllib3.connectionpool - DEBUG - http://localhost:52441 "DELETE /session/85d6991c5d6e6d3e93014f7eb31b88e8/window HTTP/1.1" 200 0
+2024-07-01 12:37:55,960 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":[]} | headers=HTTPHeaderDict({'Content-Length': '12', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:37:55,960 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:37:55,960 - selenium.webdriver.remote.remote_connection - DEBUG - DELETE http://localhost:52441/session/85d6991c5d6e6d3e93014f7eb31b88e8 {}
+2024-07-01 12:37:56,521 - urllib3.connectionpool - DEBUG - http://localhost:52440 "DELETE /session/51eb1bbd12d113c1930b9722d62caff0 HTTP/1.1" 200 0
+2024-07-01 12:37:56,521 - urllib3.connectionpool - DEBUG - http://localhost:52441 "DELETE /session/85d6991c5d6e6d3e93014f7eb31b88e8 HTTP/1.1" 200 0
+2024-07-01 12:37:56,521 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:37:56,521 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:37:56,523 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:37:56,523 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:37:58,546 - yfinance - DEBUG - Entering download()
+2024-07-01 12:37:58,547 - yfinance - DEBUG - Disabling multithreading because DEBUG logging enabled
+2024-07-01 12:37:58,547 - yfinance - DEBUG -  Entering history()
+2024-07-01 12:37:58,549 - yfinance - DEBUG - Entering download()
+2024-07-01 12:37:58,549 - yfinance - DEBUG - Disabling multithreading because DEBUG logging enabled
+2024-07-01 12:37:58,549 - yfinance - DEBUG -  Entering history()
+2024-07-01 12:37:58,552 - peewee - DEBUG - ('CREATE TABLE IF NOT EXISTS "_kv" ("key" VARCHAR(255) NOT NULL PRIMARY KEY, "value" VARCHAR(255)) WITHOUT ROWID', [])
+2024-07-01 12:37:58,553 - peewee - DEBUG - ('SELECT "t1"."key", "t1"."value" FROM "_kv" AS "t1" WHERE ("t1"."key" = ?) LIMIT ? OFFSET ?', ['425290.KQ', 1, 0])
+2024-07-01 12:37:58,555 - peewee - DEBUG - ('CREATE TABLE IF NOT EXISTS "_kv" ("key" VARCHAR(255) NOT NULL PRIMARY KEY, "value" VARCHAR(255)) WITHOUT ROWID', [])
+2024-07-01 12:37:58,556 - peewee - DEBUG - ('SELECT "t1"."key", "t1"."value" FROM "_kv" AS "t1" WHERE ("t1"."key" = ?) LIMIT ? OFFSET ?', ['425290.KQ', 1, 0])
+2024-07-01 12:37:58,848 - yfinance - DEBUG -   Entering history()
+2024-07-01 12:37:58,848 - yfinance - DEBUG -   Entering history()
+2024-07-01 12:37:58,850 - yfinance - DEBUG - 425290.KQ: Yahoo GET parameters: {'period1': '2019-07-03 00:00:00+09:00', 'period2': '2024-07-01 00:00:00+09:00', 'interval': '1d', 'includePrePost': False, 'events': 'div,splits,capitalGains'}
+2024-07-01 12:37:58,850 - yfinance - DEBUG - 425290.KQ: Yahoo GET parameters: {'period1': '2019-07-03 00:00:00+09:00', 'period2': '2024-07-01 00:00:00+09:00', 'interval': '1d', 'includePrePost': False, 'events': 'div,splits,capitalGains'}
+2024-07-01 12:37:58,850 - yfinance - DEBUG -    Entering get()
+2024-07-01 12:37:58,851 - yfinance - DEBUG -    Entering get()
+2024-07-01 12:37:58,851 - yfinance - DEBUG - url=https://query2.finance.yahoo.com/v8/finance/chart/425290.KQ
+2024-07-01 12:37:58,851 - yfinance - DEBUG - url=https://query2.finance.yahoo.com/v8/finance/chart/425290.KQ
+2024-07-01 12:37:58,851 - yfinance - DEBUG - params=frozendict.frozendict({'period1': 1562079600, 'period2': 1719759600, 'interval': '1d', 'includePrePost': False, 'events': 'div,splits,capitalGains'})
+2024-07-01 12:37:58,851 - yfinance - DEBUG - params=frozendict.frozendict({'period1': 1562079600, 'period2': 1719759600, 'interval': '1d', 'includePrePost': False, 'events': 'div,splits,capitalGains'})
+2024-07-01 12:37:58,851 - yfinance - DEBUG -     Entering _get_cookie_and_crumb()
+2024-07-01 12:37:58,851 - yfinance - DEBUG -     Entering _get_cookie_and_crumb()
+2024-07-01 12:37:58,851 - yfinance - DEBUG - cookie_mode = 'basic'
+2024-07-01 12:37:58,851 - yfinance - DEBUG - cookie_mode = 'basic'
+2024-07-01 12:37:58,851 - yfinance - DEBUG -      Entering _get_cookie_and_crumb_basic()
+2024-07-01 12:37:58,854 - peewee - DEBUG - ('CREATE TABLE IF NOT EXISTS "_cookieschema" ("strategy" VARCHAR(255) NOT NULL PRIMARY KEY, "fetch_date" DATETIME NOT NULL, "cookie_bytes" BLOB NOT NULL) WITHOUT ROWID', [])
+2024-07-01 12:37:58,855 - peewee - DEBUG - ('SELECT "t1"."strategy", "t1"."fetch_date", "t1"."cookie_bytes" FROM "_cookieschema" AS "t1" WHERE ("t1"."strategy" = ?) LIMIT ? OFFSET ?', ['basic', 1, 0])
+2024-07-01 12:37:58,855 - yfinance - DEBUG - loaded persistent cookie
+2024-07-01 12:37:58,855 - yfinance - DEBUG - reusing cookie
+2024-07-01 12:37:58,856 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): query1.finance.yahoo.com:443
+2024-07-01 12:37:59,581 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /v1/test/getcrumb HTTP/1.1" 200 11
+2024-07-01 12:37:59,583 - yfinance - DEBUG - crumb = '4lvq4fBH.sO'
+2024-07-01 12:37:59,584 - yfinance - DEBUG -      Exiting _get_cookie_and_crumb_basic()
+2024-07-01 12:37:59,584 - yfinance - DEBUG -     Exiting _get_cookie_and_crumb()
+2024-07-01 12:37:59,584 - yfinance - DEBUG -      Entering _get_cookie_and_crumb_basic()
+2024-07-01 12:37:59,585 - yfinance - DEBUG - reusing cookie
+2024-07-01 12:37:59,585 - yfinance - DEBUG - reusing crumb
+2024-07-01 12:37:59,585 - yfinance - DEBUG -      Exiting _get_cookie_and_crumb_basic()
+2024-07-01 12:37:59,586 - yfinance - DEBUG -     Exiting _get_cookie_and_crumb()
+2024-07-01 12:37:59,590 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): query2.finance.yahoo.com:443
+2024-07-01 12:37:59,591 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (2): query2.finance.yahoo.com:443
+2024-07-01 12:38:00,408 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v8/finance/chart/425290.KQ?period1=1562079600&period2=1719759600&interval=1d&includePrePost=False&events=div%2Csplits%2CcapitalGains&crumb=4lvq4fBH.sO HTTP/1.1" 200 None
+2024-07-01 12:38:00,409 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v8/finance/chart/425290.KQ?period1=1562079600&period2=1719759600&interval=1d&includePrePost=False&events=div%2Csplits%2CcapitalGains&crumb=4lvq4fBH.sO HTTP/1.1" 200 None
+2024-07-01 12:38:00,411 - yfinance - DEBUG - response code=200
+2024-07-01 12:38:00,411 - yfinance - DEBUG -    Exiting get()
+2024-07-01 12:38:00,416 - yfinance - DEBUG - 425290.KQ: yfinance received OHLC data: 2022-06-30 00:00:00 -> 2024-06-28 00:00:00
+2024-07-01 12:38:00,420 - yfinance - DEBUG - 425290.KQ: OHLC after cleaning: 2022-06-30 09:00:00+09:00 -> 2024-06-28 09:00:00+09:00
+2024-07-01 12:38:00,427 - yfinance - DEBUG - 425290.KQ: OHLC after combining events: 2022-06-30 00:00:00+09:00 -> 2024-06-28 00:00:00+09:00
+2024-07-01 12:38:00,433 - yfinance - DEBUG - response code=200
+2024-07-01 12:38:00,433 - yfinance - DEBUG -    Exiting get()
+2024-07-01 12:38:00,436 - yfinance - DEBUG - 425290.KQ: yfinance received OHLC data: 2022-06-30 00:00:00 -> 2024-06-28 00:00:00
+2024-07-01 12:38:00,437 - yfinance - DEBUG - 425290.KQ: yfinance returning OHLC: 2022-06-30 00:00:00+09:00 -> 2024-06-28 00:00:00+09:00
+2024-07-01 12:38:00,438 - yfinance - DEBUG -   Exiting history()
+2024-07-01 12:38:00,438 - yfinance - DEBUG -  Exiting history()
+2024-07-01 12:38:00,438 - yfinance - DEBUG - Exiting download()
+2024-07-01 12:38:00,439 - yfinance - DEBUG - 425290.KQ: OHLC after cleaning: 2022-06-30 09:00:00+09:00 -> 2024-06-28 09:00:00+09:00
+2024-07-01 12:38:00,444 - yfinance - DEBUG - 425290.KQ: OHLC after combining events: 2022-06-30 00:00:00+09:00 -> 2024-06-28 00:00:00+09:00
+2024-07-01 12:38:00,449 - yfinance - DEBUG - 425290.KQ: yfinance returning OHLC: 2022-06-30 00:00:00+09:00 -> 2024-06-28 00:00:00+09:00
+2024-07-01 12:38:00,450 - yfinance - DEBUG -   Exiting history()
+2024-07-01 12:38:00,450 - yfinance - DEBUG -  Exiting history()
+2024-07-01 12:38:00,450 - yfinance - DEBUG - Exiting download()
+2024-07-01 12:38:00,822 - root - ERROR - 주식 기본 데이터가 너무 적습니다
+2024-07-01 12:43:30,516 - root - INFO - 주식 예측 플랫폼이 시작되었습니다.
+2024-07-01 12:43:30,523 - selenium.webdriver.common.selenium_manager - DEBUG - Selenium Manager binary found at: C:\Users\ChoiBear\anaconda3\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe
+2024-07-01 12:43:30,523 - selenium.webdriver.common.selenium_manager - DEBUG - Executing process: C:\Users\ChoiBear\anaconda3\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe --browser chrome --debug --language-binding python --output json
+2024-07-01 12:43:30,899 - selenium.webdriver.common.selenium_manager - DEBUG - chromedriver not found in PATH
+2024-07-01 12:43:30,899 - selenium.webdriver.common.selenium_manager - DEBUG - chrome detected at C:\Program Files\Google\Chrome\Application\chrome.exe
+2024-07-01 12:43:30,899 - selenium.webdriver.common.selenium_manager - DEBUG - Running command: wmic datafile where name='C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe' get Version /value
+2024-07-01 12:43:30,899 - selenium.webdriver.common.selenium_manager - DEBUG - Output: "\r\r\n\r\r\nVersion=126.0.6478.127\r\r\n\r\r\n\r\r\n\r"
+2024-07-01 12:43:30,899 - selenium.webdriver.common.selenium_manager - DEBUG - Detected browser: chrome 126.0.6478.127
+2024-07-01 12:43:30,899 - selenium.webdriver.common.selenium_manager - DEBUG - Required driver: chromedriver 126.0.6478.126
+2024-07-01 12:43:30,899 - selenium.webdriver.common.selenium_manager - DEBUG - chromedriver 126.0.6478.126 already in the cache
+2024-07-01 12:43:30,899 - selenium.webdriver.common.selenium_manager - DEBUG - Driver path: C:\Users\ChoiBear\.cache\selenium\chromedriver\win64\126.0.6478.126\chromedriver.exe
+2024-07-01 12:43:30,899 - selenium.webdriver.common.selenium_manager - DEBUG - Browser path: C:\Program Files\Google\Chrome\Application\chrome.exe
+2024-07-01 12:43:30,907 - selenium.webdriver.common.service - DEBUG - Started executable: `C:\Users\ChoiBear\.cache\selenium\chromedriver\win64\126.0.6478.126\chromedriver.exe` in a child process with pid: 12468 using 0 to output -3
+2024-07-01 12:43:31,420 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:53685/session {'capabilities': {'firstMatch': [{}], 'alwaysMatch': {'browserName': 'chrome', 'pageLoadStrategy': <PageLoadStrategy.normal: 'normal'>, 'browserVersion': None, 'goog:chromeOptions': {'extensions': [], 'binary': 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe', 'args': ['headless']}}}}
+2024-07-01 12:43:31,421 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:53685
+2024-07-01 12:43:32,994 - urllib3.connectionpool - DEBUG - http://localhost:53685 "POST /session HTTP/1.1" 200 0
+2024-07-01 12:43:32,994 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":{"capabilities":{"acceptInsecureCerts":false,"browserName":"chrome-headless-shell","browserVersion":"126.0.6478.127","chrome":{"chromedriverVersion":"126.0.6478.126 (d36ace6122e0a59570e258d82441395206d60e1c-refs/branch-heads/6478@{#1591})","userDataDir":"C:\\Users\\ChoiBear\\AppData\\Local\\Temp\\scoped_dir12468_91007436"},"fedcm:accounts":true,"goog:chromeOptions":{"debuggerAddress":"localhost:53689"},"networkConnectionEnabled":false,"pageLoadStrategy":"normal","platformName":"windows","proxy":{},"setWindowRect":true,"strictFileInteractability":false,"timeouts":{"implicit":0,"pageLoad":300000,"script":30000},"unhandledPromptBehavior":"dismiss and notify","webauthn:extension:credBlob":true,"webauthn:extension:largeBlob":true,"webauthn:extension:minPinLength":true,"webauthn:extension:prf":true,"webauthn:virtualAuthenticators":true},"sessionId":"4ea18dde488d75cf4b12dc754fc98539"}} | headers=HTTPHeaderDict({'Content-Length': '900', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:43:32,994 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:43:32,994 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:53685/session/4ea18dde488d75cf4b12dc754fc98539/url {'url': 'https://finance.naver.com/'}
+2024-07-01 12:43:34,125 - urllib3.connectionpool - DEBUG - http://localhost:53685 "POST /session/4ea18dde488d75cf4b12dc754fc98539/url HTTP/1.1" 200 0
+2024-07-01 12:43:34,125 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:43:34,125 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:43:34,126 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:53685/session/4ea18dde488d75cf4b12dc754fc98539/timeouts {'implicit': 1000}
+2024-07-01 12:43:34,127 - urllib3.connectionpool - DEBUG - http://localhost:53685 "POST /session/4ea18dde488d75cf4b12dc754fc98539/timeouts HTTP/1.1" 200 0
+2024-07-01 12:43:34,127 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:43:34,128 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:43:34,128 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:53685/session/4ea18dde488d75cf4b12dc754fc98539/element {'using': 'xpath', 'value': '//*[@id="stock_items"]'}
+2024-07-01 12:43:34,150 - urllib3.connectionpool - DEBUG - http://localhost:53685 "POST /session/4ea18dde488d75cf4b12dc754fc98539/element HTTP/1.1" 200 0
+2024-07-01 12:43:34,150 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.BDDB9B62DFDABAA0E79A0E2D6D2DAA9E.d.982FEC4FC48702DC9580CFAD01794DC3.e.39"}} | headers=HTTPHeaderDict({'Content-Length': '126', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:43:34,150 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:43:34,150 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:53685/session/4ea18dde488d75cf4b12dc754fc98539/element/f.BDDB9B62DFDABAA0E79A0E2D6D2DAA9E.d.982FEC4FC48702DC9580CFAD01794DC3.e.39/value {'text': '삼성', 'value': ['삼', '성']}
+2024-07-01 12:43:34,209 - urllib3.connectionpool - DEBUG - http://localhost:53685 "POST /session/4ea18dde488d75cf4b12dc754fc98539/element/f.BDDB9B62DFDABAA0E79A0E2D6D2DAA9E.d.982FEC4FC48702DC9580CFAD01794DC3.e.39/value HTTP/1.1" 200 0
+2024-07-01 12:43:34,210 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:43:34,210 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:43:34,711 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:53685/session/4ea18dde488d75cf4b12dc754fc98539/element {'using': 'xpath', 'value': '//*[@id="atcmp"]/div[1]/div/ul/li/a'}
+2024-07-01 12:43:34,735 - urllib3.connectionpool - DEBUG - http://localhost:53685 "POST /session/4ea18dde488d75cf4b12dc754fc98539/element HTTP/1.1" 200 0
+2024-07-01 12:43:34,735 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.BDDB9B62DFDABAA0E79A0E2D6D2DAA9E.d.982FEC4FC48702DC9580CFAD01794DC3.e.44"}} | headers=HTTPHeaderDict({'Content-Length': '126', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:43:34,736 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:43:34,736 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:53685/session/4ea18dde488d75cf4b12dc754fc98539/element/f.BDDB9B62DFDABAA0E79A0E2D6D2DAA9E.d.982FEC4FC48702DC9580CFAD01794DC3.e.44/click {}
+2024-07-01 12:43:35,434 - urllib3.connectionpool - DEBUG - http://localhost:53685 "POST /session/4ea18dde488d75cf4b12dc754fc98539/element/f.BDDB9B62DFDABAA0E79A0E2D6D2DAA9E.d.982FEC4FC48702DC9580CFAD01794DC3.e.44/click HTTP/1.1" 200 0
+2024-07-01 12:43:35,434 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:43:35,434 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:43:35,434 - selenium.webdriver.remote.remote_connection - DEBUG - GET http://localhost:53685/session/4ea18dde488d75cf4b12dc754fc98539/url {}
+2024-07-01 12:43:35,443 - urllib3.connectionpool - DEBUG - http://localhost:53685 "GET /session/4ea18dde488d75cf4b12dc754fc98539/url HTTP/1.1" 200 0
+2024-07-01 12:43:35,443 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":"https://finance.naver.com/item/main.naver?code=425290"} | headers=HTTPHeaderDict({'Content-Length': '65', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:43:35,443 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:43:35,446 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): finance.naver.com:443
+2024-07-01 12:43:36,232 - urllib3.connectionpool - DEBUG - https://finance.naver.com:443 "GET /item/main.naver?code=425290 HTTP/1.1" 200 None
+2024-07-01 12:43:36,341 - chardet.charsetprober - DEBUG - SHIFT_JIS Japanese prober hit error at byte 48
+2024-07-01 12:43:36,795 - selenium.webdriver.remote.remote_connection - DEBUG - DELETE http://localhost:53685/session/4ea18dde488d75cf4b12dc754fc98539/window {}
+2024-07-01 12:43:36,823 - urllib3.connectionpool - DEBUG - http://localhost:53685 "DELETE /session/4ea18dde488d75cf4b12dc754fc98539/window HTTP/1.1" 200 0
+2024-07-01 12:43:36,823 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":[]} | headers=HTTPHeaderDict({'Content-Length': '12', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:43:36,823 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:43:36,824 - selenium.webdriver.remote.remote_connection - DEBUG - DELETE http://localhost:53685/session/4ea18dde488d75cf4b12dc754fc98539 {}
+2024-07-01 12:43:37,436 - urllib3.connectionpool - DEBUG - http://localhost:53685 "DELETE /session/4ea18dde488d75cf4b12dc754fc98539 HTTP/1.1" 200 0
+2024-07-01 12:43:37,436 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:43:37,436 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:43:39,462 - yfinance - DEBUG - Entering download()
+2024-07-01 12:43:39,462 - yfinance - DEBUG - Disabling multithreading because DEBUG logging enabled
+2024-07-01 12:43:39,463 - yfinance - DEBUG -  Entering history()
+2024-07-01 12:43:39,463 - peewee - DEBUG - ('SELECT "t1"."key", "t1"."value" FROM "_kv" AS "t1" WHERE ("t1"."key" = ?) LIMIT ? OFFSET ?', ['425290.KQ', 1, 0])
+2024-07-01 12:43:39,465 - yfinance - DEBUG -   Entering history()
+2024-07-01 12:43:39,466 - yfinance - DEBUG - 425290.KQ: Yahoo GET parameters: {'period1': '2019-07-03 00:00:00+09:00', 'period2': '2024-07-01 00:00:00+09:00', 'interval': '1d', 'includePrePost': False, 'events': 'div,splits,capitalGains'}
+2024-07-01 12:43:39,469 - yfinance - DEBUG - 425290.KQ: yfinance received OHLC data: 2022-06-30 00:00:00 -> 2024-06-28 00:00:00
+2024-07-01 12:43:39,471 - yfinance - DEBUG - 425290.KQ: OHLC after cleaning: 2022-06-30 09:00:00+09:00 -> 2024-06-28 09:00:00+09:00
+2024-07-01 12:43:39,476 - yfinance - DEBUG - 425290.KQ: OHLC after combining events: 2022-06-30 00:00:00+09:00 -> 2024-06-28 00:00:00+09:00
+2024-07-01 12:43:39,480 - yfinance - DEBUG - 425290.KQ: yfinance returning OHLC: 2022-06-30 00:00:00+09:00 -> 2024-06-28 00:00:00+09:00
+2024-07-01 12:43:39,480 - yfinance - DEBUG -   Exiting history()
+2024-07-01 12:43:39,480 - yfinance - DEBUG -  Exiting history()
+2024-07-01 12:43:39,481 - yfinance - DEBUG - Exiting download()
+2024-07-01 12:44:20,730 - root - INFO - 주식 예측 플랫폼이 시작되었습니다.
+2024-07-01 12:44:20,742 - selenium.webdriver.common.selenium_manager - DEBUG - Selenium Manager binary found at: C:\Users\ChoiBear\anaconda3\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe
+2024-07-01 12:44:20,742 - selenium.webdriver.common.selenium_manager - DEBUG - Executing process: C:\Users\ChoiBear\anaconda3\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe --browser chrome --debug --language-binding python --output json
+2024-07-01 12:44:20,967 - root - INFO - 주식 예측 플랫폼이 시작되었습니다.
+2024-07-01 12:44:20,972 - selenium.webdriver.common.selenium_manager - DEBUG - Selenium Manager binary found at: C:\Users\ChoiBear\anaconda3\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe
+2024-07-01 12:44:20,972 - selenium.webdriver.common.selenium_manager - DEBUG - Executing process: C:\Users\ChoiBear\anaconda3\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe --browser chrome --debug --language-binding python --output json
+2024-07-01 12:44:21,082 - selenium.webdriver.common.selenium_manager - DEBUG - chromedriver not found in PATH
+2024-07-01 12:44:21,082 - selenium.webdriver.common.selenium_manager - DEBUG - chrome detected at C:\Program Files\Google\Chrome\Application\chrome.exe
+2024-07-01 12:44:21,082 - selenium.webdriver.common.selenium_manager - DEBUG - Running command: wmic datafile where name='C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe' get Version /value
+2024-07-01 12:44:21,082 - selenium.webdriver.common.selenium_manager - DEBUG - Output: "\r\r\n\r\r\nVersion=126.0.6478.127\r\r\n\r\r\n\r\r\n\r"
+2024-07-01 12:44:21,082 - selenium.webdriver.common.selenium_manager - DEBUG - Detected browser: chrome 126.0.6478.127
+2024-07-01 12:44:21,082 - selenium.webdriver.common.selenium_manager - DEBUG - Required driver: chromedriver 126.0.6478.126
+2024-07-01 12:44:21,082 - selenium.webdriver.common.selenium_manager - DEBUG - chromedriver 126.0.6478.126 already in the cache
+2024-07-01 12:44:21,082 - selenium.webdriver.common.selenium_manager - DEBUG - Driver path: C:\Users\ChoiBear\.cache\selenium\chromedriver\win64\126.0.6478.126\chromedriver.exe
+2024-07-01 12:44:21,082 - selenium.webdriver.common.selenium_manager - DEBUG - Browser path: C:\Program Files\Google\Chrome\Application\chrome.exe
+2024-07-01 12:44:21,087 - selenium.webdriver.common.service - DEBUG - Started executable: `C:\Users\ChoiBear\.cache\selenium\chromedriver\win64\126.0.6478.126\chromedriver.exe` in a child process with pid: 19812 using 0 to output -3
+2024-07-01 12:44:21,305 - selenium.webdriver.common.selenium_manager - DEBUG - chromedriver not found in PATH
+2024-07-01 12:44:21,305 - selenium.webdriver.common.selenium_manager - DEBUG - chrome detected at C:\Program Files\Google\Chrome\Application\chrome.exe
+2024-07-01 12:44:21,305 - selenium.webdriver.common.selenium_manager - DEBUG - Running command: wmic datafile where name='C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe' get Version /value
+2024-07-01 12:44:21,305 - selenium.webdriver.common.selenium_manager - DEBUG - Output: "\r\r\n\r\r\nVersion=126.0.6478.127\r\r\n\r\r\n\r\r\n\r"
+2024-07-01 12:44:21,305 - selenium.webdriver.common.selenium_manager - DEBUG - Detected browser: chrome 126.0.6478.127
+2024-07-01 12:44:21,305 - selenium.webdriver.common.selenium_manager - DEBUG - Required driver: chromedriver 126.0.6478.126
+2024-07-01 12:44:21,306 - selenium.webdriver.common.selenium_manager - DEBUG - chromedriver 126.0.6478.126 already in the cache
+2024-07-01 12:44:21,306 - selenium.webdriver.common.selenium_manager - DEBUG - Driver path: C:\Users\ChoiBear\.cache\selenium\chromedriver\win64\126.0.6478.126\chromedriver.exe
+2024-07-01 12:44:21,306 - selenium.webdriver.common.selenium_manager - DEBUG - Browser path: C:\Program Files\Google\Chrome\Application\chrome.exe
+2024-07-01 12:44:21,312 - selenium.webdriver.common.service - DEBUG - Started executable: `C:\Users\ChoiBear\.cache\selenium\chromedriver\win64\126.0.6478.126\chromedriver.exe` in a child process with pid: 28960 using 0 to output -3
+2024-07-01 12:44:21,600 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:53906/session {'capabilities': {'firstMatch': [{}], 'alwaysMatch': {'browserName': 'chrome', 'pageLoadStrategy': <PageLoadStrategy.normal: 'normal'>, 'browserVersion': None, 'goog:chromeOptions': {'extensions': [], 'binary': 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe', 'args': ['headless']}}}}
+2024-07-01 12:44:21,601 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:53906
+2024-07-01 12:44:21,816 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:53907/session {'capabilities': {'firstMatch': [{}], 'alwaysMatch': {'browserName': 'chrome', 'pageLoadStrategy': <PageLoadStrategy.normal: 'normal'>, 'browserVersion': None, 'goog:chromeOptions': {'extensions': [], 'binary': 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe', 'args': ['headless']}}}}
+2024-07-01 12:44:21,816 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:53907
+2024-07-01 12:44:23,161 - urllib3.connectionpool - DEBUG - http://localhost:53907 "POST /session HTTP/1.1" 200 0
+2024-07-01 12:44:23,161 - urllib3.connectionpool - DEBUG - http://localhost:53906 "POST /session HTTP/1.1" 200 0
+2024-07-01 12:44:23,161 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":{"capabilities":{"acceptInsecureCerts":false,"browserName":"chrome-headless-shell","browserVersion":"126.0.6478.127","chrome":{"chromedriverVersion":"126.0.6478.126 (d36ace6122e0a59570e258d82441395206d60e1c-refs/branch-heads/6478@{#1591})","userDataDir":"C:\\Users\\ChoiBear\\AppData\\Local\\Temp\\scoped_dir28960_2142742867"},"fedcm:accounts":true,"goog:chromeOptions":{"debuggerAddress":"localhost:53917"},"networkConnectionEnabled":false,"pageLoadStrategy":"normal","platformName":"windows","proxy":{},"setWindowRect":true,"strictFileInteractability":false,"timeouts":{"implicit":0,"pageLoad":300000,"script":30000},"unhandledPromptBehavior":"dismiss and notify","webauthn:extension:credBlob":true,"webauthn:extension:largeBlob":true,"webauthn:extension:minPinLength":true,"webauthn:extension:prf":true,"webauthn:virtualAuthenticators":true},"sessionId":"8631f7dc5b83c2b2f736101cbe193b86"}} | headers=HTTPHeaderDict({'Content-Length': '902', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:44:23,161 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":{"capabilities":{"acceptInsecureCerts":false,"browserName":"chrome-headless-shell","browserVersion":"126.0.6478.127","chrome":{"chromedriverVersion":"126.0.6478.126 (d36ace6122e0a59570e258d82441395206d60e1c-refs/branch-heads/6478@{#1591})","userDataDir":"C:\\Users\\ChoiBear\\AppData\\Local\\Temp\\scoped_dir19812_2045287661"},"fedcm:accounts":true,"goog:chromeOptions":{"debuggerAddress":"localhost:53914"},"networkConnectionEnabled":false,"pageLoadStrategy":"normal","platformName":"windows","proxy":{},"setWindowRect":true,"strictFileInteractability":false,"timeouts":{"implicit":0,"pageLoad":300000,"script":30000},"unhandledPromptBehavior":"dismiss and notify","webauthn:extension:credBlob":true,"webauthn:extension:largeBlob":true,"webauthn:extension:minPinLength":true,"webauthn:extension:prf":true,"webauthn:virtualAuthenticators":true},"sessionId":"a04ccc21a2b5bb3726f3fdf259af4912"}} | headers=HTTPHeaderDict({'Content-Length': '902', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:44:23,161 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:44:23,161 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:44:23,162 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:53907/session/8631f7dc5b83c2b2f736101cbe193b86/url {'url': 'https://finance.naver.com/'}
+2024-07-01 12:44:23,162 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:53906/session/a04ccc21a2b5bb3726f3fdf259af4912/url {'url': 'https://finance.naver.com/'}
+2024-07-01 12:44:24,098 - urllib3.connectionpool - DEBUG - http://localhost:53907 "POST /session/8631f7dc5b83c2b2f736101cbe193b86/url HTTP/1.1" 200 0
+2024-07-01 12:44:24,098 - urllib3.connectionpool - DEBUG - http://localhost:53906 "POST /session/a04ccc21a2b5bb3726f3fdf259af4912/url HTTP/1.1" 200 0
+2024-07-01 12:44:24,098 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:44:24,098 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:44:24,099 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:44:24,099 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:44:24,099 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:53906/session/a04ccc21a2b5bb3726f3fdf259af4912/timeouts {'implicit': 1000}
+2024-07-01 12:44:24,099 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:53907/session/8631f7dc5b83c2b2f736101cbe193b86/timeouts {'implicit': 1000}
+2024-07-01 12:44:24,100 - urllib3.connectionpool - DEBUG - http://localhost:53907 "POST /session/8631f7dc5b83c2b2f736101cbe193b86/timeouts HTTP/1.1" 200 0
+2024-07-01 12:44:24,100 - urllib3.connectionpool - DEBUG - http://localhost:53906 "POST /session/a04ccc21a2b5bb3726f3fdf259af4912/timeouts HTTP/1.1" 200 0
+2024-07-01 12:44:24,100 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:44:24,101 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:44:24,101 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:44:24,101 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:44:24,101 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:53907/session/8631f7dc5b83c2b2f736101cbe193b86/element {'using': 'xpath', 'value': '//*[@id="stock_items"]'}
+2024-07-01 12:44:24,101 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:53906/session/a04ccc21a2b5bb3726f3fdf259af4912/element {'using': 'xpath', 'value': '//*[@id="stock_items"]'}
+2024-07-01 12:44:24,113 - urllib3.connectionpool - DEBUG - http://localhost:53907 "POST /session/8631f7dc5b83c2b2f736101cbe193b86/element HTTP/1.1" 200 0
+2024-07-01 12:44:24,114 - urllib3.connectionpool - DEBUG - http://localhost:53906 "POST /session/a04ccc21a2b5bb3726f3fdf259af4912/element HTTP/1.1" 200 0
+2024-07-01 12:44:24,114 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.18B0FB256D06BF5CF77722B62F94D911.d.387D7721FAED2F2049FD9BF3F40C4784.e.39"}} | headers=HTTPHeaderDict({'Content-Length': '126', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:44:24,115 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.A70618D7759C4008E05BAF4E2AFA065C.d.3BDE3AA2A3F31814B6D1B388D0F43176.e.39"}} | headers=HTTPHeaderDict({'Content-Length': '126', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:44:24,115 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:44:24,115 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:44:24,116 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:53907/session/8631f7dc5b83c2b2f736101cbe193b86/element/f.18B0FB256D06BF5CF77722B62F94D911.d.387D7721FAED2F2049FD9BF3F40C4784.e.39/value {'text': '에스오에스랩', 'value': ['에', '스', '오', '에', '스', '랩']}
+2024-07-01 12:44:24,116 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:53906/session/a04ccc21a2b5bb3726f3fdf259af4912/element/f.A70618D7759C4008E05BAF4E2AFA065C.d.3BDE3AA2A3F31814B6D1B388D0F43176.e.39/value {'text': '에스오에스랩', 'value': ['에', '스', '오', '에', '스', '랩']}
+2024-07-01 12:44:24,185 - urllib3.connectionpool - DEBUG - http://localhost:53906 "POST /session/a04ccc21a2b5bb3726f3fdf259af4912/element/f.A70618D7759C4008E05BAF4E2AFA065C.d.3BDE3AA2A3F31814B6D1B388D0F43176.e.39/value HTTP/1.1" 200 0
+2024-07-01 12:44:24,186 - urllib3.connectionpool - DEBUG - http://localhost:53907 "POST /session/8631f7dc5b83c2b2f736101cbe193b86/element/f.18B0FB256D06BF5CF77722B62F94D911.d.387D7721FAED2F2049FD9BF3F40C4784.e.39/value HTTP/1.1" 200 0
+2024-07-01 12:44:24,186 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:44:24,186 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:44:24,186 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:44:24,186 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:44:24,687 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:53907/session/8631f7dc5b83c2b2f736101cbe193b86/element {'using': 'xpath', 'value': '//*[@id="atcmp"]/div[1]/div/ul/li/a'}
+2024-07-01 12:44:24,689 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:53906/session/a04ccc21a2b5bb3726f3fdf259af4912/element {'using': 'xpath', 'value': '//*[@id="atcmp"]/div[1]/div/ul/li/a'}
+2024-07-01 12:44:24,712 - urllib3.connectionpool - DEBUG - http://localhost:53906 "POST /session/a04ccc21a2b5bb3726f3fdf259af4912/element HTTP/1.1" 200 0
+2024-07-01 12:44:24,712 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.A70618D7759C4008E05BAF4E2AFA065C.d.3BDE3AA2A3F31814B6D1B388D0F43176.e.43"}} | headers=HTTPHeaderDict({'Content-Length': '126', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:44:24,712 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:44:24,713 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:53906/session/a04ccc21a2b5bb3726f3fdf259af4912/element/f.A70618D7759C4008E05BAF4E2AFA065C.d.3BDE3AA2A3F31814B6D1B388D0F43176.e.43/click {}
+2024-07-01 12:44:24,713 - urllib3.connectionpool - DEBUG - http://localhost:53907 "POST /session/8631f7dc5b83c2b2f736101cbe193b86/element HTTP/1.1" 200 0
+2024-07-01 12:44:24,714 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.18B0FB256D06BF5CF77722B62F94D911.d.387D7721FAED2F2049FD9BF3F40C4784.e.44"}} | headers=HTTPHeaderDict({'Content-Length': '126', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:44:24,714 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:44:24,715 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:53907/session/8631f7dc5b83c2b2f736101cbe193b86/element/f.18B0FB256D06BF5CF77722B62F94D911.d.387D7721FAED2F2049FD9BF3F40C4784.e.44/click {}
+2024-07-01 12:44:25,059 - urllib3.connectionpool - DEBUG - http://localhost:53907 "POST /session/8631f7dc5b83c2b2f736101cbe193b86/element/f.18B0FB256D06BF5CF77722B62F94D911.d.387D7721FAED2F2049FD9BF3F40C4784.e.44/click HTTP/1.1" 200 0
+2024-07-01 12:44:25,059 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:44:25,060 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:44:25,060 - selenium.webdriver.remote.remote_connection - DEBUG - GET http://localhost:53907/session/8631f7dc5b83c2b2f736101cbe193b86/url {}
+2024-07-01 12:44:25,068 - urllib3.connectionpool - DEBUG - http://localhost:53907 "GET /session/8631f7dc5b83c2b2f736101cbe193b86/url HTTP/1.1" 200 0
+2024-07-01 12:44:25,068 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":"https://finance.naver.com/item/main.naver?code=464080"} | headers=HTTPHeaderDict({'Content-Length': '65', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:44:25,068 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:44:25,069 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): finance.naver.com:443
+2024-07-01 12:44:25,189 - urllib3.connectionpool - DEBUG - http://localhost:53906 "POST /session/a04ccc21a2b5bb3726f3fdf259af4912/element/f.A70618D7759C4008E05BAF4E2AFA065C.d.3BDE3AA2A3F31814B6D1B388D0F43176.e.43/click HTTP/1.1" 200 0
+2024-07-01 12:44:25,189 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:44:25,189 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:44:25,189 - selenium.webdriver.remote.remote_connection - DEBUG - GET http://localhost:53906/session/a04ccc21a2b5bb3726f3fdf259af4912/url {}
+2024-07-01 12:44:25,193 - urllib3.connectionpool - DEBUG - http://localhost:53906 "GET /session/a04ccc21a2b5bb3726f3fdf259af4912/url HTTP/1.1" 200 0
+2024-07-01 12:44:25,193 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":"https://finance.naver.com/item/main.naver?code=464080"} | headers=HTTPHeaderDict({'Content-Length': '65', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:44:25,193 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:44:25,195 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): finance.naver.com:443
+2024-07-01 12:44:25,694 - urllib3.connectionpool - DEBUG - https://finance.naver.com:443 "GET /item/main.naver?code=464080 HTTP/1.1" 200 None
+2024-07-01 12:44:25,762 - chardet.charsetprober - DEBUG - CP932 Japanese prober hit error at byte 676
+2024-07-01 12:44:25,798 - urllib3.connectionpool - DEBUG - https://finance.naver.com:443 "GET /item/main.naver?code=464080 HTTP/1.1" 200 None
+2024-07-01 12:44:26,086 - chardet.charsetprober - DEBUG - CP932 Japanese prober hit error at byte 676
+2024-07-01 12:44:26,781 - selenium.webdriver.remote.remote_connection - DEBUG - DELETE http://localhost:53907/session/8631f7dc5b83c2b2f736101cbe193b86/window {}
+2024-07-01 12:44:26,802 - urllib3.connectionpool - DEBUG - http://localhost:53907 "DELETE /session/8631f7dc5b83c2b2f736101cbe193b86/window HTTP/1.1" 200 0
+2024-07-01 12:44:26,802 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":[]} | headers=HTTPHeaderDict({'Content-Length': '12', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:44:26,802 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:44:26,803 - selenium.webdriver.remote.remote_connection - DEBUG - DELETE http://localhost:53907/session/8631f7dc5b83c2b2f736101cbe193b86 {}
+2024-07-01 12:44:26,818 - selenium.webdriver.remote.remote_connection - DEBUG - DELETE http://localhost:53906/session/a04ccc21a2b5bb3726f3fdf259af4912/window {}
+2024-07-01 12:44:26,840 - urllib3.connectionpool - DEBUG - http://localhost:53906 "DELETE /session/a04ccc21a2b5bb3726f3fdf259af4912/window HTTP/1.1" 200 0
+2024-07-01 12:44:26,840 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":[]} | headers=HTTPHeaderDict({'Content-Length': '12', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:44:26,840 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:44:26,840 - selenium.webdriver.remote.remote_connection - DEBUG - DELETE http://localhost:53906/session/a04ccc21a2b5bb3726f3fdf259af4912 {}
+2024-07-01 12:44:26,919 - urllib3.connectionpool - DEBUG - http://localhost:53907 "DELETE /session/8631f7dc5b83c2b2f736101cbe193b86 HTTP/1.1" 200 0
+2024-07-01 12:44:26,919 - urllib3.connectionpool - DEBUG - http://localhost:53906 "DELETE /session/a04ccc21a2b5bb3726f3fdf259af4912 HTTP/1.1" 200 0
+2024-07-01 12:44:26,920 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:44:26,920 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:44:26,920 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:44:26,920 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:44:28,956 - yfinance - DEBUG - Entering download()
+2024-07-01 12:44:28,956 - yfinance - DEBUG - Disabling multithreading because DEBUG logging enabled
+2024-07-01 12:44:28,957 - yfinance - DEBUG -  Entering history()
+2024-07-01 12:44:28,958 - peewee - DEBUG - ('SELECT "t1"."key", "t1"."value" FROM "_kv" AS "t1" WHERE ("t1"."key" = ?) LIMIT ? OFFSET ?', ['464080.KQ', 1, 0])
+2024-07-01 12:44:28,958 - yfinance - DEBUG - Entering download()
+2024-07-01 12:44:28,959 - yfinance - DEBUG - Disabling multithreading because DEBUG logging enabled
+2024-07-01 12:44:28,959 - yfinance - DEBUG -  Entering history()
+2024-07-01 12:44:28,961 - peewee - DEBUG - ('SELECT "t1"."key", "t1"."value" FROM "_kv" AS "t1" WHERE ("t1"."key" = ?) LIMIT ? OFFSET ?', ['464080.KQ', 1, 0])
+2024-07-01 12:44:28,961 - yfinance - DEBUG -   Entering history()
+2024-07-01 12:44:28,962 - yfinance - DEBUG - 464080.KQ: Yahoo GET parameters: {'period1': '2019-07-03 00:00:00+09:00', 'period2': '2024-07-01 00:00:00+09:00', 'interval': '1d', 'includePrePost': False, 'events': 'div,splits,capitalGains'}
+2024-07-01 12:44:28,962 - yfinance - DEBUG -    Entering get()
+2024-07-01 12:44:28,962 - yfinance - DEBUG - url=https://query2.finance.yahoo.com/v8/finance/chart/464080.KQ
+2024-07-01 12:44:28,962 - yfinance - DEBUG - params=frozendict.frozendict({'period1': 1562079600, 'period2': 1719759600, 'interval': '1d', 'includePrePost': False, 'events': 'div,splits,capitalGains'})
+2024-07-01 12:44:28,962 - yfinance - DEBUG -     Entering _get_cookie_and_crumb()
+2024-07-01 12:44:28,962 - yfinance - DEBUG - cookie_mode = 'basic'
+2024-07-01 12:44:28,963 - yfinance - DEBUG -      Entering _get_cookie_and_crumb_basic()
+2024-07-01 12:44:28,963 - yfinance - DEBUG - reusing cookie
+2024-07-01 12:44:28,963 - yfinance - DEBUG - reusing crumb
+2024-07-01 12:44:28,963 - yfinance - DEBUG -      Exiting _get_cookie_and_crumb_basic()
+2024-07-01 12:44:28,963 - yfinance - DEBUG -     Exiting _get_cookie_and_crumb()
+2024-07-01 12:44:28,965 - yfinance - DEBUG -   Entering history()
+2024-07-01 12:44:28,966 - yfinance - DEBUG - 464080.KQ: Yahoo GET parameters: {'period1': '2019-07-03 00:00:00+09:00', 'period2': '2024-07-01 00:00:00+09:00', 'interval': '1d', 'includePrePost': False, 'events': 'div,splits,capitalGains'}
+2024-07-01 12:44:28,966 - yfinance - DEBUG -    Entering get()
+2024-07-01 12:44:28,966 - yfinance - DEBUG - url=https://query2.finance.yahoo.com/v8/finance/chart/464080.KQ
+2024-07-01 12:44:28,966 - yfinance - DEBUG - params=frozendict.frozendict({'period1': 1562079600, 'period2': 1719759600, 'interval': '1d', 'includePrePost': False, 'events': 'div,splits,capitalGains'})
+2024-07-01 12:44:28,966 - yfinance - DEBUG -     Entering _get_cookie_and_crumb()
+2024-07-01 12:44:28,966 - yfinance - DEBUG - cookie_mode = 'basic'
+2024-07-01 12:44:28,966 - yfinance - DEBUG -      Entering _get_cookie_and_crumb_basic()
+2024-07-01 12:44:28,967 - yfinance - DEBUG - reusing cookie
+2024-07-01 12:44:28,967 - yfinance - DEBUG - reusing crumb
+2024-07-01 12:44:28,967 - urllib3.connectionpool - DEBUG - Resetting dropped connection: query2.finance.yahoo.com
+2024-07-01 12:44:28,967 - yfinance - DEBUG -      Exiting _get_cookie_and_crumb_basic()
+2024-07-01 12:44:28,968 - yfinance - DEBUG -     Exiting _get_cookie_and_crumb()
+2024-07-01 12:44:28,971 - urllib3.connectionpool - DEBUG - Resetting dropped connection: query2.finance.yahoo.com
+2024-07-01 12:44:29,793 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v8/finance/chart/464080.KQ?period1=1562079600&period2=1719759600&interval=1d&includePrePost=False&events=div%2Csplits%2CcapitalGains&crumb=4lvq4fBH.sO HTTP/1.1" 200 1230
+2024-07-01 12:44:29,793 - yfinance - DEBUG - response code=200
+2024-07-01 12:44:29,794 - yfinance - DEBUG -    Exiting get()
+2024-07-01 12:44:29,797 - yfinance - DEBUG - 464080.KQ: yfinance received OHLC data: 2024-06-25 00:00:00 -> 2024-06-28 00:00:00
+2024-07-01 12:44:29,797 - yfinance - DEBUG - 464080.KQ: OHLC after cleaning: 2024-06-25 09:00:00+09:00 -> 2024-06-28 09:00:00+09:00
+2024-07-01 12:44:29,803 - yfinance - DEBUG - 464080.KQ: OHLC after combining events: 2024-06-25 00:00:00+09:00 -> 2024-06-28 00:00:00+09:00
+2024-07-01 12:44:29,804 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v8/finance/chart/464080.KQ?period1=1562079600&period2=1719759600&interval=1d&includePrePost=False&events=div%2Csplits%2CcapitalGains&crumb=4lvq4fBH.sO HTTP/1.1" 200 1230
+2024-07-01 12:44:29,808 - yfinance - DEBUG - 464080.KQ: yfinance returning OHLC: 2024-06-25 00:00:00+09:00 -> 2024-06-28 00:00:00+09:00
+2024-07-01 12:44:29,808 - yfinance - DEBUG - response code=200
+2024-07-01 12:44:29,808 - yfinance - DEBUG -   Exiting history()
+2024-07-01 12:44:29,808 - yfinance - DEBUG -    Exiting get()
+2024-07-01 12:44:29,808 - yfinance - DEBUG -  Exiting history()
+2024-07-01 12:44:29,810 - yfinance - DEBUG - 464080.KQ: yfinance received OHLC data: 2024-06-25 00:00:00 -> 2024-06-28 00:00:00
+2024-07-01 12:44:29,811 - yfinance - DEBUG - Exiting download()
+2024-07-01 12:44:29,812 - yfinance - DEBUG - 464080.KQ: OHLC after cleaning: 2024-06-25 09:00:00+09:00 -> 2024-06-28 09:00:00+09:00
+2024-07-01 12:44:29,816 - yfinance - DEBUG - 464080.KQ: OHLC after combining events: 2024-06-25 00:00:00+09:00 -> 2024-06-28 00:00:00+09:00
+2024-07-01 12:44:29,820 - yfinance - DEBUG - 464080.KQ: yfinance returning OHLC: 2024-06-25 00:00:00+09:00 -> 2024-06-28 00:00:00+09:00
+2024-07-01 12:44:29,820 - yfinance - DEBUG -   Exiting history()
+2024-07-01 12:44:29,820 - yfinance - DEBUG -  Exiting history()
+2024-07-01 12:44:29,820 - yfinance - DEBUG - Exiting download()
+2024-07-01 12:44:53,526 - root - INFO - 주식 예측 플랫폼이 시작되었습니다.
+2024-07-01 12:44:53,532 - selenium.webdriver.common.selenium_manager - DEBUG - Selenium Manager binary found at: C:\Users\ChoiBear\anaconda3\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe
+2024-07-01 12:44:53,532 - selenium.webdriver.common.selenium_manager - DEBUG - Executing process: C:\Users\ChoiBear\anaconda3\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe --browser chrome --debug --language-binding python --output json
+2024-07-01 12:44:53,868 - selenium.webdriver.common.selenium_manager - DEBUG - chromedriver not found in PATH
+2024-07-01 12:44:53,869 - selenium.webdriver.common.selenium_manager - DEBUG - chrome detected at C:\Program Files\Google\Chrome\Application\chrome.exe
+2024-07-01 12:44:53,869 - selenium.webdriver.common.selenium_manager - DEBUG - Running command: wmic datafile where name='C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe' get Version /value
+2024-07-01 12:44:53,869 - selenium.webdriver.common.selenium_manager - DEBUG - Output: "\r\r\n\r\r\nVersion=126.0.6478.127\r\r\n\r\r\n\r\r\n\r"
+2024-07-01 12:44:53,869 - selenium.webdriver.common.selenium_manager - DEBUG - Detected browser: chrome 126.0.6478.127
+2024-07-01 12:44:53,869 - selenium.webdriver.common.selenium_manager - DEBUG - Required driver: chromedriver 126.0.6478.126
+2024-07-01 12:44:53,869 - selenium.webdriver.common.selenium_manager - DEBUG - chromedriver 126.0.6478.126 already in the cache
+2024-07-01 12:44:53,869 - selenium.webdriver.common.selenium_manager - DEBUG - Driver path: C:\Users\ChoiBear\.cache\selenium\chromedriver\win64\126.0.6478.126\chromedriver.exe
+2024-07-01 12:44:53,869 - selenium.webdriver.common.selenium_manager - DEBUG - Browser path: C:\Program Files\Google\Chrome\Application\chrome.exe
+2024-07-01 12:44:53,874 - selenium.webdriver.common.service - DEBUG - Started executable: `C:\Users\ChoiBear\.cache\selenium\chromedriver\win64\126.0.6478.126\chromedriver.exe` in a child process with pid: 15292 using 0 to output -3
+2024-07-01 12:44:54,377 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:54103/session {'capabilities': {'firstMatch': [{}], 'alwaysMatch': {'browserName': 'chrome', 'pageLoadStrategy': <PageLoadStrategy.normal: 'normal'>, 'browserVersion': None, 'goog:chromeOptions': {'extensions': [], 'binary': 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe', 'args': ['headless']}}}}
+2024-07-01 12:44:54,378 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:54103
+2024-07-01 12:44:55,957 - urllib3.connectionpool - DEBUG - http://localhost:54103 "POST /session HTTP/1.1" 200 0
+2024-07-01 12:44:55,958 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":{"capabilities":{"acceptInsecureCerts":false,"browserName":"chrome-headless-shell","browserVersion":"126.0.6478.127","chrome":{"chromedriverVersion":"126.0.6478.126 (d36ace6122e0a59570e258d82441395206d60e1c-refs/branch-heads/6478@{#1591})","userDataDir":"C:\\Users\\ChoiBear\\AppData\\Local\\Temp\\scoped_dir15292_1446051523"},"fedcm:accounts":true,"goog:chromeOptions":{"debuggerAddress":"localhost:54113"},"networkConnectionEnabled":false,"pageLoadStrategy":"normal","platformName":"windows","proxy":{},"setWindowRect":true,"strictFileInteractability":false,"timeouts":{"implicit":0,"pageLoad":300000,"script":30000},"unhandledPromptBehavior":"dismiss and notify","webauthn:extension:credBlob":true,"webauthn:extension:largeBlob":true,"webauthn:extension:minPinLength":true,"webauthn:extension:prf":true,"webauthn:virtualAuthenticators":true},"sessionId":"13dd6f59e3e19c74dab96e57fb45c1b5"}} | headers=HTTPHeaderDict({'Content-Length': '902', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:44:55,958 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:44:55,958 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:54103/session/13dd6f59e3e19c74dab96e57fb45c1b5/url {'url': 'https://finance.naver.com/'}
+2024-07-01 12:44:56,716 - urllib3.connectionpool - DEBUG - http://localhost:54103 "POST /session/13dd6f59e3e19c74dab96e57fb45c1b5/url HTTP/1.1" 200 0
+2024-07-01 12:44:56,716 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:44:56,717 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:44:56,717 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:54103/session/13dd6f59e3e19c74dab96e57fb45c1b5/timeouts {'implicit': 1000}
+2024-07-01 12:44:56,718 - urllib3.connectionpool - DEBUG - http://localhost:54103 "POST /session/13dd6f59e3e19c74dab96e57fb45c1b5/timeouts HTTP/1.1" 200 0
+2024-07-01 12:44:56,718 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:44:56,718 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:44:56,718 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:54103/session/13dd6f59e3e19c74dab96e57fb45c1b5/element {'using': 'xpath', 'value': '//*[@id="stock_items"]'}
+2024-07-01 12:44:56,738 - urllib3.connectionpool - DEBUG - http://localhost:54103 "POST /session/13dd6f59e3e19c74dab96e57fb45c1b5/element HTTP/1.1" 200 0
+2024-07-01 12:44:56,739 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.516983EDD4A60C370BC69C0F8D5576C0.d.81BE7C3A56AB559A3139EFF51517A8FB.e.39"}} | headers=HTTPHeaderDict({'Content-Length': '126', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:44:56,739 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:44:56,739 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:54103/session/13dd6f59e3e19c74dab96e57fb45c1b5/element/f.516983EDD4A60C370BC69C0F8D5576C0.d.81BE7C3A56AB559A3139EFF51517A8FB.e.39/value {'text': '에스오에스랩', 'value': ['에', '스', '오', '에', '스', '랩']}
+2024-07-01 12:44:56,806 - urllib3.connectionpool - DEBUG - http://localhost:54103 "POST /session/13dd6f59e3e19c74dab96e57fb45c1b5/element/f.516983EDD4A60C370BC69C0F8D5576C0.d.81BE7C3A56AB559A3139EFF51517A8FB.e.39/value HTTP/1.1" 200 0
+2024-07-01 12:44:56,807 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:44:56,807 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:44:57,307 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:54103/session/13dd6f59e3e19c74dab96e57fb45c1b5/element {'using': 'xpath', 'value': '//*[@id="atcmp"]/div[1]/div/ul/li/a'}
+2024-07-01 12:44:57,331 - urllib3.connectionpool - DEBUG - http://localhost:54103 "POST /session/13dd6f59e3e19c74dab96e57fb45c1b5/element HTTP/1.1" 200 0
+2024-07-01 12:44:57,331 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.516983EDD4A60C370BC69C0F8D5576C0.d.81BE7C3A56AB559A3139EFF51517A8FB.e.44"}} | headers=HTTPHeaderDict({'Content-Length': '126', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:44:57,331 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:44:57,331 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:54103/session/13dd6f59e3e19c74dab96e57fb45c1b5/element/f.516983EDD4A60C370BC69C0F8D5576C0.d.81BE7C3A56AB559A3139EFF51517A8FB.e.44/click {}
+2024-07-01 12:44:57,780 - urllib3.connectionpool - DEBUG - http://localhost:54103 "POST /session/13dd6f59e3e19c74dab96e57fb45c1b5/element/f.516983EDD4A60C370BC69C0F8D5576C0.d.81BE7C3A56AB559A3139EFF51517A8FB.e.44/click HTTP/1.1" 200 0
+2024-07-01 12:44:57,780 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:44:57,780 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:44:57,780 - selenium.webdriver.remote.remote_connection - DEBUG - GET http://localhost:54103/session/13dd6f59e3e19c74dab96e57fb45c1b5/url {}
+2024-07-01 12:44:57,784 - urllib3.connectionpool - DEBUG - http://localhost:54103 "GET /session/13dd6f59e3e19c74dab96e57fb45c1b5/url HTTP/1.1" 200 0
+2024-07-01 12:44:57,784 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":"https://finance.naver.com/item/main.naver?code=464080"} | headers=HTTPHeaderDict({'Content-Length': '65', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:44:57,784 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:44:57,785 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): finance.naver.com:443
+2024-07-01 12:44:58,406 - urllib3.connectionpool - DEBUG - https://finance.naver.com:443 "GET /item/main.naver?code=464080 HTTP/1.1" 200 None
+2024-07-01 12:44:58,531 - chardet.charsetprober - DEBUG - CP932 Japanese prober hit error at byte 676
+2024-07-01 12:44:59,038 - selenium.webdriver.remote.remote_connection - DEBUG - DELETE http://localhost:54103/session/13dd6f59e3e19c74dab96e57fb45c1b5/window {}
+2024-07-01 12:44:59,060 - urllib3.connectionpool - DEBUG - http://localhost:54103 "DELETE /session/13dd6f59e3e19c74dab96e57fb45c1b5/window HTTP/1.1" 200 0
+2024-07-01 12:44:59,060 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":[]} | headers=HTTPHeaderDict({'Content-Length': '12', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:44:59,060 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:44:59,060 - selenium.webdriver.remote.remote_connection - DEBUG - DELETE http://localhost:54103/session/13dd6f59e3e19c74dab96e57fb45c1b5 {}
+2024-07-01 12:44:59,673 - urllib3.connectionpool - DEBUG - http://localhost:54103 "DELETE /session/13dd6f59e3e19c74dab96e57fb45c1b5 HTTP/1.1" 200 0
+2024-07-01 12:44:59,674 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2024-07-01 12:44:59,674 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2024-07-01 12:45:01,692 - yfinance - DEBUG - Entering download()
+2024-07-01 12:45:01,693 - yfinance - DEBUG - Disabling multithreading because DEBUG logging enabled
+2024-07-01 12:45:01,693 - yfinance - DEBUG -  Entering history()
+2024-07-01 12:45:01,693 - peewee - DEBUG - ('SELECT "t1"."key", "t1"."value" FROM "_kv" AS "t1" WHERE ("t1"."key" = ?) LIMIT ? OFFSET ?', ['464080.KQ', 1, 0])
+2024-07-01 12:45:01,695 - yfinance - DEBUG -   Entering history()
+2024-07-01 12:45:01,695 - yfinance - DEBUG - 464080.KQ: Yahoo GET parameters: {'period1': '2019-07-03 00:00:00+09:00', 'period2': '2024-07-01 00:00:00+09:00', 'interval': '1d', 'includePrePost': False, 'events': 'div,splits,capitalGains'}
+2024-07-01 12:45:01,697 - yfinance - DEBUG - 464080.KQ: yfinance received OHLC data: 2024-06-25 00:00:00 -> 2024-06-28 00:00:00
+2024-07-01 12:45:01,698 - yfinance - DEBUG - 464080.KQ: OHLC after cleaning: 2024-06-25 09:00:00+09:00 -> 2024-06-28 09:00:00+09:00
+2024-07-01 12:45:01,704 - yfinance - DEBUG - 464080.KQ: OHLC after combining events: 2024-06-25 00:00:00+09:00 -> 2024-06-28 00:00:00+09:00
+2024-07-01 12:45:01,707 - yfinance - DEBUG - 464080.KQ: yfinance returning OHLC: 2024-06-25 00:00:00+09:00 -> 2024-06-28 00:00:00+09:00
+2024-07-01 12:45:01,707 - yfinance - DEBUG -   Exiting history()
+2024-07-01 12:45:01,707 - yfinance - DEBUG -  Exiting history()
+2024-07-01 12:45:01,707 - yfinance - DEBUG - Exiting download()

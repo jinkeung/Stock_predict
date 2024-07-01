@@ -6,6 +6,11 @@ import time
 import pandas as pd
 import requests as res
 from bs4 import BeautifulSoup as bs
+import logging
+import logging_config
+import logging_time_config
+
+Log = logging.getLogger()
 
 # 주식명, 주식코드, 뉴스 크롤링
 def search_craw(search):
@@ -30,7 +35,8 @@ def search_craw(search):
                 stock_code = ((res_data.find(attrs={"class","code"}).text) + ".KQ")
                 stock_name = res_data.find('div', class_='wrap_company').find('h2').find('a').text
         return stock_code, stock_name, news_df
-    except Exception :
+    except Exception as e:
+        Log.error(f"데이터 추출중 예외가 발생했습니다 : {e}")
         pass
     finally:
         driver.close()
@@ -51,6 +57,6 @@ def news_craw(driver, res_data):
         news_df = pd.DataFrame({'제목': titles, '주소': urls})
         return news_df
     except Exception as e:
-        print("뉴스 크롤링 예외처리" + str(e))
+        Log.error(f"뉴스 데이터 추출중 예외가 발생했습니다 : " + str(e))
         news_df = pd.DataFrame(None)
         return news_df
