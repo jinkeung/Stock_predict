@@ -142,11 +142,11 @@ def return_show_data(stock_name):
     try:
         con=connect_db()
         cursor=con.cursor()
-        today=date.today()
-        day=today-timedelta(40)
-        today_str = today.strftime('%Y-%m-%d')
-        day_str = day.strftime('%Y-%m-%d')
-        query = f"""SELECT * FROM {stock_name} WHERE date BETWEEN '{day_str}' AND '{today_str}'ORDER BY date DESC"""
+        end_date=date.today()
+        start_date=end_date-timedelta(40)
+        end_date = end_date.strftime('%Y-%m-%d')
+        start_date = start_date.strftime('%Y-%m-%d')
+        query = f"""SELECT * FROM {stock_name} WHERE date BETWEEN '{start_date}' AND '{end_date}'ORDER BY date DESC"""
         cursor.execute(query)
         data=cursor.fetchall()
         field=["날짜", "시가", "고가","저가","종가","수정 종가","거래량"]
