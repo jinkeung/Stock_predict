@@ -5,7 +5,7 @@ plotly
 selenium
 requests
 bs4
-sklearn
+scikit-learn
 pymysql
 yfinance
 datetime
