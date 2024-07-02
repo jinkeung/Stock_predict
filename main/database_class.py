@@ -18,7 +18,7 @@ Log = logging.getLogger()
 # 데이터베이스 연결
 def connect_db():
     try:
-        host = '127.0.0.1'
+        host = '192.168.219.106'
         port = 3306
         username = 'root'
         password = '1234'
