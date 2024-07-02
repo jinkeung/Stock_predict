@@ -45,11 +45,7 @@ def set_user_data(join_id, join_pwd, join_name):
         Log.error(f"회원가입중 예외가 발생했습니다 : {e}")
         join_success = False
         return(join_success)
-    finally:
-        if cursor:
-            cursor.close()
-        if con:
-            con.close()
+
 
 # 전체 데이터베이스 적재
 def set_all_data(stock_code, stock_name):
@@ -87,11 +83,6 @@ def set_all_data(stock_code, stock_name):
     except Exception as e:
         Log.error(f"데이터베이스에 데이터 적재중 예외가 발생했습니다 : {e}")
         pass
-    finally:
-        if cursor:
-            cursor.close()
-        if con:
-            con.close()
 
 # 로그인 데이터베이스 비교
 def return_user_data(login_id, login_pwd):
@@ -117,11 +108,7 @@ def return_user_data(login_id, login_pwd):
     except Exception as e:
         Log.error(f"로그인 도중 예외가 발생했습니다 : {e}")
         pass
-    finally:
-        if cursor:
-            cursor.close()
-        if con:
-            con.close()
+
     return False
 
 # 그래프 데이터베이스 가져오기
@@ -139,11 +126,7 @@ def return_graph_data(stock_name):
         Log.error(f'그래프 데이터 반환도중 예외가 발생했습니다 : {e}')
         graph_data=pd.DataFrame(None)
         return graph_data
-    finally:
-        if cursor:
-            cursor.close()
-        if con:
-            con.close()
+
 
 # 40일치 데이터 반환
 def return_show_data(stock_name):
@@ -163,11 +146,7 @@ def return_show_data(stock_name):
     except Exception as e:
         Log.error(f"주식 데이터 반환도중 예외가 발생했습니다 : {e}")
         pass
-    finally:
-        if cursor:
-            cursor.close()
-        if con:
-            con.close()
+
 
 # 머신러닝 데이터 반환
 def return_train_data(stock_name):
@@ -190,8 +169,3 @@ def return_train_data(stock_name):
         train_data=pd.DataFrame(None)
         pass
         return train_data
-    finally:
-        if cursor:
-            cursor.close()
-        if con:
-            con.close()
