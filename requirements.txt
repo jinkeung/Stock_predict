@@ -1,0 +1,12 @@
+streamlit
+pandas
+numpy
+plotly
+selenium
+requests
+bs4
+scikit-learn
+pymysql
+yfinance
+datetime
+bcrypt
