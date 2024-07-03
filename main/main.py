@@ -8,9 +8,9 @@ import pandas as pd
 import plotly.graph_objects as go 
 
 # 외부 클래스
-import main.database_class as db
-import main.crawling_class as craw
-import main.ai_class as learn
+import database_class as db
+import crawling_class as craw
+import ai_class as learn
 
 from session_state import get_session
 
