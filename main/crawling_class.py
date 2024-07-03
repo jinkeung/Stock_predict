@@ -28,6 +28,7 @@ def search_craw(search):
             res_data = bs(res_url.content,"lxml")
             news_df = news_craw(driver,res_data)
             type = res_data.find("img").attrs['alt']
+            print(type)
             if type == "코스피":
                 stock_code = ((res_data.find(attrs={"class","code"}).text) + ".KS")
                 stock_name = res_data.find('div', class_='wrap_company').find('h2').find('a').text

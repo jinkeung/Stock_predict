@@ -32,6 +32,7 @@ Log = logging.getLogger()
 
 def connect_db():
     try:
+
         host = st.secrets["database"]["host"]
         port = st.secrets["database"]["port"]
         username = st.secrets["database"]["username"]

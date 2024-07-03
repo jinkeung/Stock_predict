@@ -261,6 +261,7 @@ def stock():
 
 # 페이지 전환 및 메인 트리거
 if __name__ == "__main__":
+
     if get_session().login == False:
         login()
     elif get_session().login == True:
