@@ -9,9 +9,7 @@ from datetime import date, timedelta
 import bcrypt
 
 import streamlit as st
-# 외부 클래스
-import logging_config
-import logging_time_config
+
 from session_state import get_session
 
 Log = logging.getLogger()
