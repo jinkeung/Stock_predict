@@ -32,7 +32,6 @@ Log = logging.getLogger()
 
 def connect_db():
     try:
-
         host = st.secrets["database"]["host"]
         port = st.secrets["database"]["port"]
         username = st.secrets["database"]["username"]
@@ -42,7 +41,35 @@ def connect_db():
         connection = pymysql.connect(host=host, port=port, user=username, password=password, database=database)
         return connection
     except Exception as e:
-        Log.error(f"데이터베이스 연결 중 예외가 발생했습니다 : {e}")
+        Log.error(f"데이터베이스 연결 중 예외가 발생했습니다: {e}")
+
+
+# 회원정보 데이터베이스 적재 함수
+def set_user_data(join_id, join_pwd, join_name):
+    u_salt = bcrypt.gensalt()
+    pepper = st.secrets["database"]["pepper"]
+    hash_pwd = bcrypt.hashpw((join_pwd + pepper).encode(), salt=u_salt)
+
+    cursor = None
+    con = None
+
+    try:
+        con = connect_db()
+        cursor = con.cursor()
+        query = '''INSERT INTO USER_DATA (U_ID, U_PWD, U_NAME, U_SALT) VALUES (%s, %s, %s, %s)'''
+        cursor.execute(query, (join_id, hash_pwd, join_name, u_salt))  # 튜플 형태로 파라미터 전달
+        con.commit()
+        join_success = True
+        return join_success
+    except Exception as e:
+        Log.error(f"회원가입 중 예외가 발생했습니다: {e}")
+        join_success = False
+        return join_success
+    finally:
+        if cursor is not None:
+            cursor.close()
+        if con is not None:
+            con.close()
 
 
 # 회원정보 데이터베이스 적재 함수
