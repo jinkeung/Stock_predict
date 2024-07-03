@@ -31,7 +31,7 @@ def connect_db():
 # 회원정보 데이터베이스 적재
 def set_user_data(join_id, join_pwd, join_name):
     u_salt=bcrypt.gensalt()
-    pepper="HELLOS"
+    pepper="HELLO"
     hash_pwd=bcrypt.hashpw((join_pwd+pepper).encode(),salt=u_salt)
     try:
         con = connect_db()
