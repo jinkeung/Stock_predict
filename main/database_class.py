@@ -18,10 +18,10 @@ Log = logging.getLogger()
 # 데이터베이스 연결
 def connect_db():
     try:
-        host = '127.0.0.1'
+        host = '192.168.0.23'
         port = 3306
-        username = 'root'
-        password = '1234'
+        username = 'admin'
+        password = 'password1234'
         database = 'stock_predict'
         connection = pymysql.connect(host=host,port=port,user=username,password=password,database=database)
         return connection
