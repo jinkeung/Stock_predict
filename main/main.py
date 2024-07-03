@@ -25,23 +25,9 @@ Log.info("주식 예측 플랫폼이 시작되었습니다.")
 
 # 로그인 페이지
 def login():
-    conn = st.connection("mysql", type="sql")
-    df = conn.query('SELECT * from mytable;', ttl=600)
-
-    # Print results.
-    for row in df.itertuples():
-        st.write(f"{row.name} has a :{row.pet}:")
-
-
-
-
-
-
-
     st.title("주식 예측 플랫폼에 오신걸 환영합니다!")
     st.write("로그인을 진행해주세요!")
-    st.write(st.secrets["database"]["host"])
-    st.write(st.secrets["database"]["port"])
+
     with st.container():
         login2_1, gap2_2, gap2_3 = st.columns([2,1,1])
         login = login2_1

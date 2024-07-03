@@ -14,44 +14,19 @@ from session_state import get_session
 
 Log = logging.getLogger()
 
-# # 데이터베이스 연결
-# def connect_db():
-#     try:
-#         host = '192.168.219.107'
-#         port = 3306
-#         username = 'admin'
-#         password = 'password1234'
-#         database = 'stock_predict'
-#         connection = pymysql.connect(host=host,port=port,user=username,password=password,database=database)
-#         return connection
-#     except Exception as e:
-#         Log.error(f"데이터베이스 연결 중 예외가 발생했습니다 : {e}")
-
-
+# 데이터베이스 연결
 def connect_db():
     try:
-        host = st.secrets["database"]["host"]
-        port = st.secrets["database"]["port"]
-        username = st.secrets["database"]["username"]
-        password = st.secrets["database"]["password"]
-        database = st.secrets["database"]["database"]
-
-        # 로그로 연결 정보를 출력합니다. (비밀번호는 출력하지 않습니다)
-        Log.info(f"Connecting to database at {host}:{port} with user {username}")
-
-        connection = pymysql.connect(
-            host=host,
-            port=port,
-            user=username,
-            password=password,
-            database=database
-        )
-        Log.info("Database connection established successfully")
+        host = '192.168.219.107'
+        port = 3306
+        username = 'admin'
+        password = 'password1234'
+        database = 'stock_predict'
+        connection = pymysql.connect(host=host,port=port,user=username,password=password,database=database)
         return connection
-    except pymysql.MySQLError as e:
-        Log.error(f"MySQL Error: {e}")
     except Exception as e:
-        Log.error(f"데이터베이스 연결 중 예외가 발생했습니다: {e}")
+        Log.error(f"데이터베이스 연결 중 예외가 발생했습니다 : {e}")
+
 
 
 # 회원정보 데이터베이스 적재 함수
