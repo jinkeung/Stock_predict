@@ -19,7 +19,7 @@ Log = logging.getLogger()
 # 데이터베이스 연결
 def connect_db():
     try:
-        host = '192.168.0.23'
+        host = '192.168.219.107'
         port = 3306
         username = 'admin'
         password = 'password1234'
@@ -29,12 +29,6 @@ def connect_db():
     except Exception as e:
         Log.error(f"데이터베이스 연결 중 예외가 발생했습니다 : {e}")
 
-@st.cache(allow_output_mutation=True)
-def get_connection():
-    # st.connection을 사용하여 연결
-    conn = st.connection(type='mysql')
-    return conn
-
 
 # 회원정보 데이터베이스 적재
 def set_user_data(join_id, join_pwd, join_name):
@@ -43,15 +37,12 @@ def set_user_data(join_id, join_pwd, join_name):
     hash_pwd=bcrypt.hashpw((join_pwd+pepper).encode(),salt=u_salt)
 
     try:
-        con=get_connection()
+        con=connect_db()
         cursor = con.cursor()
         query = '''INSERT INTO USER_DATA (U_ID, U_PWD, U_NAME, U_SALT) VALUES (%s, %s, %s, %s)'''
         cursor.execute(query, (join_id,hash_pwd , join_name, u_salt))  # 튜플 형태로 파라미터 전달
         con.commit()
         join_success = True
-
-        cursor.close()
-        con.close()
         return join_success
     except Exception as e:
         Log.error(f"회원가입중 예외가 발생했습니다 : {e}")
