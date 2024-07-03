@@ -35,10 +35,7 @@ def set_user_data(join_id, join_pwd, join_name):
     hash_pwd=bcrypt.hashpw((join_pwd+pepper).encode(),salt=u_salt)
     try:
         con = connect_db()
-        print(con)
-        Log.error(con)
         cursor = con.cursor()
-        print(cursor)
         query = '''INSERT INTO USER_DATA (U_ID, U_PWD, U_NAME, U_SALT) VALUES (%s, %s, %s, %s)'''
         cursor.execute(query, (join_id,hash_pwd , join_name, u_salt))  # 튜플 형태로 파라미터 전달
         con.commit()
@@ -49,6 +46,9 @@ def set_user_data(join_id, join_pwd, join_name):
         Log.error(f"회원가입중 예외가 발생했습니다 : {e}")
         join_success = False
         return(join_success)
+    finally:
+        cursor.close()
+        con.close()
 
 
 # 전체 데이터베이스 적재
