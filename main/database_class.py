@@ -34,7 +34,7 @@ def set_user_data(join_id, join_pwd, join_name):
     pepper="HELLO"
     hash_pwd=bcrypt.hashpw((join_pwd+pepper).encode(),salt=u_salt)
     try:
-        con = connect_db()
+        con=pymysql.connect(host='192.168.0.23',port=3306,user='admin',password='password1234',database='stock_predict')
         cursor = con.cursor()
         query = '''INSERT INTO USER_DATA (U_ID, U_PWD, U_NAME, U_SALT) VALUES (%s, %s, %s, %s)'''
         cursor.execute(query, (join_id,hash_pwd , join_name, u_salt))  # 튜플 형태로 파라미터 전달
