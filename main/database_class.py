@@ -36,6 +36,7 @@ def set_user_data(join_id, join_pwd, join_name):
     try:
         con = connect_db()
         print(con)
+        Log.error(con)
         cursor = con.cursor()
         print(cursor)
         query = '''INSERT INTO USER_DATA (U_ID, U_PWD, U_NAME, U_SALT) VALUES (%s, %s, %s, %s)'''
