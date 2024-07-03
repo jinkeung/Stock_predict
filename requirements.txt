@@ -10,5 +10,5 @@ pymysql
 yfinance
 datetime
 bcrypt
-mysqlclient
+mysqlclient==2.2.4
 SQLAlchemy
