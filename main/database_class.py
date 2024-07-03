@@ -36,9 +36,6 @@ def connect_db():
         password = st.secrets["database"]["password"]
         database = st.secrets["database"]["database"]
 
-        # 로그로 연결 정보를 출력합니다. (비밀번호는 출력하지 않습니다)
-        Log.info(f"Connecting to database at {host}:{port} with user {username}")
-
         connection = pymysql.connect(
             host=host,
             port=port,
@@ -46,10 +43,7 @@ def connect_db():
             password=password,
             database=database
         )
-        Log.info("Database connection established successfully")
         return connection
-    except pymysql.MySQLError as e:
-        Log.error(f"MySQL Error: {e}")
     except Exception as e:
         Log.error(f"데이터베이스 연결 중 예외가 발생했습니다: {e}")
 
@@ -59,9 +53,6 @@ def set_user_data(join_id, join_pwd, join_name):
     u_salt = bcrypt.gensalt()
     pepper = st.secrets["database"]["pepper"]
     hash_pwd = bcrypt.hashpw((join_pwd + pepper).encode(), salt=u_salt)
-
-    cursor = None
-    con = None
 
     try:
         con = connect_db()
@@ -75,11 +66,7 @@ def set_user_data(join_id, join_pwd, join_name):
         Log.error(f"회원가입 중 예외가 발생했습니다: {e}")
         join_success = False
         return join_success
-    finally:
-        if cursor is not None:
-            cursor.close()
-        if con is not None:
-            con.close()
+
 
 
 
