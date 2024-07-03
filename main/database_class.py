@@ -41,14 +41,14 @@ def set_user_data(join_id, join_pwd, join_name):
         con.commit()
         join_success = True
 
+        cursor.close()
+        con.close()
         return join_success
     except Exception as e:
         Log.error(f"회원가입중 예외가 발생했습니다 : {e}")
         join_success = False
         return(join_success)
-    finally:
-        cursor.close()
-        con.close()
+
 
 
 # 전체 데이터베이스 적재
