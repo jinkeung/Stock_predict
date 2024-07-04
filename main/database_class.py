@@ -17,11 +17,11 @@ Log = logging.getLogger()
 # 데이터베이스 연결
 def connect_db():
     try:
-        host = '192.168.219.107'
-        port = 3306
-        username = 'admin'
-        password = 'password1234'
-        database = 'stock_predict'
+        host = st.secrets["database"]["host"]
+        port = st.secrets["database"]["port"]
+        username = st.secrets["database"]["username"]
+        password = st.secrets["database"]["password"]
+        database = st.secrets["database"]["database"]
         connection = pymysql.connect(host=host,port=port,user=username,password=password,database=database)
         return connection
     except Exception as e:
@@ -109,7 +109,7 @@ def return_user_data(login_id, login_pwd):
         u_name=user_data[0][2]
 
         #로그인시 입력한 pwd를 암호화 해서 db에서 추출해온 pwd와 비교
-        pepper="HELLO"
+        pepper = st.secrets["database"]["pepper"]
         login_success = bcrypt.checkpw((login_pwd + pepper).encode(), u_pwd.encode())
         if login_success:
             session=get_session()
